@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-03</title>
+  <style>
+:root{
+  --bg:#ffffff;
+  --text:#111;
+  --muted:rgba(55,53,47,.65);
+  --divider:rgba(55,53,47,.12);
+  --link:#0b57d0;
+  --pill-bg:rgba(55,53,47,.08);
+  --callout-bg:rgba(241,241,239,.7);
+  --code-bg:rgba(135,131,120,.15);
+
+  /* Weather hero gradient (overridden by .wx-* class) */
+  --hero1:#1f6feb;
+  --hero2:#65b7ff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#191919;
+    --text:#f5f5f5;
+    --muted:rgba(255,255,255,.65);
+    --divider:rgba(255,255,255,.14);
+    --link:#7ab7ff;
+    --pill-bg:rgba(255,255,255,.10);
+    --callout-bg:rgba(255,255,255,.06);
+    --code-bg:rgba(255,255,255,.10);
+
+    --hero1:#1a4fbf;
+    --hero2:#2a9df4;
+  }
+}
+
+/* Weather palettes */
+.wx-sunny{--hero1:#1f6feb;--hero2:#7cc4ff;}
+.wx-partly{--hero1:#2b7aee;--hero2:#b5d7ff;}
+.wx-cloudy{--hero1:#4f6d8a;--hero2:#b9c8d6;}
+.wx-rain{--hero1:#2b5876;--hero2:#4e4376;}
+.wx-thunder{--hero1:#3a2a6a;--hero2:#7b2cbf;}
+.wx-snow{--hero1:#7aa6c2;--hero2:#e6f2ff;}
+.wx-fog{--hero1:#6b7280;--hero2:#cbd5e1;}
+
+html,body{background:var(--bg);color:var(--text);}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,
+  "Apple Color Emoji","Segoe UI Emoji","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin:0;}
+
+.hero{
+  min-height:50vh; /* ~50% of viewport height */
+  padding:72px 0 40px;
+  display:flex;
+  align-items:flex-start;
+  background: radial-gradient(1400px 560px at 15% 0%, rgba(255,255,255,.25), rgba(255,255,255,0) 60%),
+              linear-gradient(160deg, var(--hero1), var(--hero2));
+  color:#fff;
+}
+@media (prefers-color-scheme: dark){
+  .hero{ background: radial-gradient(1200px 500px at 15% 0%, rgba(0,0,0,.25), rgba(0,0,0,0) 60%),
+                  linear-gradient(160deg, var(--hero1), var(--hero2)); }
+}
+
+.container{max-width:900px;margin:0 auto;}
+.container.body{padding:34px 20px 64px;}
+.container.hero-inner{padding:0 4px;}
+@media (min-width: 900px){ .container.hero-inner{padding:0 0;} }
+
+.page-title{font-size:40px;line-height:1.2;font-weight:800;letter-spacing:-.02em;margin:0;}
+
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;}
+
+/* Widgets row under title (calendar left, weather right) */
+.hero-widgets{display:flex;gap:14px;justify-content:space-between;align-items:stretch;margin-top:24px;}
+.hero-widgets .widget{flex:1 1 0;}
+
+/* Notion-like mini widget */
+.widget{min-width:0;padding:12px 14px;border-radius:14px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(14px);-webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 26px rgba(0,0,0,.12);
+}
+.widget .label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin:0 0 6px;}
+.widget .date{font-size:20px;font-weight:780;letter-spacing:-.01em;margin:0;}
+.widget .dow{font-size:13px;opacity:.92;margin-top:4px;}
+
+.widget .wx{display:flex;align-items:center;gap:10px;margin-top:2px;}
+.widget .icon{font-size:18px;line-height:1;}
+.widget .temp{font-size:16px;font-weight:750;}
+.widget .desc{font-size:13px;opacity:.92;}
+
+.divider-hero{height:1px;background:rgba(255,255,255,.25);margin:16px 0 0;}
+
+.pill{font-size:13px;color:var(--muted);background:var(--pill-bg);padding:6px 10px;border-radius:999px;}
+
+.divider{height:1px;background:var(--divider);margin:18px 0 26px;}
+.callout{background:var(--callout-bg);border:1px solid var(--divider);border-radius:10px;padding:14px 14px;display:flex;gap:10px;align-items:flex-start;}
+.callout .icon{font-size:18px;line-height:1.2;}
+.callout .content{font-size:14px;color:var(--muted);}
+.section{margin:30px 0;}
+.section h2{font-size:22px;margin:0 0 10px;font-weight:750;letter-spacing:-.01em;}
+.section .count{font-size:12px;color:var(--muted);margin-left:8px;vertical-align:middle;}
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 8px;border-radius:8px;display:flex;gap:10px;align-items:flex-start;}
+li.item:hover{background:rgba(55,53,47,.04);} 
+@media (prefers-color-scheme: dark){li.item:hover{background:rgba(255,255,255,.05);}}
+.bullet{width:18px;flex:0 0 18px;color:var(--muted);line-height:1.4;}
+.title{flex:1 1 auto;min-width:0;}
+.title .main{font-size:15px;line-height:1.5;}
+.title .sub{font-size:13px;color:var(--muted);margin-top:2px;}
+.title .sub-inline{font-size:13px;color:rgba(255,255,255,.92);} 
+@media (prefers-color-scheme: dark){ .title .sub-inline{color:rgba(255,255,255,.92);} }
+.actions{flex:0 0 auto;}
+a.link{font-size:13px;color:var(--link);text-decoration:none;border-bottom:1px solid transparent;}
+a.link:hover{border-bottom-color:var(--link);}
+.footer{margin-top:40px;color:var(--muted);font-size:12px;}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background:var(--code-bg);padding:2px 6px;border-radius:6px;}
+
+  </style>
+</head>
+<body class="wx-cloudy">
+  <div class="hero">
+    <div class="container hero-inner">
+      <div class="hero-top">
+        <h1 class="page-title">Morning brief</h1>
+      </div>
+
+      <div class="hero-widgets">
+        <div class="widget">
+          <div class="label">Calendar</div>
+          <div class="date">2/3</div>
+          <div class="dow">周二</div>
+        </div>
+
+        <div class="widget">
+          <div class="label">Weather</div>
+          <div class="wx">
+            <div class="icon">☁</div>
+            <div class="temp">+15°C</div>
+            <div class="desc">️ 67%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider-hero"></div>
+    </div>
+  </div>
+
+  <div class="container body">
+    <div class="divider"></div>
+
+
+<div class="section">
+  <h2>Gmail<span class="count">14 unread (24h)</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Mapbox Team &lt;hello@mapbox.com&gt; — Geocoding now supports precise entrance data</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Dense Discovery &lt;hello@densediscovery.com&gt; — 374 / AI and the propaganda of inevitability</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">The Browser Company &lt;hello@diabrowser.com&gt; — Dia Early Birds | Github Live Groups, Bug Fixes, and more</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Substack &lt;on+product@substack.com&gt; — Substack is your corner of the internet</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;DEX 周刊&quot; &lt;dingyi@quail-mail.com&gt; — #333 靠嘴做设计真的不远了</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Viktor from Typograph &lt;hello@typograph.studio&gt; — Last chance to become a Founding Member</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">UX Collective &lt;uxco@substack.com&gt; — When design stops asking why and starts asking: Can AI do it?</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;LogoArchive&#x27;s Logo Histories&quot; &lt;logoarchive@substack.com&gt; — Timeless logos, Endless Inspiration! A weekly newsletter from LogoArchive&#x27;s Rich Baird</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;GOG.COM&quot; &lt;notice-noreply@email3.gog.com&gt; — We are updating GOG terms</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">PayPal &lt;service@paypal.com&gt; — aescripts + aeplugin...: $35.00 USD</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;aescripts + aeplugins&quot; &lt;support@aescripts.com&gt; — Your aescripts + aeplugins order confirmation</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;搜信源&quot; &lt;enterprise@souxinyuan.com&gt; — 未来两周内，美国会袭击伊朗吗？  | 搜信源</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;aescripts + aeplugins&quot; &lt;support@aescripts.com&gt; — Your aescripts + aeplugins order confirmation</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Dine Digest &lt;dinehq@substack.com&gt; — #216</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Hacker News<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Parking lots as economic drains <span class="sub-inline">/ 停车场如何成为经济“漏斗”</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://progressandpoverty.substack.com/p/stop-incentivizing-surface-parking">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">EPA Advances Farmers&#x27; Right to Repair <span class="sub-inline">/ 美国环保署推动农民的“维修权”</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.epa.gov/newsreleases/epa-advances-farmers-right-repair-their-own-equipment-saving-repair-costs-and">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">UK government launches fuel forecourt price API <span class="sub-inline">/ 英国政府上线加油站价格 API</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.gov.uk/guidance/access-the-latest-fuel-prices-and-forecourt-data-via-api-or-email">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">On being sane in insane places (1973) [pdf] <span class="sub-inline">/ 在疯狂之地保持清醒（1973）[PDF]</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.weber.edu/wsuimages/psychology/FacultySites/Horvat/OnBeingSaneInInsanePlaces.PDF">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Nvidia shares are down after report that its OpenAI investment stalled <span class="sub-inline">/ 报道称英伟达对 OpenAI 的投资搁浅后，股价下跌</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbc.com/2026/02/02/nvidia-stock-price-openai-funding.html">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Why software stocks are getting pummelled <span class="sub-inline">/ 软件股为何遭到重挫</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.economist.com/business/2026/02/01/why-software-stocks-are-getting-pummelled">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Stelvio: Ship Python to AWS <span class="sub-inline">/ Stelvio：把 Python 项目打包部署到 AWS</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://github.com/stelviodev/stelvio">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Geologists may have solved mystery of Green River&#x27;s &#x27;uphill&#x27; route <span class="sub-inline">/ 地质学家或已解开绿河“逆坡”流向之谜</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://phys.org/news/2026-01-geologists-mystery-green-river-uphill.html">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Ask HN: Who wants to be hired? (February 2026) <span class="sub-inline">/ Ask HN：谁想被雇用？（2026 年 2 月）</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://news.ycombinator.com/item?id=46857487">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Todd C. Miller – Sudo maintainer for over 30 years <span class="sub-inline">/ Todd C. Miller：维护 Sudo 超过 30 年的人</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.millert.dev/">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>cnBeta<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">古老游戏机极限再被打破 1994年的世嘉土星也能实现光追</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/game/1548284.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">25岁小伙酷似泽连斯基走红 15岁开始做囊 地道新疆人</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/movie/1548286.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">刚改款就停产 特斯拉毛豆S和X犯啥事了？</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548288.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">OpenAI推出适用于macOS的Codex智能编程应用</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548290.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Mozilla Firefox将允许用户彻底屏蔽所有生成式AI功能</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548292.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">龙芯3B6000海外实测性能为锐龙5 9600X的三分之一</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548294.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">杰弗里·爱泼斯坦曾为前“Windows之父”牵线与苹果CEO库克的会面</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548296.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">据悉马斯克正在就合并SpaceX与xAI进行深入谈判</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548298.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">美国制造业扩张速度创2022年以来最高 新订单和生产稳步增长</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548300.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">福特传与小米洽谈在美国本土生产电动汽车 特斯拉跌2.6%</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548302.htm">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>The Verge<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Amazon’s desk-friendly Echo Show 8 is down to its lowest price ever <span class="sub-inline">/ 更适合桌面摆放的 Echo Show 8 跌至史上最低价</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/gadgets/872328/amazon-fourth-gen-echo-show-8-smart-display-deal-sale">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Crunchyroll is raising prices again <span class="sub-inline">/ Crunchyroll 又要涨价了</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/entertainment/872468/crunchyroll-price-hike-raise-fan-mega-ultimate-tier">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Firefox is adding a switch to turn AI features off <span class="sub-inline">/ Firefox 将新增开关，可一键关闭 AI 功能</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/news/872489/mozilla-firefox-ai-features-off-button">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Ikea’s next cheap Bluetooth speaker is a playful purple mouse <span class="sub-inline">/ 宜家下一款廉价蓝牙音箱是只俏皮的紫色小鼠</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/tech/872434/ikea-wireless-bluetooth-speaker-grejsimojs-kid-friendly-purple-mouse">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Notepad++ updates got hijacked for months and could have spied for China <span class="sub-inline">/ Notepad++ 更新渠道被劫持数月，可能被用来为中国进行间谍活动</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/tech/872462/notepad-plus-plus-server-hijacking">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Will Elon Musk’s emails with Jeffrey Epstein derail his very important year? <span class="sub-inline">/ 马斯克与杰弗里·爱泼斯坦的邮件往来会毁掉他这一关键一年吗？</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/tech/872450/elon-musk-jeffrey-epstein-emails-spacex-ipo-tesla">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Elon Musk merges SpaceX with xAI (and X) <span class="sub-inline">/ 马斯克将 SpaceX 与 xAI（以及 X）合并</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/tech/872619/elon-musk-merges-spacex-with-xai-and-x">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Here are the best Apple Watch deals available right now <span class="sub-inline">/ 现在最划算的 Apple Watch 优惠都在这里</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/21289209/best-apple-watch-deals">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Waymo raises $16 billion to take its robotaxi business ‘global’ <span class="sub-inline">/ Waymo 融资 160 亿美元，推动其机器人出租车业务走向“全球化”</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/transportation/872651/waymo-raises-16-billion-investment-value-robotaxi">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Adobe Animate is shutting down next month <span class="sub-inline">/ Adobe Animate 将于下月关闭</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/news/872731/adobe-animate-app-shutdown-date">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>少数派<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">又要上台讲 PPT？用 AutoHotkey 解决翻页笔「断连」时刻</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105660">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">2026 春运买票指北：乡愁愈烈，莫添烦恼</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/86328">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派评 | 近期值得关注的 App</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105972">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派早报：Moltbook 引发 AI 智能体新热度与安全担忧</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105959">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Apple 新春大片如期而至，今年的故事有点不一样</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105948">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">用数据分析项目，带你走进成语里的数字世界</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105827">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">具透 Plus：Clawdbot 的成功是桌面系统的成功；如何手动开启 Chrome 中的 Gemini</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/prime/story/inside-release-notes-260131">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">本月玩什么｜明日方舟：终末地、孤山独影、暴走甜心</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105946">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派早报：小米发布 REDMI Turbo 5 系列手机等</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105895">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">你真的是记性不好吗？关于记忆和遗忘的常见误区</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105677">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>爱范儿<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Moltbook 上 150 万 AI 狂欢真相曝光：以为是硅基文明来了，结果全是复读机</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653918?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">解密 iPhone 小折叠，这只是苹果折叠产品的开始</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653880?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">最懂 iPhone 相机的人，回到苹果了</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653501?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">早报｜小米YU9实车谍照疑曝光/消息称苹果正计划开发方形折叠手机/何小鹏回应机器人「原地摔」</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653854?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">15万个AI建了个朋友圈吐槽人类，100万人围观Moltbook后傻眼了：原来我们对AI一无所知</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653813?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">苹果史上第二大收购案，目标却不是手机｜硬哲学</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653790?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">早报｜苹果发布2026新春影片/三星S26系列发布时间曝光：2月25日亮相/Clawdbot再改名</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653810?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">2026 年，手机厂商是时候拥抱公有快充协议了</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653774?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">马斯克真没吹牛！世界模型 Genie 3 一键打造 GTA6 不是梦</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653730?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">平均每年衰减 2.3%，新能源电池寿命远比你想象的更长</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653024?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+
+    <div class="footer">Generated locally by Clawdbot. Sources: RSS + wttr.in.</div>
+  </div>
+</body>
+</html>
