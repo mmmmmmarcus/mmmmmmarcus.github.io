@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-04</title>
+  <style>
+:root{
+  --bg:#ffffff;
+  --text:#111;
+  --muted:rgba(55,53,47,.65);
+  --divider:rgba(55,53,47,.12);
+  --link:#0b57d0;
+  --pill-bg:rgba(55,53,47,.08);
+  --callout-bg:rgba(241,241,239,.7);
+  --code-bg:rgba(135,131,120,.15);
+
+  /* Weather hero gradient (overridden by .wx-* class) */
+  --hero1:#1f6feb;
+  --hero2:#65b7ff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#191919;
+    --text:#f5f5f5;
+    --muted:rgba(255,255,255,.65);
+    --divider:rgba(255,255,255,.14);
+    --link:#7ab7ff;
+    --pill-bg:rgba(255,255,255,.10);
+    --callout-bg:rgba(255,255,255,.06);
+    --code-bg:rgba(255,255,255,.10);
+
+    --hero1:#1a4fbf;
+    --hero2:#2a9df4;
+  }
+}
+
+/* Weather palettes */
+.wx-sunny{--hero1:#1f6feb;--hero2:#7cc4ff;}
+.wx-partly{--hero1:#2b7aee;--hero2:#b5d7ff;}
+.wx-cloudy{--hero1:#4f6d8a;--hero2:#b9c8d6;}
+.wx-rain{--hero1:#2b5876;--hero2:#4e4376;}
+.wx-thunder{--hero1:#3a2a6a;--hero2:#7b2cbf;}
+.wx-snow{--hero1:#7aa6c2;--hero2:#e6f2ff;}
+.wx-fog{--hero1:#6b7280;--hero2:#cbd5e1;}
+
+html,body{background:var(--bg);color:var(--text);}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,
+  "Apple Color Emoji","Segoe UI Emoji","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin:0;}
+
+.hero{
+  min-height:50vh; /* ~50% of viewport height */
+  padding:72px 0 40px;
+  display:flex;
+  align-items:flex-start;
+  background: radial-gradient(1400px 560px at 15% 0%, rgba(255,255,255,.25), rgba(255,255,255,0) 60%),
+              linear-gradient(160deg, var(--hero1), var(--hero2));
+  color:#fff;
+}
+@media (prefers-color-scheme: dark){
+  .hero{ background: radial-gradient(1200px 500px at 15% 0%, rgba(0,0,0,.25), rgba(0,0,0,0) 60%),
+                  linear-gradient(160deg, var(--hero1), var(--hero2)); }
+}
+
+.container{max-width:900px;margin:0 auto;}
+.container.body{padding:34px 20px 64px;}
+.container.hero-inner{padding:0 4px;}
+@media (min-width: 900px){ .container.hero-inner{padding:0 0;} }
+
+.page-title{font-size:40px;line-height:1.2;font-weight:800;letter-spacing:-.02em;margin:0;}
+
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;}
+
+/* Widgets row under title (calendar left, weather right) */
+.hero-widgets{display:flex;gap:14px;justify-content:space-between;align-items:stretch;margin-top:24px;}
+.hero-widgets .widget{flex:1 1 0;}
+
+/* Notion-like mini widget */
+.widget{min-width:0;padding:12px 14px;border-radius:14px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(14px);-webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 26px rgba(0,0,0,.12);
+}
+.widget .label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin:0 0 6px;}
+.widget .date{font-size:20px;font-weight:780;letter-spacing:-.01em;margin:0;}
+.widget .dow{font-size:13px;opacity:.92;margin-top:4px;}
+
+.widget .wx{display:flex;align-items:center;gap:10px;margin-top:2px;}
+.widget .icon{font-size:18px;line-height:1;}
+.widget .temp{font-size:16px;font-weight:750;}
+.widget .desc{font-size:13px;opacity:.92;}
+
+.divider-hero{height:1px;background:rgba(255,255,255,.25);margin:16px 0 0;}
+
+.pill{font-size:13px;color:var(--muted);background:var(--pill-bg);padding:6px 10px;border-radius:999px;}
+
+.divider{height:1px;background:var(--divider);margin:18px 0 26px;}
+.callout{background:var(--callout-bg);border:1px solid var(--divider);border-radius:10px;padding:14px 14px;display:flex;gap:10px;align-items:flex-start;}
+.callout .icon{font-size:18px;line-height:1.2;}
+.callout .content{font-size:14px;color:var(--muted);}
+.section{margin:30px 0;}
+.section h2{font-size:22px;margin:0 0 10px;font-weight:750;letter-spacing:-.01em;}
+.section .count{font-size:12px;color:var(--muted);margin-left:8px;vertical-align:middle;}
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 8px;border-radius:8px;display:flex;gap:10px;align-items:flex-start;}
+li.item:hover{background:rgba(55,53,47,.04);} 
+@media (prefers-color-scheme: dark){li.item:hover{background:rgba(255,255,255,.05);}}
+.bullet{width:18px;flex:0 0 18px;color:var(--muted);line-height:1.4;}
+.title{flex:1 1 auto;min-width:0;}
+.title .main{font-size:15px;line-height:1.5;}
+.title .sub{font-size:13px;color:var(--muted);margin-top:2px;}
+.title .sub-inline{font-size:13px;color:rgba(255,255,255,.92);} 
+@media (prefers-color-scheme: dark){ .title .sub-inline{color:rgba(255,255,255,.92);} }
+.actions{flex:0 0 auto;}
+a.link{font-size:13px;color:var(--link);text-decoration:none;border-bottom:1px solid transparent;}
+a.link:hover{border-bottom-color:var(--link);}
+.footer{margin-top:40px;color:var(--muted);font-size:12px;}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background:var(--code-bg);padding:2px 6px;border-radius:6px;}
+
+  </style>
+</head>
+<body class="wx-partly">
+  <div class="hero">
+    <div class="container hero-inner">
+      <div class="hero-top">
+        <h1 class="page-title">Morning brief</h1>
+      </div>
+
+      <div class="hero-widgets">
+        <div class="widget">
+          <div class="label">Calendar</div>
+          <div class="date">2/4</div>
+          <div class="dow">周三</div>
+        </div>
+
+        <div class="widget">
+          <div class="label">Weather</div>
+          <div class="wx">
+            <div class="icon">⛅</div>
+            <div class="temp">+17°C</div>
+            <div class="desc">️ 77%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider-hero"></div>
+    </div>
+  </div>
+
+  <div class="container body">
+    <div class="divider"></div>
+
+
+
+<div class="section">
+  <h2>Hacker News<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">AI and Trust (2023) <span class="sub-inline">/ AI 与信任（2023）</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.schneier.com/blog/archives/2023/12/ai-and-trust.html">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">1 kilobyte is precisely 1000 bytes? <span class="sub-inline">/ 1 KB 真的等于 1000 字节吗？</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://waspdev.com/articles/2026-01-11/kilobyte-is-1000-bytes">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">New York’s budget bill would require “blocking technology” on all 3D printers <span class="sub-inline">/ 纽约预算案拟要求所有 3D 打印机配备“阻断技术”</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://blog.adafruit.com/2026/02/03/new-york-wants-to-ctrlaltdelete-your-3d-printer/">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Y Combinator will let founders receive funds in stablecoins <span class="sub-inline">/ Y Combinator 将允许创业者用稳定币收款</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://fortune.com/2026/02/03/famed-startup-incubator-y-combinator-to-let-founders-receive-funds-in-stablecoins/">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Data centers in space makes no sense <span class="sub-inline">/ 把数据中心搬到太空毫无意义</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://civai.org/blog/space-data-centers">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">FlashAttention-T: Towards Tensorized Attention <span class="sub-inline">/ FlashAttention-T：迈向张量化注意力</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://dl.acm.org/doi/10.1145/3774934.3786425">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Notepad++ supply chain attack breakdown <span class="sub-inline">/ Notepad++ 供应链攻击事件复盘</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://securelist.com/notepad-supply-chain-attack/118708/">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Show HN: I built &quot;AI Wattpad&quot; to eval LLMs on fiction <span class="sub-inline">/ Show HN：我做了“AI 版 Wattpad”，用小说评测大模型</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://narrator.sh/llm-leaderboard">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Show HN: Sandboxing untrusted code using WebAssembly <span class="sub-inline">/ Show HN：用 WebAssembly 给不可信代码做沙箱</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://github.com/mavdol/capsule">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Migrate Wizard – IMAP Based Email Migration Tool <span class="sub-inline">/ Migrate Wizard：基于 IMAP 的邮箱迁移工具</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://migratewizard.com/#features">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Al Jazeera<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Collision between Greek coastguard vessel, migrant boat kills at least 14 <span class="sub-inline">/ 希腊海岸警卫队船只与移民船相撞，至少 14 人死亡</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/news/2026/2/3/collision-between-greek-coast-guard-vessel-migrant-boat-kills-at-least-14?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">US House passes $1.2 trillion spending package to end government shutdown <span class="sub-inline">/ 美国众议院通过 1.2 万亿美元支出方案，结束政府停摆</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/economy/2026/2/3/us-house-passes-1-2-trillion-spending-package-to-end-government-shutdown?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Who was Saif al-Islam Gaddafi, the man once seen as Libya’s next leader? <span class="sub-inline">/ 赛义夫·伊斯兰·卡扎菲是谁？曾被视为利比亚接班人</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/news/2026/2/3/who-was-libyas-saif-al-islam-gaddafi?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Sudan’s military breaks through years-long RSF blockade in Kadugli <span class="sub-inline">/ 苏丹军方突破 RSF 在卡杜格利多年的封锁</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/2/3/sudans-military-breaks-through-years-long-rsf-blockade-in-kadugli?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Saif al-Islam Gaddafi, son of Libyan former leader, killed <span class="sub-inline">/ 利比亚前领导人之子赛义夫·伊斯兰·卡扎菲被杀</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/2/3/saif-al-islam-gaddafi-son-of-libyan-former-leader-killed?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">‘Game is over’: Iran’s ex-leaders, hardliners clash after protest killings <span class="sub-inline">/ “游戏结束”：抗议者被杀后，伊朗前领导人与强硬派爆发冲突</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/news/2026/2/3/game-is-over-irans-ex-leaders-hardliners-clash-after-protest-killings?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Son of Norway’s crown princess pleads not guilty in rape case <span class="sub-inline">/ 挪威王储妃之子在强奸案中否认有罪</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/2/3/son-of-norways-crown-princess-pleads-not-guilty-in-rape-case?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">UN chief urges Gaza aid as Israel blocks most medical evacuees at Rafah <span class="sub-inline">/ 以色列在拉法阻拦多数医疗撤离者，联合国秘书长呼吁向加沙提供援助</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/news/2026/2/3/un-chief-urges-gaza-aid-as-israel-blocks-most-medical-evacuees-at-rafah?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Walmart hits trillion dollar market cap for the first time <span class="sub-inline">/ 沃尔玛市值首次突破 1 万亿美元</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/economy/2026/2/3/walmart-hits-trillion-dollar-market-cap-for-the-first-time?traffic_source=rss">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Red Cross worker urges more aid access, recounts time in Gaza <span class="sub-inline">/ 红十字会工作人员呼吁开放更多援助通道，讲述在加沙的经历</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/2/3/red-cross-worker-urges-more-aid-access-recounts-time-in-gaza?traffic_source=rss">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>cnBeta<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">英特尔CEO：布局GPU市场 存储芯片短缺要到2028年才会缓解</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548480.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">AMD发布当期展望 AI回报未达部分投资者预期</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548482.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">英伟达CEO黄仁勋否认与OpenAI交易传闻：“此事毫无波澜”</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548484.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">比特币跌至特朗普重返白宫以来最低水平</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548486.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">苹果为旗下编程工具接入Anthropic和OpenAI智能体功能</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548488.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">IGN评选十大最佳类魂游戏 《黑神话：悟空》上榜</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/game/1548340.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">寒武纪盘中大幅跳水跌超12% 公司回应：不清楚具体原因</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548342.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">AI“外包”谷歌之后，华人天才抛弃苹果？</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548344.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">寒武纪声明：从未组织任何小范围交流 没有出具过任何年度、季度营业收入指引数据</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548346.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">50岁高龄Z80 CPU强行营业跑AI 还能聊天猜谜</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548348.htm">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>The Verge<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Elon Musk is merging SpaceX and xAI to build data centers in space — or so he says <span class="sub-inline">/ 马斯克称 SpaceX 将与 xAI 合并，在太空建数据中心</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/transportation/873203/elon-musk-spacex-xai-merge-data-centers-space-tesla-ipo">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">The four best Super Bowl TV deals we found <span class="sub-inline">/ 我们找到的四款最划算的超级碗电视优惠</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/gadgets/873160/super-bowl-4k-oled-big-tv-deal-sale">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Borderlands 4 for Switch 2 is on ‘pause’ <span class="sub-inline">/ 《无主之地 4》Switch 2 版被暂缓</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/games/873409/borderlands-4-nintendo-switch-2-development-pause">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Slopaganda goes West <span class="sub-inline">/ 低质信息宣传正在西进</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/news/873400/nick-shirley-somali-daycares-san-diego-california-youtube">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Department of Justice appeals Google search monopoly ruling <span class="sub-inline">/ 美国司法部就谷歌搜索垄断裁决提起上诉</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/tech/873438/google-antitrust-case-doj-states-appeal">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">AMD hints Microsoft could launch its next-gen Xbox in 2027 <span class="sub-inline">/ AMD 暗示微软或在 2027 年推出下一代 Xbox</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/news/873490/microsoft-next-gen-xbox-console-2027-date-amd">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">China is banning hidden electric door handles for EVs <span class="sub-inline">/ 中国将禁止电动车隐藏式电动门把手</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/transportation/873039/china-ban-hidden-tesla-door-handles-january-2027">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Millions of books died so Claude could live <span class="sub-inline">/ 数百万本书被“献祭”，才让 Claude 诞生</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/podcast/872998/anthropic-claude-books-netflix-theaters-vergecast">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Apple’s tiny but mighty iPad Mini is $100 off in every storage configuration <span class="sub-inline">/ 小巧却强悍的 iPad mini 全系立减 100 美元</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/gadgets/872788/apple-ipad-mini-amazfit-active-2-fitness-tracker-deal-sale">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">I didn’t expect to love Dyson’s PencilVac Fluffycones – but I did <span class="sub-inline">/ 没想到我会爱上戴森 PencilVac Fluffycones，但真的上头了</span></div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.theverge.com/tech/872981/dyson-pencilvac-fluffycones-vacuum-hands-on-review">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>少数派<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">不是只做样子货：铁三角 ATH-CKS50TW2 星战联名耳机体验</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105893">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">社区速递 128 | 小红书里的「奇怪知识」、打开 14 天的血糖盲盒</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/106004">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派早报：SpaceX 收购 xAI，Adobe 停运 Animate 等</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105996">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">App+1 | 开源免费、多人协作，用 Cent 一站式搞定记账</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105644">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">又要上台讲 PPT？用 AutoHotkey 解决翻页笔「断连」时刻</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105660">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">2026 春运买票指北：乡愁愈烈，莫添烦恼</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/86328">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派评 | 近期值得关注的 App</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105972">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派早报：Moltbook 引发 AI 智能体新热度与安全担忧</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105959">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Apple 新春大片如期而至，今年的故事有点不一样</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105948">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">用数据分析项目，带你走进成语里的数字世界</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/105827">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section">
+  <h2>爱范儿<span class="count">10 items</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">吉利银河 M7 亮相，定位 10 万至 15 万元区间，纯电续航较比亚迪宋 Pro 多 5 km</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653992?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">阶跃Step 3.5 Flash ：春节 AI 混战杀出的黑马，正在 Agent 时代弯道超车</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653972?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">比亚迪全新子品牌发布！首发 4 款车型，主打超高性价比</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653958?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">早报｜黄仁勋：从未承诺向OpenAI投资1000亿美元/腾讯元宝回应红包助力刷屏质疑/曝苹果封堵「隔空投送」版Final Cut Pro</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653951?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Moltbook 上 150 万 AI 狂欢真相曝光：以为是硅基文明来了，结果全是复读机</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653918?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">解密 iPhone 小折叠，这只是苹果折叠产品的开始</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653880?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">最懂 iPhone 相机的人，回到苹果了</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653501?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">早报｜小米YU9实车谍照疑曝光/消息称苹果正计划开发方形折叠手机/何小鹏回应机器人「原地摔」</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653854?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">15万个AI建了个朋友圈吐槽人类，100万人围观Moltbook后傻眼了：原来我们对AI一无所知</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653813?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">苹果史上第二大收购案，目标却不是手机｜硬哲学</div>
+
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1653790?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
+</li>
+
+  </ul>
+</div>
+
+
+    <div class="footer">Generated locally by Clawdbot. Sources: RSS + wttr.in.</div>
+  </div>
+</body>
+</html>
