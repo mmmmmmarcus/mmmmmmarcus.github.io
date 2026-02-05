@@ -11,122 +11,114 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 
   <style>
-/* Frontend Design Ultimate-inspired editorial LIGHT theme
-   - Dominant: paper white
-   - Accent: electric tangerine
-   - Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+/* Topfeed-inspired light feed style (topic tabs + dense rows)
+   Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
 */
 
 :root{
-  --bg:#fafaf7;
+  --bg:#fbfbf8;
   --surface:#ffffff;
-  --surface2:#f3f3ee;
-  --text:#121212;
-  --muted:rgba(18,18,18,.62);
-  --divider:rgba(18,18,18,.12);
+  --text:#141414;
+  --muted:rgba(20,20,20,.55);
+  --divider:rgba(20,20,20,.10);
   --accent:#ff4d1a;
   --accent2:#b62a07;
-  --shadow: 0 16px 46px rgba(0,0,0,.10);
 }
 
 html,body{height:100%;background:var(--bg);color:var(--text);}
 body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
 a{color:inherit}
 
-/* grain overlay */
-.grain{
-  position:fixed; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+/* subtle dot grid background like Topfeed */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image: radial-gradient(rgba(20,20,20,.045) 1px, transparent 1px);
+  background-size: 14px 14px;
+  pointer-events:none;
 }
 
-.wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
+.grain{display:none;}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;}
 
 .hero{
-  padding:44px 0 26px;
-  background:
-    radial-gradient(1100px 520px at 8% -10%, rgba(255,77,26,.18), rgba(255,77,26,0) 60%),
-    radial-gradient(900px 420px at 92% 0%, rgba(0,0,0,.06), rgba(0,0,0,0) 55%),
-    linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0));
+  padding:18px 0 10px;
+  background:transparent;
   border-bottom:1px solid var(--divider);
 }
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);}
 
-.hero-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
-.kicker{font-family:"IBM Plex Mono";letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--accent2);}
-.meta{font-size:13px;color:var(--muted);}
-
-.hero-title{margin-top:18px;}
+.hero-title{padding:18px 0 12px;text-align:center;}
 .hero-title h1{
   margin:0;
   font-family:"Fraunces";
   font-weight:800;
-  letter-spacing:-.03em;
-  line-height:1.02;
-  font-size:52px;
-}
-.hero-sub{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch;}
-
-.hero-cards{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
-  border:1px solid rgba(18,18,18,.10);
-  border-radius:16px;
-  padding:14px 14px;
-  box-shadow:var(--shadow);
-}
-.label{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(18,18,18,.62)}
-.wx-line{margin-top:8px;font-size:18px;font-weight:700;}
-.muted{margin-top:6px;color:var(--muted);font-size:13px;}
-
-.rule{margin-top:22px;height:1px;background:linear-gradient(90deg, transparent, rgba(255,77,26,.75), rgba(18,18,18,.18), transparent);}
-
-.main{padding:22px 0 64px;}
-
-/* Topic grid */
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;margin-top:18px;}
-
-.section{
-  background:transparent;
-  border:none;
-  border-radius:0;
-  padding:0;
-  box-shadow:none;
-}
-
-.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:0 0 10px;}
-.section h2{
-  margin:0;
-  font-family:"Fraunces";
-  font-size:26px;
   letter-spacing:-.02em;
-  line-height:1.0;
+  line-height:1.06;
+  font-size:34px;
 }
-.section .count{
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;}
+
+.hero-cards{display:none;}
+.rule{display:none;}
+
+.main{padding:12px 0 64px;}
+
+/* tabs */
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:14px 0 12px;
+}
+.tab{
   font-family:"IBM Plex Mono";
   font-size:11px;
-  letter-spacing:.14em;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  color:var(--muted);
-  white-space:nowrap;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--divider);
+  background:rgba(255,255,255,.7);
+  color:rgba(20,20,20,.72);
+  cursor:pointer;
 }
-.section-rule{height:1px;background:linear-gradient(90deg, rgba(18,18,18,.22), rgba(18,18,18,.06));margin:10px 0 12px;}
+.tab[data-active="true"]{
+  border-color:rgba(255,77,26,.45);
+  background:rgba(255,77,26,.10);
+  color:rgba(20,20,20,.92);
+}
 
-ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;}
-li.item{padding:9px 0;border-bottom:1px solid rgba(18,18,18,.10);}
+/* feed sections */
+.feed{border-top:1px solid var(--divider);}
+.section{padding:14px 0;border-bottom:1px solid var(--divider);}
+.section-head{display:none;}
+.section-rule{display:none;}
+
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
 li.item:last-child{border-bottom:none;}
 
-.title .main{font-size:14px;line-height:1.33;}
-.title .sub{margin-top:5px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
-.favicon{width:14px;height:14px;border-radius:4px;border:1px solid rgba(18,18,18,.10);background:#fff;display:inline-block;}
+.title .main{font-size:14px;line-height:1.35;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
+.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
 .titlelink{color:inherit;text-decoration:none;}
-.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(182,42,7,.45);text-underline-offset:3px;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
 
-.footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .mono{font-family:"IBM Plex Mono";}
 
-@media (max-width: 900px){
-  .hero-cards{grid-template-columns:1fr;}
-  .grid{grid-template-columns:1fr;}
-  .hero-title h1{font-size:38px;}
+/* Gmail + Design Spells sections still render above; make them look like feed blocks */
+.callout{border:1px solid var(--divider);border-radius:14px;padding:12px 12px;background:rgba(255,255,255,.7)}
+
+@media (max-width: 768px){
+  .wrap{max-width:720px;}
+  .hero-title h1{font-size:30px;}
 }
 
   </style>
@@ -143,14 +135,14 @@ li.item:last-child{border-bottom:none;}
 
       <div class="hero-title">
         <h1>Morning brief</h1>
-        <div class="hero-sub">Tech · International Politics · AI · Consumer Electronics · Pop Culture</div>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
       </div>
 
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line"> 18.8°C</div>
-          <div class="muted">Clear</div>
+          <div class="wx-line">☀ +19°C</div>
+          <div class="muted">️ 94%</div>
         </div>
         <div class="card">
           <div class="label">Inbox</div>
@@ -172,8 +164,17 @@ li.item:last-child{border-bottom:none;}
     
     
 
-    <section class="grid">
-      <div class="section topic-ai">
+    <nav class="tabs">
+      <button class="tab" data-topic="ai" data-active="false">AI <span style="opacity:.55">5</span></button>
+<button class="tab" data-topic="tech" data-active="false">Tech <span style="opacity:.55">10</span></button>
+<button class="tab" data-topic="consumer-electronics" data-active="false">Consumer Electronics <span style="opacity:.55">5</span></button>
+<button class="tab" data-topic="international-politics" data-active="false">International Politics <span style="opacity:.55">1</span></button>
+<button class="tab" data-topic="pop-culture" data-active="false">Pop Culture <span style="opacity:.55">3</span></button>
+<button class="tab" data-topic="other" data-active="false">Other <span style="opacity:.55">6</span></button>
+    </nav>
+
+    <section class="feed" id="feed">
+      <div class="section topic-ai" data-topic="ai">
   <div class="section-head">
     <h2>AI</h2>
     <span class="count">5 items</span>
@@ -223,7 +224,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section topic-tech">
+<div class="section topic-tech" data-topic="tech">
   <div class="section-head">
     <h2>Tech</h2>
     <span class="count">10 items</span>
@@ -313,7 +314,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section topic-consumer-electronics">
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
   <div class="section-head">
     <h2>Consumer Electronics</h2>
     <span class="count">5 items</span>
@@ -363,7 +364,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section topic-international-politics">
+<div class="section topic-international-politics" data-topic="international-politics">
   <div class="section-head">
     <h2>International Politics</h2>
     <span class="count">1 items</span>
@@ -381,7 +382,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section topic-pop-culture">
+<div class="section topic-pop-culture" data-topic="pop-culture">
   <div class="section-head">
     <h2>Pop Culture</h2>
     <span class="count">3 items</span>
@@ -415,7 +416,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section topic-other">
+<div class="section topic-other" data-topic="other">
   <div class="section-head">
     <h2>Other</h2>
     <span class="count">6 items</span>
@@ -474,6 +475,22 @@ li.item:last-child{border-bottom:none;}
 </div>
 
     </section>
+
+    <script>
+      (function(){
+        const tabs = Array.from(document.querySelectorAll('.tab'));
+        const sections = Array.from(document.querySelectorAll('.section[data-topic]'));
+        function setTopic(topic){
+          for (const t of tabs) t.dataset.active = (t.dataset.topic === topic) ? 'true' : 'false';
+          for (const s of sections) s.style.display = (s.dataset.topic === topic) ? '' : 'none';
+        }
+        const first = (tabs[0] && tabs[0].dataset.topic) || (sections[0] && sections[0].dataset.topic);
+        if (first) setTopic(first);
+        for (const t of tabs){
+          t.addEventListener('click', () => setTopic(t.dataset.topic));
+        }
+      })();
+    </script>
 
     <footer class="footer">
       <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
