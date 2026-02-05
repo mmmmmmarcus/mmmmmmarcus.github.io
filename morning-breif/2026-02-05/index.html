@@ -82,35 +82,17 @@ a{color:inherit}
 .main{padding:22px 0 64px;}
 
 /* Topic grid */
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:18px;}
 
 .section{
-  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.86));
-  border:1px solid rgba(18,18,18,.10);
-  border-radius:20px;
-  padding:16px 16px 12px;
-  box-shadow: 0 10px 28px rgba(0,0,0,.055);
-  position:relative;
-  overflow:hidden;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
 }
 
-/* magazine accent strip */
-.section::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  height:4px;
-  background:linear-gradient(90deg, var(--accent), rgba(255,77,26,.12));
-}
-
-.topic-ai::before{background:linear-gradient(90deg,#ff4d1a,rgba(255,77,26,.10));}
-.topic-tech::before{background:linear-gradient(90deg,#1b72ff,rgba(27,114,255,.12));}
-.topic-consumer-electronics::before{background:linear-gradient(90deg,#16a34a,rgba(22,163,74,.12));}
-.topic-international-politics::before{background:linear-gradient(90deg,#7c3aed,rgba(124,58,237,.12));}
-.topic-pop-culture::before{background:linear-gradient(90deg,#db2777,rgba(219,39,119,.12));}
-.topic-other::before{background:linear-gradient(90deg,#0f172a,rgba(15,23,42,.10));}
-
-.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-top:4px;}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:0 0 8px;}
 .section h2{
   margin:0;
   font-family:"Fraunces";
@@ -125,13 +107,10 @@ a{color:inherit}
   color:var(--muted);
   white-space:nowrap;
 }
-.section-rule{height:1px;background:linear-gradient(90deg, rgba(18,18,18,.12), rgba(18,18,18,.05));margin:10px 0 10px;}
+.section-rule{height:1px;background:rgba(18,18,18,.12);margin:8px 0 10px;}
 
 ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;}
-li.item{
-  padding:10px 0;
-  border-bottom:1px solid rgba(18,18,18,.08);
-}
+li.item{padding:9px 0;border-bottom:1px solid rgba(18,18,18,.10);}
 li.item:last-child{border-bottom:none;}
 
 .title .main{font-size:13.8px;line-height:1.35;}
@@ -169,8 +148,8 @@ li.item:last-child{border-bottom:none;}
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line">☀ +24°C</div>
-          <div class="muted">️ 57%</div>
+          <div class="wx-line">☀ +23°C</div>
+          <div class="muted">️ 61%</div>
         </div>
         <div class="card">
           <div class="label">Inbox</div>
@@ -196,7 +175,7 @@ li.item:last-child{border-bottom:none;}
       <div class="section topic-ai">
   <div class="section-head">
     <h2>AI</h2>
-    <span class="count">5 items</span>
+    <span class="count">4 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
@@ -232,14 +211,6 @@ li.item:last-child{border-bottom:none;}
   </div>
 </li>
 
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1652614?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">百万网友围观的「作弊 prompt」，能帮我搞定春运买票吗？</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
-  </div>
-</li>
-
   </ul>
 </div>
 
@@ -250,6 +221,14 @@ li.item:last-child{border-bottom:none;}
   </div>
   <div class="section-rule"></div>
   <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifixit.com/News/115528/bmws-newest-innovation-is-a-logo-shaped-middle-finger-to-right-to-repair">BMW&#x27;s Newest &quot;Innovation&quot; Is a Logo-Shaped Middle Finger to Right to Repair</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifixit.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://lwn.net/SubscriberLink/1056405/e728d95dd16f5e1b/">Modernizing Linux swapping: introducing the swap table</a></div>
@@ -308,15 +287,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.recall.ai/blog/postgres-postmaster-does-not-scale">Postgres Postmaster does not scale</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.recall.ai" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548584.htm">50元手机扛不住存储涨价“非洲手机之王”传音即将退位？</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/game/1548662.htm">腾讯股价市值失守5万亿港元 已回吐四年新高涨幅</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
@@ -324,7 +295,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/movie/1548586.htm">马斯克批评诺兰新品选择黑人饰演古希腊神话美女 引发舆论争议</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/game/1548664.htm">新里程碑达成：索尼PS5全球出货突破9220万台</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
@@ -336,15 +307,15 @@ li.item:last-child{border-bottom:none;}
 <div class="section topic-consumer-electronics">
   <div class="section-head">
     <h2>Consumer Electronics</h2>
-    <span class="count">4 items</span>
+    <span class="count">5 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.jakequist.com/thoughts/openclaw-is-what-apple-intelligence-should-have-been">OpenClaw is what Apple intelligence should have been</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548668.htm">苹果iPhone 17e将于2月19日发布：首次支持MagSafe 升级A19</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.jakequist.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
@@ -366,6 +337,14 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654282?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">大片成标配，OPPO 试图挑战更难的小叙事</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
     <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654248?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜「发起疯来自己都打」，元宝红包因违规改为口令跳转/vivo将推出vlog相机对标大疆Pocket/AI雇佣人类平台上线</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
@@ -378,10 +357,18 @@ li.item:last-child{border-bottom:none;}
 <div class="section topic-international-politics">
   <div class="section-head">
     <h2>International Politics</h2>
-    <span class="count">1 items</span>
+    <span class="count">2 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://news.satnews.com/2026/02/04/russia-intercepts-europes-key-satellites-placing-nato-satellite-at-risk/">Russia &#x27;intercepts Europe&#x27;s key satellites&#x27;</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//news.satnews.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://www.theverge.com/transportation/873891/senate-hearing-autonomous-vehicles-robotaxi-waymo-tesla-legislation">Senators grill Waymo and Tesla over robotaxi safety, liability, and China</a></div>
@@ -396,7 +383,7 @@ li.item:last-child{border-bottom:none;}
 <div class="section topic-pop-culture">
   <div class="section-head">
     <h2>Pop Culture</h2>
-    <span class="count">4 items</span>
+    <span class="count">3 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
@@ -405,14 +392,6 @@ li.item:last-child{border-bottom:none;}
     <div class="main"><a class="titlelink" href="https://store.steampowered.com/news/group/45479024/view/625565405086220583">Steam Hardware: Launch timing and other FAQs</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//store.steampowered.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548592.htm">卷入Netflix收购华纳兄弟争夺战 特朗普态度改变：我不干涉</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
