@@ -11,22 +11,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 
   <style>
-/* Frontend Design Ultimate-inspired editorial theme
-   - Dominant: near-black ink
+/* Frontend Design Ultimate-inspired editorial LIGHT theme
+   - Dominant: paper white
    - Accent: electric tangerine
    - Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
 */
 
 :root{
-  --bg:#070707;
-  --surface:#0f0f12;
-  --surface2:#14141a;
-  --text:#f6f6f6;
-  --muted:rgba(246,246,246,.68);
-  --divider:rgba(246,246,246,.12);
-  --accent:#ff6b35;
-  --accent2:#ffd2c2;
-  --shadow: 0 18px 60px rgba(0,0,0,.55);
+  --bg:#fafaf7;
+  --surface:#ffffff;
+  --surface2:#f3f3ee;
+  --text:#121212;
+  --muted:rgba(18,18,18,.62);
+  --divider:rgba(18,18,18,.12);
+  --accent:#ff4d1a;
+  --accent2:#b62a07;
+  --shadow: 0 16px 46px rgba(0,0,0,.10);
 }
 
 html,body{height:100%;background:var(--bg);color:var(--text);}
@@ -35,8 +35,8 @@ a{color:inherit}
 
 /* grain overlay */
 .grain{
-  position:fixed; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+  position:fixed; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
 }
 
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
@@ -44,9 +44,9 @@ a{color:inherit}
 .hero{
   padding:44px 0 26px;
   background:
-    radial-gradient(1200px 500px at 12% -10%, rgba(255,107,53,.22), rgba(255,107,53,0) 60%),
-    radial-gradient(900px 420px at 95% 0%, rgba(255,210,194,.10), rgba(255,210,194,0) 55%),
-    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+    radial-gradient(1100px 520px at 8% -10%, rgba(255,77,26,.18), rgba(255,77,26,0) 60%),
+    radial-gradient(900px 420px at 92% 0%, rgba(0,0,0,.06), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0));
   border-bottom:1px solid var(--divider);
 }
 
@@ -67,17 +67,17 @@ a{color:inherit}
 
 .hero-cards{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+  border:1px solid rgba(18,18,18,.10);
   border-radius:16px;
   padding:14px 14px;
   box-shadow:var(--shadow);
 }
-.label{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,246,246,.70)}
+.label{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(18,18,18,.62)}
 .wx-line{margin-top:8px;font-size:18px;font-weight:700;}
 .muted{margin-top:6px;color:var(--muted);font-size:13px;}
 
-.rule{margin-top:22px;height:1px;background:linear-gradient(90deg, transparent, rgba(255,107,53,.65), rgba(255,255,255,.14), transparent);}
+.rule{margin-top:22px;height:1px;background:linear-gradient(90deg, transparent, rgba(255,77,26,.75), rgba(18,18,18,.18), transparent);}
 
 .main{padding:22px 0 64px;}
 
@@ -85,10 +85,11 @@ a{color:inherit}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;}
 
 .section{
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+  border:1px solid rgba(18,18,18,.10);
   border-radius:18px;
   padding:16px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
 }
 .section h2{
   margin:0 0 10px;
@@ -99,8 +100,8 @@ a{color:inherit}
 .section .count{margin-left:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
 ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
-li.item{padding:10px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18);}
-li.item:hover{border-color:rgba(255,107,53,.55)}
+li.item{padding:10px 10px;border-radius:12px;border:1px solid rgba(18,18,18,.10);background:rgba(255,255,255,.65);}
+li.item:hover{border-color:rgba(255,77,26,.55)}
 .bullet{display:none}
 .title .main{font-size:14px;line-height:1.45;}
 .title .sub{margin-top:6px;font-size:12px;color:var(--muted)}
@@ -116,12 +117,9 @@ a.link{
 }
 a.link:hover{border-bottom-color:var(--accent2)}
 
-/* Gmail section inherits .section styles (via existing partial) */
-
 .footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .mono{font-family:"IBM Plex Mono";}
 
-/* Mobile */
 @media (max-width: 900px){
   .hero-cards{grid-template-columns:1fr;}
   .grid{grid-template-columns:1fr;}
