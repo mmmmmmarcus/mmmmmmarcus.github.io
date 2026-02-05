@@ -85,25 +85,57 @@ a{color:inherit}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;}
 
 .section{
-  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.86));
   border:1px solid rgba(18,18,18,.10);
-  border-radius:18px;
-  padding:16px 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  border-radius:20px;
+  padding:16px 16px 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.055);
+  position:relative;
+  overflow:hidden;
 }
+
+/* magazine accent strip */
+.section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  height:4px;
+  background:linear-gradient(90deg, var(--accent), rgba(255,77,26,.12));
+}
+
+.topic-ai::before{background:linear-gradient(90deg,#ff4d1a,rgba(255,77,26,.10));}
+.topic-tech::before{background:linear-gradient(90deg,#1b72ff,rgba(27,114,255,.12));}
+.topic-consumer-electronics::before{background:linear-gradient(90deg,#16a34a,rgba(22,163,74,.12));}
+.topic-international-politics::before{background:linear-gradient(90deg,#7c3aed,rgba(124,58,237,.12));}
+.topic-pop-culture::before{background:linear-gradient(90deg,#db2777,rgba(219,39,119,.12));}
+.topic-other::before{background:linear-gradient(90deg,#0f172a,rgba(15,23,42,.10));}
+
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-top:4px;}
 .section h2{
-  margin:0 0 10px;
+  margin:0;
   font-family:"Fraunces";
   font-size:22px;
   letter-spacing:-.01em;
 }
-.section .count{margin-left:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.section .count{
+  font-family:"IBM Plex Mono";
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.section-rule{height:1px;background:linear-gradient(90deg, rgba(18,18,18,.12), rgba(18,18,18,.05));margin:10px 0 10px;}
 
-ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
-li.item{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:12px;border:1px solid rgba(18,18,18,.10);background:rgba(255,255,255,.65);}
-li.item:hover{border-color:rgba(255,77,26,.55)}
-.title .main{font-size:13.5px;line-height:1.35;}
-.title .sub{margin-top:4px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;}
+li.item{
+  padding:10px 0;
+  border-bottom:1px solid rgba(18,18,18,.08);
+}
+li.item:last-child{border-bottom:none;}
+
+.title .main{font-size:13.8px;line-height:1.35;}
+.title .sub{margin-top:5px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
 .favicon{width:14px;height:14px;border-radius:4px;border:1px solid rgba(18,18,18,.10);background:#fff;display:inline-block;}
 .titlelink{color:inherit;text-decoration:none;}
 .titlelink:hover{text-decoration:underline;text-decoration-color:rgba(182,42,7,.45);text-underline-offset:3px;}
@@ -137,8 +169,8 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line"> 22.3°C</div>
-          <div class="muted">Clear</div>
+          <div class="wx-line">☀ +24°C</div>
+          <div class="muted">️ 57%</div>
         </div>
         <div class="card">
           <div class="label">Inbox</div>
@@ -161,17 +193,13 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
     
 
     <section class="grid">
-      <div class="section">
-  <h2>AI<span class="count">5 items</span></h2>
-  <ul class="items">
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548508.htm">彭博：“大哥”SpaceX撑腰 马斯克AI公司将对OpenAI构成更大威胁</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+      <div class="section topic-ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">5 items</span>
   </div>
-</li>
-
+  <div class="section-rule"></div>
+  <ul class="items">
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/873656/alex-pretti-protester-detained-dhs-ice-whipple">“I was detained by federal agents in Minneapolis”</a></div>
@@ -198,6 +226,14 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
 
 <li class="item">
   <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654127?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">两周搓出的 Claude Cowork，让硅谷一夜蒸发 2 万亿，AI 真要杀死软件？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
     <div class="main"><a class="titlelink" href="https://www.ifanr.com/1652614?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">百万网友围观的「作弊 prompt」，能帮我搞定春运买票吗？</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
@@ -207,76 +243,80 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
   </ul>
 </div>
 
-<div class="section">
-  <h2>Tech<span class="count">10 items</span></h2>
+<div class="section topic-tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://longevity.stanford.edu/why-more-companies-are-recognizing-the-benefits-of-keeping-older-employees/">Why More Companies Are Recognizing the Benefits of Keeping Older Employees</a></div>
+    <div class="main"><a class="titlelink" href="https://lwn.net/SubscriberLink/1056405/e728d95dd16f5e1b/">Modernizing Linux swapping: introducing the swap table</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//longevity.stanford.edu" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//lwn.net" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://garryslist.org/posts/we-used-to-build-things-what-happened">We Used To Build Things. What Happened?</a></div>
+    <div class="main"><a class="titlelink" href="https://news.cuanschutz.edu/news-stories/study-finds-cannabis-usage-in-middle-aged-and-older-adults-associated-with-larger-brain-volume-better-cognitive-function">Study: Older Cannabis Users Have Larger Brains, Better Cognition</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//garryslist.org" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//news.cuanschutz.edu" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.phoronix.com/news/Debian-Developers-Quiet-Away">Debian&#x27;s Challenge When Its Developers Drift Away</a></div>
+    <div class="main"><a class="titlelink" href="https://www.biometricupdate.com/202602/ice-seeks-industry-input-on-ad-tech-location-data-for-investigative-use">ICE seeks industry input on ad tech location data for investigative use</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.phoronix.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.biometricupdate.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://morphllm.com/products/glance">Show HN: Morph – Videos of AI testing your PR, embedded in GitHub</a></div>
+    <div class="main"><a class="titlelink" href="https://www.taricorp.net/2026/a-few-cpu-bugs/">A few CPU hardware bugs</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//morphllm.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.taricorp.net" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://pdfa.org/a-case-study-in-pdf-forensics-the-epstein-pdfs/">A case study in PDF forensics: The Epstein PDFs</a></div>
+    <div class="main"><a class="titlelink" href="https://jmoiron.net/blog/wirths-revenge/">Wirth&#x27;s Revenge</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//pdfa.org" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//jmoiron.net" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://arstechnica.com/health/2026/02/guinea-worm-on-track-to-be-2nd-eradicated-human-disease-only-10-cases-in-2025/">Guinea worm on track to be 2nd eradicated human disease; only 10 cases in 2025</a></div>
+    <div class="main"><a class="titlelink" href="https://rachelbythebay.com/w/2026/02/03/badnas/">When internal hostnames are leaked to the clown</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arstechnica.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//rachelbythebay.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://brooklynrail.org/2026/02/field-notes/technocracy-2-0/">Technocracy 2.0</a></div>
+    <div class="main"><a class="titlelink" href="https://blog.comma.ai/datacenter/">Don&#x27;t rent the cloud, own instead</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//brooklynrail.org" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//blog.comma.ai" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://github.com/bethington/ghidra-mcp">Show HN: Ghidra MCP Server – 110 tools for AI-assisted reverse engineering</a></div>
+    <div class="main"><a class="titlelink" href="https://www.recall.ai/blog/postgres-postmaster-does-not-scale">Postgres Postmaster does not scale</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.recall.ai" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548490.htm">腾讯元宝回应“抢红包”活动被微信屏蔽</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548584.htm">50元手机扛不住存储涨价“非洲手机之王”传音即将退位？</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
@@ -284,7 +324,7 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548492.htm">微信官方回应“封杀元宝红包”：属于诱导分享违规</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/movie/1548586.htm">马斯克批评诺兰新品选择黑人饰演古希腊神话美女 引发舆论争议</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
@@ -293,8 +333,12 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
   </ul>
 </div>
 
-<div class="section">
-  <h2>Consumer Electronics<span class="count">4 items</span></h2>
+<div class="section topic-consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">4 items</span>
+  </div>
+  <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
@@ -331,8 +375,12 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
   </ul>
 </div>
 
-<div class="section">
-  <h2>International Politics<span class="count">1 items</span></h2>
+<div class="section topic-international-politics">
+  <div class="section-head">
+    <h2>International Politics</h2>
+    <span class="count">1 items</span>
+  </div>
+  <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
@@ -345,14 +393,26 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
   </ul>
 </div>
 
-<div class="section">
-  <h2>Pop Culture<span class="count">3 items</span></h2>
+<div class="section topic-pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">4 items</span>
+  </div>
+  <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://store.steampowered.com/news/group/45479024/view/625565405086220583">Steam Hardware: Launch timing and other FAQs</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//store.steampowered.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548592.htm">卷入Netflix收购华纳兄弟争夺战 特朗普态度改变：我不干涉</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
@@ -375,9 +435,21 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
   </ul>
 </div>
 
-<div class="section">
-  <h2>Other<span class="count">6 items</span></h2>
+<div class="section topic-other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
   <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105661">从川渝之旅聊自驾：解锁更自在的旅行体验</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://sspai.com/post/106063">派早报：iQOO 15 Ultra 发布、Grok Imagine 1.0 推出等</a></div>
@@ -413,14 +485,6 @@ li.item:hover{border-color:rgba(255,77,26,.55)}
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://sspai.com/post/105893">不是只做样子货：铁三角 ATH-CKS50TW2 星战联名耳机体验</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://sspai.com/post/106004">社区速递 128 | 小红书里的「奇怪知识」、打开 14 天的血糖盲盒</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
   </div>
