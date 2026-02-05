@@ -99,23 +99,15 @@ a{color:inherit}
 }
 .section .count{margin-left:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
-li.item{padding:10px 10px;border-radius:12px;border:1px solid rgba(18,18,18,.10);background:rgba(255,255,255,.65);}
+ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+li.item{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:12px;border:1px solid rgba(18,18,18,.10);background:rgba(255,255,255,.65);}
 li.item:hover{border-color:rgba(255,77,26,.55)}
-.bullet{display:none}
-.title .main{font-size:14px;line-height:1.45;}
-.title .sub{margin-top:6px;font-size:12px;color:var(--muted)}
-.actions{margin-top:8px}
-a.link{
-  font-family:"IBM Plex Mono";
-  font-size:12px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--accent2);
-  text-decoration:none;
-  border-bottom:1px solid transparent;
-}
-a.link:hover{border-bottom-color:var(--accent2)}
+.ico{width:18px;flex:0 0 18px;margin-top:2px;}
+.ico img{width:18px;height:18px;border-radius:6px;border:1px solid rgba(18,18,18,.10);background:#fff;}
+.title .main{font-size:13.5px;line-height:1.35;}
+.title .sub{margin-top:4px;font-size:11px;color:var(--muted)}
+.titlelink{color:inherit;text-decoration:none;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(182,42,7,.45);text-underline-offset:3px;}
 
 .footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 .mono{font-family:"IBM Plex Mono";}
@@ -146,7 +138,7 @@ a.link:hover{border-bottom-color:var(--accent2)}
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line"> 20.0°C</div>
+          <div class="wx-line"> 20.6°C</div>
           <div class="muted">Mainly clear</div>
         </div>
         <div class="card">
@@ -171,76 +163,60 @@ a.link:hover{border-bottom-color:var(--accent2)}
 
     <section class="grid">
       <div class="section">
-  <h2>AI<span class="count">7 items</span></h2>
+  <h2>AI<span class="count">6 items</span></h2>
   <ul class="items">
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//california-budget.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Show HN: Interactive California Budget (By Claude Code)</div>
+    <div class="main"><a class="titlelink" href="https://california-budget.com">Show HN: Interactive California Budget (By Claude Code)</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://california-budget.com">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Claude is a space to think</div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548508.htm">彭博：“大哥”SpaceX撑腰 马斯克AI公司将对OpenAI构成更大威胁</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">cnBeta</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.anthropic.com/news/claude-is-a-space-to-think">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">彭博：“大哥”SpaceX撑腰 马斯克AI公司将对OpenAI构成更大威胁</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/873656/alex-pretti-protester-detained-dhs-ice-whipple">“I was detained by federal agents in Minneapolis”</a></div>
 
-    <div class="sub">Source: cnBeta</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548508.htm">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">“I was detained by federal agents in Minneapolis”</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/news/874084/ai-chatgpt-claude-super-bowl-ads-openai-anthropic">Sam Altman responds to Anthropic’s ‘funny’ Super Bowl ads</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/policy/873656/alex-pretti-protester-detained-dhs-ice-whipple">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Sam Altman responds to Anthropic’s ‘funny’ Super Bowl ads</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106033">派早报：Firefox 上线 AI 功能开关、OpenAI 推出 Codex 桌面应用等</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/news/874084/ai-chatgpt-claude-super-bowl-ads-openai-anthropic">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">派早报：Firefox 上线 AI 功能开关、OpenAI 推出 Codex 桌面应用等</div>
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1652614?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">百万网友围观的「作弊 prompt」，能帮我搞定春运买票吗？</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">爱范儿</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/106033">Link</a></div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">百万网友围观的「作弊 prompt」，能帮我搞定春运买票吗？</div>
-
-    <div class="sub">Source: 爱范儿</div>
-  </div>
-  <div class="actions"><a class="link" href="https://www.ifanr.com/1652614?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
 </li>
 
   </ul>
@@ -250,103 +226,93 @@ a.link:hover{border-bottom-color:var(--accent2)}
   <h2>Tech<span class="count">10 items</span></h2>
   <ul class="items">
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//garryslist.org" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Debian&#x27;s Challenge When Its Developers Drift Away</div>
+    <div class="main"><a class="titlelink" href="https://garryslist.org/posts/we-used-to-build-things-what-happened">We Used To Build Things. What Happened?</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.phoronix.com/news/Debian-Developers-Quiet-Away">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.phoronix.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Show HN: Morph – Videos of AI testing your PR, embedded in GitHub</div>
+    <div class="main"><a class="titlelink" href="https://www.phoronix.com/news/Debian-Developers-Quiet-Away">Debian&#x27;s Challenge When Its Developers Drift Away</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://morphllm.com/products/glance">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//morphllm.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">A case study in PDF forensics: The Epstein PDFs</div>
+    <div class="main"><a class="titlelink" href="https://morphllm.com/products/glance">Show HN: Morph – Videos of AI testing your PR, embedded in GitHub</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://pdfa.org/a-case-study-in-pdf-forensics-the-epstein-pdfs/">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//pdfa.org" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Guinea worm on track to be 2nd eradicated human disease; only 10 cases in 2025</div>
+    <div class="main"><a class="titlelink" href="https://pdfa.org/a-case-study-in-pdf-forensics-the-epstein-pdfs/">A case study in PDF forensics: The Epstein PDFs</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://arstechnica.com/health/2026/02/guinea-worm-on-track-to-be-2nd-eradicated-human-disease-only-10-cases-in-2025/">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arstechnica.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Technocracy 2.0</div>
+    <div class="main"><a class="titlelink" href="https://arstechnica.com/health/2026/02/guinea-worm-on-track-to-be-2nd-eradicated-human-disease-only-10-cases-in-2025/">Guinea worm on track to be 2nd eradicated human disease; only 10 cases in 2025</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://brooklynrail.org/2026/02/field-notes/technocracy-2-0/">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//brooklynrail.org" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Show HN: Ghidra MCP Server – 110 tools for AI-assisted reverse engineering</div>
+    <div class="main"><a class="titlelink" href="https://brooklynrail.org/2026/02/field-notes/technocracy-2-0/">Technocracy 2.0</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://github.com/bethington/ghidra-mcp">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">腾讯元宝回应“抢红包”活动被微信屏蔽</div>
+    <div class="main"><a class="titlelink" href="https://github.com/bethington/ghidra-mcp">Show HN: Ghidra MCP Server – 110 tools for AI-assisted reverse engineering</a></div>
 
-    <div class="sub">Source: cnBeta</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548490.htm">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">微信官方回应“封杀元宝红包”：属于诱导分享违规</div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548490.htm">腾讯元宝回应“抢红包”活动被微信屏蔽</a></div>
 
-    <div class="sub">Source: cnBeta</div>
+    <div class="sub">cnBeta</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548492.htm">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">“大空头”伯里警告比特币价格暴跌可能引发连锁反应</div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548492.htm">微信官方回应“封杀元宝红包”：属于诱导分享违规</a></div>
 
-    <div class="sub">Source: cnBeta</div>
+    <div class="sub">cnBeta</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548494.htm">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">奥特曼称期待马斯克4月份的作证：这将是提前到来的圣诞礼物</div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548494.htm">“大空头”伯里警告比特币价格暴跌可能引发连锁反应</a></div>
 
-    <div class="sub">Source: cnBeta</div>
+    <div class="sub">cnBeta</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548496.htm">Link</a></div>
 </li>
 
   </ul>
@@ -356,43 +322,39 @@ a.link:hover{border-bottom-color:var(--accent2)}
   <h2>Consumer Electronics<span class="count">4 items</span></h2>
   <ul class="items">
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.jakequist.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">OpenClaw is what Apple intelligence should have been</div>
+    <div class="main"><a class="titlelink" href="https://www.jakequist.com/thoughts/openclaw-is-what-apple-intelligence-should-have-been">OpenClaw is what Apple intelligence should have been</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.jakequist.com/thoughts/openclaw-is-what-apple-intelligence-should-have-been">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">The best iPad deals you can get right now</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/21280354/best-ipad-deals-apple">The best iPad deals you can get right now</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/21280354/best-ipad-deals-apple">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Ikea&amp;#8217;s cheap new smart home gear is struggling to get connected</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/873973/ikea-matter-thread-smart-home-connectivity-issues">Ikea&amp;#8217;s cheap new smart home gear is struggling to get connected</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/tech/873973/ikea-matter-thread-smart-home-connectivity-issues">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">早报｜「发起疯来自己都打」，元宝红包因违规改为口令跳转/vivo将推出vlog相机对标大疆Pocket/AI雇佣人类平台上线</div>
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654248?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜「发起疯来自己都打」，元宝红包因违规改为口令跳转/vivo将推出vlog相机对标大疆Pocket/AI雇佣人类平台上线</a></div>
 
-    <div class="sub">Source: 爱范儿</div>
+    <div class="sub">爱范儿</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.ifanr.com/1654248?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
 </li>
 
   </ul>
@@ -402,13 +364,12 @@ a.link:hover{border-bottom-color:var(--accent2)}
   <h2>International Politics<span class="count">1 items</span></h2>
   <ul class="items">
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Senators grill Waymo and Tesla over robotaxi safety, liability, and China</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/transportation/873891/senate-hearing-autonomous-vehicles-robotaxi-waymo-tesla-legislation">Senators grill Waymo and Tesla over robotaxi safety, liability, and China</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/transportation/873891/senate-hearing-autonomous-vehicles-robotaxi-waymo-tesla-legislation">Link</a></div>
 </li>
 
   </ul>
@@ -418,33 +379,30 @@ a.link:hover{border-bottom-color:var(--accent2)}
   <h2>Pop Culture<span class="count">3 items</span></h2>
   <ul class="items">
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//store.steampowered.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Steam Hardware: Launch timing and other FAQs</div>
+    <div class="main"><a class="titlelink" href="https://store.steampowered.com/news/group/45479024/view/625565405086220583">Steam Hardware: Launch timing and other FAQs</a></div>
 
-    <div class="sub">Source: Hacker News</div>
+    <div class="sub">Hacker News</div>
   </div>
-  <div class="actions"><a class="link" href="https://store.steampowered.com/news/group/45479024/view/625565405086220583">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Valve’s Steam Machine has been delayed, and the RAM crisis will impact pricing</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/874196/valve-steam-machine-frame-controller-delay-pricing-memory-crisis">Valve’s Steam Machine has been delayed, and the RAM crisis will impact pricing</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/games/874196/valve-steam-machine-frame-controller-delay-pricing-memory-crisis">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">Nintendo’s new Virtual Boy is more fun to look at than to play</div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/873755/nintendo-switch-virtual-boy-impressions">Nintendo’s new Virtual Boy is more fun to look at than to play</a></div>
 
-    <div class="sub">Source: The Verge</div>
+    <div class="sub">The Verge</div>
   </div>
-  <div class="actions"><a class="link" href="https://www.theverge.com/games/873755/nintendo-switch-virtual-boy-impressions">Link</a></div>
 </li>
 
   </ul>
@@ -454,63 +412,57 @@ a.link:hover{border-bottom-color:var(--accent2)}
   <h2>Other<span class="count">6 items</span></h2>
   <ul class="items">
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">派早报：iQOO 15 Ultra 发布、Grok Imagine 1.0 推出等</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106063">派早报：iQOO 15 Ultra 发布、Grok Imagine 1.0 推出等</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/106063">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">见不惯 B 站 up 主的带货广告？教你利用 AI 快速跳过</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105951">见不惯 B 站 up 主的带货广告？教你利用 AI 快速跳过</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/105951">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">城市漫步指南：软件名城，泉城济南</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105859">城市漫步指南：软件名城，泉城济南</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/105859">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">少数派 2025 年度征文：听说你对写作是真 AI？</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105805">少数派 2025 年度征文：听说你对写作是真 AI？</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/105805">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">不是只做样子货：铁三角 ATH-CKS50TW2 星战联名耳机体验</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105893">不是只做样子货：铁三角 ATH-CKS50TW2 星战联名耳机体验</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/105893">Link</a></div>
 </li>
 
 <li class="item">
-  <div class="bullet">•</div>
+  <div class="ico"><img src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/></div>
   <div class="title">
-    <div class="main">社区速递 128 | 小红书里的「奇怪知识」、打开 14 天的血糖盲盒</div>
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106004">社区速递 128 | 小红书里的「奇怪知识」、打开 14 天的血糖盲盒</a></div>
 
-    <div class="sub">Source: 少数派</div>
+    <div class="sub">少数派</div>
   </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/106004">Link</a></div>
 </li>
 
   </ul>
