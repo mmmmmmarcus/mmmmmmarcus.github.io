@@ -1,159 +1,178 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Morning brief — 2026-02-05</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
   <style>
+/* Frontend Design Ultimate-inspired editorial theme
+   - Dominant: near-black ink
+   - Accent: electric tangerine
+   - Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+*/
+
 :root{
-  --bg:#ffffff;
-  --text:#111;
-  --muted:rgba(55,53,47,.65);
-  --divider:rgba(55,53,47,.12);
-  --link:#0b57d0;
-  --pill-bg:rgba(55,53,47,.08);
-  --callout-bg:rgba(241,241,239,.7);
-  --code-bg:rgba(135,131,120,.15);
-
-  /* Weather hero gradient (overridden by .wx-* class) */
-  --hero1:#1f6feb;
-  --hero2:#65b7ff;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#191919;
-    --text:#f5f5f5;
-    --muted:rgba(255,255,255,.65);
-    --divider:rgba(255,255,255,.14);
-    --link:#7ab7ff;
-    --pill-bg:rgba(255,255,255,.10);
-    --callout-bg:rgba(255,255,255,.06);
-    --code-bg:rgba(255,255,255,.10);
-
-    --hero1:#1a4fbf;
-    --hero2:#2a9df4;
-  }
+  --bg:#070707;
+  --surface:#0f0f12;
+  --surface2:#14141a;
+  --text:#f6f6f6;
+  --muted:rgba(246,246,246,.68);
+  --divider:rgba(246,246,246,.12);
+  --accent:#ff6b35;
+  --accent2:#ffd2c2;
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
 }
 
-/* Weather palettes */
-.wx-sunny{--hero1:#1f6feb;--hero2:#7cc4ff;}
-.wx-partly{--hero1:#2b7aee;--hero2:#b5d7ff;}
-.wx-cloudy{--hero1:#4f6d8a;--hero2:#b9c8d6;}
-.wx-rain{--hero1:#2b5876;--hero2:#4e4376;}
-.wx-thunder{--hero1:#3a2a6a;--hero2:#7b2cbf;}
-.wx-snow{--hero1:#7aa6c2;--hero2:#e6f2ff;}
-.wx-fog{--hero1:#6b7280;--hero2:#cbd5e1;}
+html,body{height:100%;background:var(--bg);color:var(--text);}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+a{color:inherit}
 
-html,body{background:var(--bg);color:var(--text);}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,
-  "Apple Color Emoji","Segoe UI Emoji","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin:0;}
+/* grain overlay */
+.grain{
+  position:fixed; inset:0; pointer-events:none; opacity:.06; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
 
 .hero{
-  min-height:50vh; /* ~50% of viewport height */
-  padding:72px 0 40px;
-  display:flex;
-  align-items:flex-start;
-  background: radial-gradient(1400px 560px at 15% 0%, rgba(255,255,255,.25), rgba(255,255,255,0) 60%),
-              linear-gradient(160deg, var(--hero1), var(--hero2));
-  color:#fff;
-}
-@media (prefers-color-scheme: dark){
-  .hero{ background: radial-gradient(1200px 500px at 15% 0%, rgba(0,0,0,.25), rgba(0,0,0,0) 60%),
-                  linear-gradient(160deg, var(--hero1), var(--hero2)); }
+  padding:44px 0 26px;
+  background:
+    radial-gradient(1200px 500px at 12% -10%, rgba(255,107,53,.22), rgba(255,107,53,0) 60%),
+    radial-gradient(900px 420px at 95% 0%, rgba(255,210,194,.10), rgba(255,210,194,0) 55%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+  border-bottom:1px solid var(--divider);
 }
 
-.container{max-width:900px;margin:0 auto;}
-.container.body{padding:34px 20px 64px;}
-.container.hero-inner{padding:0 4px;}
-@media (min-width: 900px){ .container.hero-inner{padding:0 0;} }
+.hero-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--accent2);}
+.meta{font-size:13px;color:var(--muted);}
 
-.page-title{font-size:40px;line-height:1.2;font-weight:800;letter-spacing:-.02em;margin:0;}
-
-.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;}
-
-/* Widgets row under title (calendar left, weather right) */
-.hero-widgets{display:flex;gap:14px;justify-content:space-between;align-items:stretch;margin-top:24px;}
-.hero-widgets .widget{flex:1 1 0;}
-
-/* Notion-like mini widget */
-.widget{min-width:0;padding:12px 14px;border-radius:14px;
-  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.22);
-  backdrop-filter: blur(14px);-webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 8px 26px rgba(0,0,0,.12);
+.hero-title{margin-top:18px;}
+.hero-title h1{
+  margin:0;
+  font-family:"Fraunces";
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:1.02;
+  font-size:52px;
 }
-.widget .label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin:0 0 6px;}
-.widget .date{font-size:20px;font-weight:780;letter-spacing:-.01em;margin:0;}
-.widget .dow{font-size:13px;opacity:.92;margin-top:4px;}
+.hero-sub{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch;}
 
-.widget .wx{display:flex;align-items:center;gap:10px;margin-top:2px;}
-.widget .icon{font-size:18px;line-height:1;}
-.widget .temp{font-size:16px;font-weight:750;}
-.widget .desc{font-size:13px;opacity:.92;}
+.hero-cards{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:14px 14px;
+  box-shadow:var(--shadow);
+}
+.label{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,246,246,.70)}
+.wx-line{margin-top:8px;font-size:18px;font-weight:700;}
+.muted{margin-top:6px;color:var(--muted);font-size:13px;}
 
-.divider-hero{height:1px;background:rgba(255,255,255,.25);margin:16px 0 0;}
+.rule{margin-top:22px;height:1px;background:linear-gradient(90deg, transparent, rgba(255,107,53,.65), rgba(255,255,255,.14), transparent);}
 
-.pill{font-size:13px;color:var(--muted);background:var(--pill-bg);padding:6px 10px;border-radius:999px;}
+.main{padding:22px 0 64px;}
 
-.divider{height:1px;background:var(--divider);margin:18px 0 26px;}
-.callout{background:var(--callout-bg);border:1px solid var(--divider);border-radius:10px;padding:14px 14px;display:flex;gap:10px;align-items:flex-start;}
-.callout .icon{font-size:18px;line-height:1.2;}
-.callout .content{font-size:14px;color:var(--muted);}
-.section{margin:30px 0;}
-.section h2{font-size:22px;margin:0 0 10px;font-weight:750;letter-spacing:-.01em;}
-.section .count{font-size:12px;color:var(--muted);margin-left:8px;vertical-align:middle;}
-ul.items{list-style:none;padding:0;margin:0;}
-li.item{padding:10px 8px;border-radius:8px;display:flex;gap:10px;align-items:flex-start;}
-li.item:hover{background:rgba(55,53,47,.04);} 
-@media (prefers-color-scheme: dark){li.item:hover{background:rgba(255,255,255,.05);}}
-.bullet{width:18px;flex:0 0 18px;color:var(--muted);line-height:1.4;}
-.title{flex:1 1 auto;min-width:0;}
-.title .main{font-size:15px;line-height:1.5;}
-.title .sub{font-size:13px;color:var(--muted);margin-top:2px;}
-.title .sub-inline{font-size:13px;color:rgba(255,255,255,.92);} 
-@media (prefers-color-scheme: dark){ .title .sub-inline{color:rgba(255,255,255,.92);} }
-.actions{flex:0 0 auto;}
-a.link{font-size:13px;color:var(--link);text-decoration:none;border-bottom:1px solid transparent;}
-a.link:hover{border-bottom-color:var(--link);}
-.footer{margin-top:40px;color:var(--muted);font-size:12px;}
-.code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-  background:var(--code-bg);padding:2px 6px;border-radius:6px;}
+/* Topic grid */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;}
+
+.section{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:16px 16px;
+}
+.section h2{
+  margin:0 0 10px;
+  font-family:"Fraunces";
+  font-size:22px;
+  letter-spacing:-.01em;
+}
+.section .count{margin-left:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+ul.items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+li.item{padding:10px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18);}
+li.item:hover{border-color:rgba(255,107,53,.55)}
+.bullet{display:none}
+.title .main{font-size:14px;line-height:1.45;}
+.title .sub{margin-top:6px;font-size:12px;color:var(--muted)}
+.actions{margin-top:8px}
+a.link{
+  font-family:"IBM Plex Mono";
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent2);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+}
+a.link:hover{border-bottom-color:var(--accent2)}
+
+/* Gmail section inherits .section styles (via existing partial) */
+
+.footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.mono{font-family:"IBM Plex Mono";}
+
+/* Mobile */
+@media (max-width: 900px){
+  .hero-cards{grid-template-columns:1fr;}
+  .grid{grid-template-columns:1fr;}
+  .hero-title h1{font-size:38px;}
+}
 
   </style>
 </head>
-<body class="wx-cloudy">
-  <div class="hero">
-    <div class="container hero-inner">
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-sunny">
+    <div class="wrap">
       <div class="hero-top">
-        <h1 class="page-title">Morning brief</h1>
+        <div class="kicker">Daily Intelligence</div>
+        <div class="meta">2026-02-05 · Shenzhen · 2/5 周四</div>
       </div>
 
-      <div class="hero-widgets">
-        <div class="widget">
-          <div class="label">Calendar</div>
-          <div class="date">2/5</div>
-          <div class="dow">周四</div>
-        </div>
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Tech · International Politics · AI · Consumer Electronics · Pop Culture</div>
+      </div>
 
-        <div class="widget">
+      <div class="hero-cards">
+        <div class="card">
           <div class="label">Weather</div>
-          <div class="wx">
-            
-            <div class="temp">16.2°C</div>
-            <div class="desc">Partly cloudy</div>
-          </div>
+          <div class="wx-line"> 20.0°C</div>
+          <div class="muted">Mainly clear</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">0</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
         </div>
       </div>
 
-      <div class="divider-hero"></div>
+      <div class="rule"></div>
     </div>
-  </div>
+  </header>
 
-  <div class="container body">
-    <div class="divider"></div>
+  <main class="wrap main">
+    
+    
 
-
-
-<div class="section">
+    <section class="grid">
+      <div class="section">
   <h2>AI<span class="count">7 items</span></h2>
   <ul class="items">
 <li class="item">
@@ -235,6 +254,26 @@ a.link:hover{border-bottom-color:var(--link);}
 <li class="item">
   <div class="bullet">•</div>
   <div class="title">
+    <div class="main">Debian&#x27;s Challenge When Its Developers Drift Away</div>
+
+    <div class="sub">Source: Hacker News</div>
+  </div>
+  <div class="actions"><a class="link" href="https://www.phoronix.com/news/Debian-Developers-Quiet-Away">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Show HN: Morph – Videos of AI testing your PR, embedded in GitHub</div>
+
+    <div class="sub">Source: Hacker News</div>
+  </div>
+  <div class="actions"><a class="link" href="https://morphllm.com/products/glance">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
     <div class="main">A case study in PDF forensics: The Epstein PDFs</div>
 
     <div class="sub">Source: Hacker News</div>
@@ -275,46 +314,6 @@ a.link:hover{border-bottom-color:var(--link);}
 <li class="item">
   <div class="bullet">•</div>
   <div class="title">
-    <div class="main">Spotlighting the World Factbook as We Bid a Fond Farewell</div>
-
-    <div class="sub">Source: Hacker News</div>
-  </div>
-  <div class="actions"><a class="link" href="https://www.cia.gov/stories/story/spotlighting-the-world-factbook-as-we-bid-a-fond-farewell/">Link</a></div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">The Codex app illustrates the shift left of IDEs and coding GUIs</div>
-
-    <div class="sub">Source: Hacker News</div>
-  </div>
-  <div class="actions"><a class="link" href="https://www.benshoemaker.us/writing/codex-app-launch/">Link</a></div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Tell HN: Another round of Zendesk email spam</div>
-
-    <div class="sub">Source: Hacker News</div>
-  </div>
-  <div class="actions"><a class="link" href="https://news.ycombinator.com/item?id=46890418">Link</a></div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Arcan-A12: Weaving a Different Web</div>
-
-    <div class="sub">Source: Hacker News</div>
-  </div>
-  <div class="actions"><a class="link" href="https://www.divergent-desktop.org/blog/2026/01/26/a12web/">Link</a></div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
     <div class="main">腾讯元宝回应“抢红包”活动被微信屏蔽</div>
 
     <div class="sub">Source: cnBeta</div>
@@ -332,12 +331,42 @@ a.link:hover{border-bottom-color:var(--link);}
   <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548492.htm">Link</a></div>
 </li>
 
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">“大空头”伯里警告比特币价格暴跌可能引发连锁反应</div>
+
+    <div class="sub">Source: cnBeta</div>
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548494.htm">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">奥特曼称期待马斯克4月份的作证：这将是提前到来的圣诞礼物</div>
+
+    <div class="sub">Source: cnBeta</div>
+  </div>
+  <div class="actions"><a class="link" href="https://www.cnbeta.com.tw/articles/tech/1548496.htm">Link</a></div>
+</li>
+
   </ul>
 </div>
 
 <div class="section">
-  <h2>Consumer Electronics<span class="count">2 items</span></h2>
+  <h2>Consumer Electronics<span class="count">4 items</span></h2>
   <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">OpenClaw is what Apple intelligence should have been</div>
+
+    <div class="sub">Source: Hacker News</div>
+  </div>
+  <div class="actions"><a class="link" href="https://www.jakequist.com/thoughts/openclaw-is-what-apple-intelligence-should-have-been">Link</a></div>
+</li>
+
 <li class="item">
   <div class="bullet">•</div>
   <div class="title">
@@ -356,6 +385,16 @@ a.link:hover{border-bottom-color:var(--link);}
     <div class="sub">Source: The Verge</div>
   </div>
   <div class="actions"><a class="link" href="https://www.theverge.com/tech/873973/ikea-matter-thread-smart-home-connectivity-issues">Link</a></div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">早报｜「发起疯来自己都打」，元宝红包因违规改为口令跳转/vivo将推出vlog相机对标大疆Pocket/AI雇佣人类平台上线</div>
+
+    <div class="sub">Source: 爱范儿</div>
+  </div>
+  <div class="actions"><a class="link" href="https://www.ifanr.com/1654248?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">Link</a></div>
 </li>
 
   </ul>
@@ -378,8 +417,18 @@ a.link:hover{border-bottom-color:var(--link);}
 </div>
 
 <div class="section">
-  <h2>Pop Culture<span class="count">2 items</span></h2>
+  <h2>Pop Culture<span class="count">3 items</span></h2>
   <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Steam Hardware: Launch timing and other FAQs</div>
+
+    <div class="sub">Source: Hacker News</div>
+  </div>
+  <div class="actions"><a class="link" href="https://store.steampowered.com/news/group/45479024/view/625565405086220583">Link</a></div>
+</li>
+
 <li class="item">
   <div class="bullet">•</div>
   <div class="title">
@@ -406,6 +455,16 @@ a.link:hover{border-bottom-color:var(--link);}
 <div class="section">
   <h2>Other<span class="count">6 items</span></h2>
   <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">派早报：iQOO 15 Ultra 发布、Grok Imagine 1.0 推出等</div>
+
+    <div class="sub">Source: 少数派</div>
+  </div>
+  <div class="actions"><a class="link" href="https://sspai.com/post/106063">Link</a></div>
+</li>
+
 <li class="item">
   <div class="bullet">•</div>
   <div class="title">
@@ -456,21 +515,15 @@ a.link:hover{border-bottom-color:var(--link);}
   <div class="actions"><a class="link" href="https://sspai.com/post/106004">Link</a></div>
 </li>
 
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">派早报：SpaceX 收购 xAI，Adobe 停运 Animate 等</div>
-
-    <div class="sub">Source: 少数派</div>
-  </div>
-  <div class="actions"><a class="link" href="https://sspai.com/post/105996">Link</a></div>
-</li>
-
   </ul>
 </div>
 
+    </section>
 
-    <div class="footer">Generated locally by Clawdbot. Sources: RSS + wttr.in.</div>
-  </div>
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
 </body>
 </html>
