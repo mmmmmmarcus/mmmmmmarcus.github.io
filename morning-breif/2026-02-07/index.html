@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-07</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+/* Topfeed-inspired light feed style (topic tabs + dense rows)
+   Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+*/
+
+:root{
+  --bg:#fbfbf8;
+  --surface:#ffffff;
+  --text:#141414;
+  --muted:rgba(20,20,20,.55);
+  --divider:rgba(20,20,20,.10);
+  --accent:#ff4d1a;
+  --accent2:#b62a07;
+}
+
+html,body{height:100%;background:var(--bg);color:var(--text);}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+a{color:inherit}
+
+/* subtle dot grid background like Topfeed */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image: radial-gradient(rgba(20,20,20,.045) 1px, transparent 1px);
+  background-size: 14px 14px;
+  pointer-events:none;
+}
+
+.grain{display:none;}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;}
+
+.hero{
+  padding:18px 0 10px;
+  background:transparent;
+  border-bottom:1px solid var(--divider);
+}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);}
+
+.hero-title{padding:18px 0 12px;text-align:center;}
+.hero-title h1{
+  margin:0;
+  font-family:"Fraunces";
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  font-size:34px;
+}
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;}
+
+.hero-cards{display:none;}
+.rule{display:none;}
+
+.main{padding:12px 0 64px;}
+
+/* tabs */
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:14px 0 12px;
+}
+.tab{
+  font-family:"IBM Plex Mono";
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--divider);
+  background:rgba(255,255,255,.7);
+  color:rgba(20,20,20,.72);
+  cursor:pointer;
+}
+.tab[data-active="true"]{
+  border-color:rgba(255,77,26,.45);
+  background:rgba(255,77,26,.10);
+  color:rgba(20,20,20,.92);
+}
+
+/* feed sections */
+.feed{border-top:1px solid var(--divider);}
+.section{padding:14px 0;border-bottom:1px solid var(--divider);}
+.section-head{display:none;}
+.section-rule{display:none;}
+
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
+li.item:last-child{border-bottom:none;}
+
+.title .main{font-size:14px;line-height:1.35;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
+.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
+.titlelink{color:inherit;text-decoration:none;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
+
+.footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.mono{font-family:"IBM Plex Mono";}
+
+/* Gmail + Design Spells sections still render above; make them look like feed blocks */
+.callout{border:1px solid var(--divider);border-radius:14px;padding:12px 12px;background:rgba(255,255,255,.7)}
+
+@media (max-width: 768px){
+  .wrap{max-width:720px;}
+  .hero-title h1{font-size:30px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-rain">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="kicker">Daily Intelligence</div>
+        <div class="meta">2026-02-07 · Shenzhen · 2/7 周六</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line">🌦 +20°C</div>
+          <div class="muted">68%</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">0</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    
+
+    <nav class="tabs">
+      <button class="tab" data-topic="ai" data-active="false">AI <span style="opacity:.55">10</span></button>
+<button class="tab" data-topic="tech" data-active="false">Tech <span style="opacity:.55">10</span></button>
+<button class="tab" data-topic="consumer-electronics" data-active="false">Consumer Electronics <span style="opacity:.55">4</span></button>
+<button class="tab" data-topic="pop-culture" data-active="false">Pop Culture <span style="opacity:.55">1</span></button>
+<button class="tab" data-topic="other" data-active="false">Other <span style="opacity:.55">6</span></button>
+    </nav>
+
+    <section class="feed" id="feed">
+      <div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/rivet-dev/sandbox-agent/tree/main/gigacode">Show HN: Gigacode – Use OpenCode&#x27;s UI with Claude Code/Codex/Amp</a> <span class="sub-inline">/ Show HN：Gigacode——用 OpenCode 的界面驱动 Claude Code/Codex/Amp</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/synth-laboratories/Horizons">Show HN: Horizons – OSS agent execution engine</a> <span class="sub-inline">/ Show HN：Horizons——开源智能体执行引擎</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548748.htm">特斯拉Model S/X现车上新：84.29万远起 官方称“最后的机会”</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548752.htm">最强牛马狙击编程之王 OpenAI和Anthropic同时出招</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/transportation/875199/apple-carplay-third-party-chatbots-rumor">Apple might let you use ChatGPT from CarPlay</a> <span class="sub-inline">/ 苹果可能会让你在 CarPlay 里使用 ChatGPT</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106113">派早报：Mistral 发布 Voxtral Transcribe 2 系列语音转文字模型等</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654448?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">实测 GPT-5.3-Codex，OpenAI 史上第一个高危模型，连 API 都还不敢给我们</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654445?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜曝iPhone 17e有望本月亮相/小米SU7辅助驾驶门槛下调至300公里/ChatGPT和Claude同时发布大更新</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654369?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">刚刚，ChatGPT 和 Claude 同时大更新，不会给 AI 当老板的打工人要被淘汰</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1649803?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">你的AI会救你吗?19个大模型实测揭秘：GPT牺牲自己，Claude自保，Grok直接开炸</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://eljojo.github.io/rememory/">Show HN: If you lose your memory, how to regain access to your computer?</a> <span class="sub-inline">/ Show HN：失忆后如何重新拿回电脑访问权限？</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//eljojo.github.io" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.youtube.com/watch?v=nwQmwT1ULMU">The mystery of the mole playing rough (2019) [video]</a> <span class="sub-inline">/ 粗暴玩耍的鼹鼠之谜（2019）[视频]</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.youtube.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://heidenstedt.org/posts/2026/how-to-effectively-write-quality-code-with-ai/">How to effectively write quality code with AI</a> <span class="sub-inline">/ 如何用 AI 高效写出高质量代码</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//heidenstedt.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://hackers-1995.vercel.app/">Hackers (1995) Animated Experience</a> <span class="sub-inline">/ 《黑客》（1995）动画体验</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//hackers-1995.vercel.app" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://depthfirst.com/post/the-masked-namespace-vulnerability-in-temporal-cve-2025-14986">Masked namespace vulnerability in Temporal</a> <span class="sub-inline">/ Temporal 中的掩蔽命名空间漏洞</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//depthfirst.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://kirkville.com/i-now-assume-that-all-ads-on-apple-news-are-scams/">I now assume that all ads on Apple news are scams</a> <span class="sub-inline">/ 我现在默认 Apple 新闻里的所有广告都是骗局</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//kirkville.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.shlom.dev/articles/how-virtual-textures-really-work/">How virtual textures work</a> <span class="sub-inline">/ 虚拟纹理是如何工作的</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.shlom.dev" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://rescrv.net/w/2026/02/06/associative">FORTH? Really!?</a> <span class="sub-inline">/ FORTH？真的？</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//rescrv.net" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548736.htm">上线仅半天 阿里千问红包分享口令已无法在微信内复制</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548738.htm">白银在新一轮抛售中暴跌20% 波动率保持在高位附近</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">4 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548750.htm">小马智行与摩尔线程达成战略合作 国产全功能GPU进入自动驾驶核心领域</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/21302051/best-apple-airpods-deals">Here are the best AirPods deals you can get right now</a> <span class="sub-inline">/ 现在能买到的最划算 AirPods 优惠都在这里</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654407?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">vivo、影石围猎大疆，Pocket 还能独占多久？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654282?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">大片成标配，OPPO 试图挑战更难的小叙事</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-pop-culture" data-topic="pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">1 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/entertainment/874945/spotify-about-the-song-ai-liner-notes">Spotify’s About the Song offers context and trivia about your favorite tracks</a> <span class="sub-inline">/ Spotify 的 About the Song 会为你喜欢的歌曲提供背景信息和趣闻</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106081">Sonos × 少数派 × 暖风家联合打造：沉浸体验空间正式上线</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105976">醒醒现在是 2015：小米 1S 和红米 Note 背后的机圈历史</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106136">本周看什么 | 最近值得一看的 11 部作品</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106090">新玩意 235｜少数派的编辑们最近买了啥？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105661">从川渝之旅聊自驾：解锁更自在的旅行体验</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106063">派早报：iQOO 15 Ultra 发布、Grok Imagine 1.0 推出等</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+    </section>
+
+    <script>
+      (function(){
+        const tabs = Array.from(document.querySelectorAll('.tab'));
+        const sections = Array.from(document.querySelectorAll('.section[data-topic]'));
+        function setTopic(topic){
+          for (const t of tabs) t.dataset.active = (t.dataset.topic === topic) ? 'true' : 'false';
+          for (const s of sections) s.style.display = (s.dataset.topic === topic) ? '' : 'none';
+        }
+        const first = (tabs[0] && tabs[0].dataset.topic) || (sections[0] && sections[0].dataset.topic);
+        if (first) setTopic(first);
+        for (const t of tabs){
+          t.addEventListener('click', () => setTopic(t.dataset.topic));
+        }
+      })();
+    </script>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+</body>
+</html>
