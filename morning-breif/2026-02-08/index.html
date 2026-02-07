@@ -34,14 +34,8 @@ body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
 }
 a{color:inherit}
 
-/* subtle dot grid background like Topfeed */
-body::before{
-  content:"";
-  position:fixed; inset:0;
-  background-image: radial-gradient(rgba(20,20,20,.045) 1px, transparent 1px);
-  background-size: 14px 14px;
-  pointer-events:none;
-}
+/* background: clean */
+body::before{content:none;}
 
 .grain{display:none;}
 
@@ -124,7 +118,7 @@ li.item:last-child{border-bottom:none;}
 <body>
   <div class="grain"></div>
 
-  <header class="hero wx-partly">
+  <header class="hero wx-cloudy">
     <div class="wrap">
       <div class="hero-top">
         <div class="kicker">Daily Intelligence</div>
@@ -139,8 +133,8 @@ li.item:last-child{border-bottom:none;}
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line">⛅ +19°C</div>
-          <div class="muted">️ 52%</div>
+          <div class="wx-line"> 15.3°C</div>
+          <div class="muted">Partly cloudy</div>
         </div>
         <div class="card">
           <div class="label">Inbox</div>
@@ -166,10 +160,18 @@ li.item:last-child{border-bottom:none;}
       <div class="section topic-ai" data-topic="ai">
   <div class="section-head">
     <h2>AI</h2>
-    <span class="count">9 items</span>
+    <span class="count">10 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://spillhistorie.no/2026/02/06/interview-with-sierra-veteran-al-lowe/">Leisure Suit Larry&#x27;s Al Lowe on model trains, funny deaths and Disney</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//spillhistorie.no" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://factory.strongdm.ai/">Software Factories and the Agentic Moment</a></div>
@@ -254,6 +256,14 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
+    <div class="main"><a class="titlelink" href="https://simonwillison.net/2026/Feb/7/software-factory/">StrongDM&#x27;s AI team build serious software without even looking at the code</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//simonwillison.net" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
     <div class="main"><a class="titlelink" href="https://www.bbc.com/news/articles/cvgjg98vmzjo">Google staff call for firm to cut ties with ICE</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.bbc.com" alt="" loading="lazy"/> Hacker News</div>
@@ -286,17 +296,17 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.spritely.institute/hoot/">Hoot: Scheme on WebAssembly</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/science/1548946.htm">3D打印“无形电池”瞄准小型设备：从形状革命能源储存</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.spritely.institute" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.bbc.com/news/articles/c205nxy0p31o">British drivers over 70 to face eye tests every three years</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548948.htm">Waymo承认“自动驾驶”背后大量依赖位于菲律宾的远程司机</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.bbc.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
@@ -319,14 +329,6 @@ li.item:last-child{border-bottom:none;}
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/game/1548944.htm">GOG将原生支持Linux系统 原生客户端开发中</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548866.htm">美国和印度达成临时贸易协议 后者已同意停止购买俄罗斯石油</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
