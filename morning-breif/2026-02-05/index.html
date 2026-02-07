@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Morning brief — 2026-02-05</title>
+  <title>Morning brief — 2026-02-08</title>
 
   <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -67,36 +67,12 @@ body::before{
 
 .main{padding:12px 0 64px;}
 
-/* tabs */
-.tabs{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
-  padding:14px 0 12px;
-}
-.tab{
-  font-family:"IBM Plex Mono";
-  font-size:11px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid var(--divider);
-  background:rgba(255,255,255,.7);
-  color:rgba(20,20,20,.72);
-  cursor:pointer;
-}
-.tab[data-active="true"]{
-  border-color:rgba(255,77,26,.45);
-  background:rgba(255,77,26,.10);
-  color:rgba(20,20,20,.92);
-}
-
 /* feed sections */
 .feed{border-top:1px solid var(--divider);}
-.section{padding:14px 0;border-bottom:1px solid var(--divider);}
-.section-head{display:none;}
+.section{padding:16px 0;border-bottom:1px solid var(--divider);}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.section-head h2{margin:0;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(20,20,20,.70)}
+.section-head .count{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(20,20,20,.45)}
 .section-rule{display:none;}
 
 ul.items{list-style:none;padding:0;margin:0;}
@@ -126,11 +102,11 @@ li.item:last-child{border-bottom:none;}
 <body>
   <div class="grain"></div>
 
-  <header class="hero wx-sunny">
+  <header class="hero wx-partly">
     <div class="wrap">
       <div class="hero-top">
         <div class="kicker">Daily Intelligence</div>
-        <div class="meta">2026-02-05 · Shenzhen · 2/5 周四</div>
+        <div class="meta">2026-02-08 · Shenzhen · 2/8 周日</div>
       </div>
 
       <div class="hero-title">
@@ -141,8 +117,8 @@ li.item:last-child{border-bottom:none;}
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line">☀ +19°C</div>
-          <div class="muted">️ 94%</div>
+          <div class="wx-line">⛅ +19°C</div>
+          <div class="muted">️ 52%</div>
         </div>
         <div class="card">
           <div class="label">Inbox</div>
@@ -164,42 +140,41 @@ li.item:last-child{border-bottom:none;}
     
     
 
-    <nav class="tabs">
-      <button class="tab" data-topic="ai" data-active="false">AI <span style="opacity:.55">5</span></button>
-<button class="tab" data-topic="tech" data-active="false">Tech <span style="opacity:.55">10</span></button>
-<button class="tab" data-topic="consumer-electronics" data-active="false">Consumer Electronics <span style="opacity:.55">5</span></button>
-<button class="tab" data-topic="international-politics" data-active="false">International Politics <span style="opacity:.55">1</span></button>
-<button class="tab" data-topic="pop-culture" data-active="false">Pop Culture <span style="opacity:.55">3</span></button>
-<button class="tab" data-topic="other" data-active="false">Other <span style="opacity:.55">6</span></button>
-    </nav>
-
-    <section class="feed" id="feed">
+    <section class="feed">
       <div class="section topic-ai" data-topic="ai">
   <div class="section-head">
     <h2>AI</h2>
-    <span class="count">5 items</span>
+    <span class="count">8 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548676.htm">SpaceX与xAI合并对OpenAI威胁加剧</a></div>
+    <div class="main"><a class="titlelink" href="https://blog.alaindichiappari.dev/p/software-engineering-is-back">Coding agents have replaced every framework I used</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//blog.alaindichiappari.dev" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/873656/alex-pretti-protester-detained-dhs-ice-whipple">“I was detained by federal agents in Minneapolis”</a></div>
+    <div class="main"><a class="titlelink" href="https://arxiv.org/abs/2602.05192">First Proof</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arxiv.org" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://sspai.com/post/106033">派早报：Firefox 上线 AI 功能开关、OpenAI 推出 Codex 桌面应用等</a></div>
+    <div class="main"><a class="titlelink" href="https://arxiv.org/abs/2504.12501">Reinforcement Learning from Human Feedback</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arxiv.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106113">派早报：Mistral 发布 Voxtral Transcribe 2 系列语音转文字模型等</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
   </div>
@@ -207,7 +182,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1649803?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">你的AI会救你吗?19个大模型实测揭秘：GPT牺牲自己，Claude自保，Grok直接开炸</a></div>
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654448?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">实测 GPT-5.3-Codex，OpenAI 史上第一个高危模型，连 API 都还不敢给我们</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
   </div>
@@ -215,7 +190,23 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654127?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">两周搓出的 Claude Cowork，让硅谷一夜蒸发 2 万亿，AI 真要杀死软件？</a></div>
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654445?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜曝iPhone 17e有望本月亮相/小米SU7辅助驾驶门槛下调至300公里/ChatGPT和Claude同时发布大更新</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654369?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">刚刚，ChatGPT 和 Claude 同时大更新，不会给 AI 当老板的打工人要被淘汰</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1649803?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">你的AI会救你吗?19个大模型实测揭秘：GPT牺牲自己，Claude自保，Grok直接开炸</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
   </div>
@@ -233,39 +224,55 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://1password.com/blog/from-magic-to-malware-how-openclaws-agent-skills-become-an-attack-surface">Top downloaded skill in ClawHub contains malware</a></div>
+    <div class="main"><a class="titlelink" href="https://www.bbc.com/news/articles/cvgjg98vmzjo">Google staff call for firm to cut ties with ICE</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//1password.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.bbc.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://blog.allegro.tech/2026/02/battle-testing-lynx-js-at-allegro.html">Battle-Testing Lynx at Allegro</a></div>
+    <div class="main"><a class="titlelink" href="https://www.si.edu/newsdesk/releases/female-asian-elephant-calf-born-smithsonians-national-zoo-and-conservation?user_id=66c4bf745d78644b3aa57b08&amp;utm_medium=email&amp;utm_placement=newsletter&amp;utm_source=join1440">Female Asian Elephant Calf Born at the Smithsonian National Zoo</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//blog.allegro.tech" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.si.edu" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.freshpaint.io/about?ashby_jid=3a7926ba-cf51-4084-9196-4361a7e97761">Freshpaint (YC S19) Is Hiring a Senior SWE, Data</a></div>
+    <div class="main"><a class="titlelink" href="https://jesperordrup.github.io/vocal-guide/">Vocal Guide – belt sing without killing yourself</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.freshpaint.io" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//jesperordrup.github.io" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.abc.net.au/news/2026-02-05/cia-closes-world-factbook-online-resource/106307724">CIA to Sunset the World Factbook</a></div>
+    <div class="main"><a class="titlelink" href="https://susam.net/twenty-five-years-of-computing.html">Stories from 25 Years of Software Development</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.abc.net.au" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//susam.net" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://github.com/vkazanov/elcity">Show HN: Micropolis/SimCity Clone in Emacs Lisp</a></div>
+    <div class="main"><a class="titlelink" href="https://www.spritely.institute/hoot/">Hoot: Scheme on WebAssembly</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.spritely.institute" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.bbc.com/news/articles/c205nxy0p31o">British drivers over 70 to face eye tests every three years</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.bbc.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/suitenumerique">France&#x27;s homegrown open source online office suite</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -273,39 +280,23 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://yagmin.com/blog/the-missing-layer/">The Missing Layer</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548866.htm">美国和印度达成临时贸易协议 后者已同意停止购买俄罗斯石油</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//yagmin.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://github.com/HKUDS/nanobot">Nanobot: Ultra-Lightweight Alternative to OpenClaw</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548868.htm">被欧盟认定存在上瘾式设计 TikTok回应：调查结果完全错误</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
 </li>
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ifixit.com/News/115528/bmws-newest-innovation-is-a-logo-shaped-middle-finger-to-right-to-repair">BMW&#x27;s Newest &quot;Innovation&quot; Is a Logo-Shaped Middle Finger to Right to Repair</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifixit.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://lwn.net/SubscriberLink/1056405/e728d95dd16f5e1b/">Modernizing Linux swapping: introducing the swap table</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//lwn.net" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548678.htm">Meta内部备忘录：全新Avocado成公司迄今“最强能力”大模型</a></div>
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548870.htm">韩国加密交易所Bithumb误向用户发送62万枚比特币</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
@@ -317,21 +308,13 @@ li.item:last-child{border-bottom:none;}
 <div class="section topic-consumer-electronics" data-topic="consumer-electronics">
   <div class="section-head">
     <h2>Consumer Electronics</h2>
-    <span class="count">5 items</span>
+    <span class="count">3 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548684.htm">外媒测手机续航：iPhone 17竟一加15续航成绩相当</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/21280354/best-ipad-deals-apple">The best iPad deals you can get right now</a></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/21302051/best-apple-airpods-deals">Here are the best AirPods deals you can get right now</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -339,9 +322,9 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/873973/ikea-matter-thread-smart-home-connectivity-issues">Ikea&amp;#8217;s cheap new smart home gear is struggling to get connected</a></div>
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654407?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">vivo、影石围猎大疆，Pocket 还能独占多久？</a></div>
 
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
   </div>
 </li>
 
@@ -353,45 +336,19 @@ li.item:last-child{border-bottom:none;}
   </div>
 </li>
 
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654248?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜「发起疯来自己都打」，元宝红包因违规改为口令跳转/vivo将推出vlog相机对标大疆Pocket/AI雇佣人类平台上线</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
-  </div>
-</li>
-
-  </ul>
-</div>
-
-<div class="section topic-international-politics" data-topic="international-politics">
-  <div class="section-head">
-    <h2>International Politics</h2>
-    <span class="count">1 items</span>
-  </div>
-  <div class="section-rule"></div>
-  <ul class="items">
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://news.satnews.com/2026/02/04/russia-intercepts-europes-key-satellites-placing-nato-satellite-at-risk/">Russia &#x27;intercepts Europe&#x27;s key satellites&#x27;</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//news.satnews.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
   </ul>
 </div>
 
 <div class="section topic-pop-culture" data-topic="pop-culture">
   <div class="section-head">
     <h2>Pop Culture</h2>
-    <span class="count">3 items</span>
+    <span class="count">2 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/entertainment/874150/spotify-bookshop-org-physical-books">Spotify is partnering with Bookshop.org to sell physical books</a></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/874585/lg-c5-tv-anker-power-bank-deal-sale-super-bowl">LG’s C5 TV and Anker’s powerful power bank are this week’s best deals</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -399,15 +356,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/entertainment/874134/spotify-page-match-audiobook-sync">Spotify’s Page Match syncs your audiobooks and your physical ones</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/874196/valve-steam-machine-frame-controller-delay-pricing-memory-crisis">Valve’s Steam Machine has been delayed, and the RAM crisis will impact pricing</a></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/entertainment/874945/spotify-about-the-song-ai-liner-notes">Spotify’s About the Song offers context and trivia about your favorite tracks</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -425,6 +374,38 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/95652">当你想来一次新年大扫除，这里或许有些经验可供参考</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106081">Sonos × 少数派 × 暖风家联合打造：沉浸体验空间正式上线</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105976">醒醒现在是 2015：小米 1S 和红米 Note 背后的机圈历史</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106136">本周看什么 | 最近值得一看的 11 部作品</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
     <div class="main"><a class="titlelink" href="https://sspai.com/post/106090">新玩意 235｜少数派的编辑们最近买了啥？</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
@@ -439,58 +420,10 @@ li.item:last-child{border-bottom:none;}
   </div>
 </li>
 
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://sspai.com/post/106063">派早报：iQOO 15 Ultra 发布、Grok Imagine 1.0 推出等</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://sspai.com/post/105951">见不惯 B 站 up 主的带货广告？教你利用 AI 快速跳过</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://sspai.com/post/105859">城市漫步指南：软件名城，泉城济南</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://sspai.com/post/105805">少数派 2025 年度征文：听说你对写作是真 AI？</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
-  </div>
-</li>
-
   </ul>
 </div>
 
     </section>
-
-    <script>
-      (function(){
-        const tabs = Array.from(document.querySelectorAll('.tab'));
-        const sections = Array.from(document.querySelectorAll('.section[data-topic]'));
-        function setTopic(topic){
-          for (const t of tabs) t.dataset.active = (t.dataset.topic === topic) ? 'true' : 'false';
-          for (const s of sections) s.style.display = (s.dataset.topic === topic) ? '' : 'none';
-        }
-        const first = (tabs[0] && tabs[0].dataset.topic) || (sections[0] && sections[0].dataset.topic);
-        if (first) setTopic(first);
-        for (const t of tabs){
-          t.addEventListener('click', () => setTopic(t.dataset.topic));
-        }
-      })();
-    </script>
 
     <footer class="footer">
       <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
