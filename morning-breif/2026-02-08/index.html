@@ -27,6 +27,11 @@
 
 html,body{height:100%;background:var(--bg);color:var(--text);}
 body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+
+/* Make mobile side gutters visually obvious by padding the page itself */
+@media (max-width: 768px){
+  body{padding:0 14px;}
+}
 a{color:inherit}
 
 /* subtle dot grid background like Topfeed */
@@ -40,20 +45,22 @@ body::before{
 
 .grain{display:none;}
 
-.wrap{max-width:920px;margin:0 auto;padding:0 18px;}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;box-sizing:border-box;}
 
 @media (max-width: 768px){
-  .wrap{padding:0 calc(28px + env(safe-area-inset-left)) 0 calc(28px + env(safe-area-inset-right));}
-}
-
-@media (max-width: 480px){
-  .wrap{padding:0 calc(34px + env(safe-area-inset-left)) 0 calc(34px + env(safe-area-inset-right));}
+  /* gutters handled by body padding */
+  .wrap{padding:0;}
 }
 
 .hero{
   padding:18px 0 10px;
-  background:transparent;
-  border-bottom:1px solid var(--divider);
+  background:rgba(255,255,255,.72);
+  backdrop-filter: blur(6px);
+  border:1px solid var(--divider);
+  border-radius:16px;
+}
+@media (max-width: 768px){
+  .hero{margin-top:12px;}
 }
 .hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
 .kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
@@ -74,6 +81,13 @@ body::before{
 .rule{display:none;}
 
 .main{padding:12px 0 64px;}
+
+.feed{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--divider);
+  border-radius:16px;
+  padding:6px 12px;
+}
 
 /* feed sections */
 .feed{border-top:1px solid var(--divider);}
