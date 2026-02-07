@@ -43,11 +43,11 @@ body::before{
 .wrap{max-width:920px;margin:0 auto;padding:0 18px;}
 
 @media (max-width: 768px){
-  .wrap{padding:0 22px;}
+  .wrap{padding:0 calc(28px + env(safe-area-inset-left)) 0 calc(28px + env(safe-area-inset-right));}
 }
 
 @media (max-width: 480px){
-  .wrap{padding:0 24px;}
+  .wrap{padding:0 calc(34px + env(safe-area-inset-left)) 0 calc(34px + env(safe-area-inset-right));}
 }
 
 .hero{
@@ -152,10 +152,18 @@ li.item:last-child{border-bottom:none;}
       <div class="section topic-ai" data-topic="ai">
   <div class="section-head">
     <h2>AI</h2>
-    <span class="count">8 items</span>
+    <span class="count">9 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://factory.strongdm.ai/">Software Factories and the Agentic Moment</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//factory.strongdm.ai" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://blog.alaindichiappari.dev/p/software-engineering-is-back">Coding agents have replaced every framework I used</a></div>
@@ -280,14 +288,6 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://github.com/suitenumerique">France&#x27;s homegrown open source online office suite</a></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
     <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548940.htm">马斯克感叹“金钱买不到幸福” 引发上亿人围观</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
@@ -305,6 +305,14 @@ li.item:last-child{border-bottom:none;}
 <li class="item">
   <div class="title">
     <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/game/1548944.htm">GOG将原生支持Linux系统 原生客户端开发中</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548866.htm">美国和印度达成临时贸易协议 后者已同意停止购买俄罗斯石油</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
   </div>
