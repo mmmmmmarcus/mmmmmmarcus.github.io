@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-09</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+/* Topfeed-inspired light feed style (topic tabs + dense rows)
+   Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+*/
+
+:root{
+  --bg:#fbfbf8;
+  --surface:#ffffff;
+  --text:#141414;
+  --muted:rgba(20,20,20,.55);
+  --divider:rgba(20,20,20,.10);
+  --accent:#ff4d1a;
+  --accent2:#b62a07;
+}
+
+html,body{height:100%;background:var(--bg);color:var(--text);}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+
+/* Make mobile side gutters visually obvious by padding the page itself */
+@media (max-width: 768px){
+  body{padding:0 14px;}
+}
+a{color:inherit}
+
+/* background: clean */
+body::before{content:none;}
+
+.grain{display:none;}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;box-sizing:border-box;}
+
+@media (max-width: 768px){
+  /* gutters handled by body padding */
+  .wrap{padding:0;}
+}
+
+.hero{
+  padding:18px 0 10px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter: blur(6px);
+  border:1px solid var(--divider);
+  border-radius:16px;
+}
+@media (max-width: 768px){
+  .hero{margin-top:12px;}
+}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);}
+
+.hero-title{padding:18px 0 12px;text-align:center;}
+.hero-title h1{
+  margin:0;
+  font-family:"Fraunces";
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  font-size:34px;
+}
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;}
+
+.hero-cards{display:none;}
+.rule{display:none;}
+
+.main{padding:12px 0 64px;}
+
+.feed{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--divider);
+  border-radius:16px;
+  padding:6px 12px;
+}
+
+/* feed sections */
+.feed{border-top:1px solid var(--divider);}
+.section{padding:16px 0;border-bottom:1px solid var(--divider);}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.section-head h2{margin:0;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(20,20,20,.70)}
+.section-head .count{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(20,20,20,.45)}
+.section-rule{display:none;}
+
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
+li.item:last-child{border-bottom:none;}
+
+.title .main{font-size:14px;line-height:1.35;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
+.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
+.titlelink{color:inherit;text-decoration:none;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
+
+.footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.mono{font-family:"IBM Plex Mono";}
+
+/* Gmail + Design Spells sections still render above; make them look like feed blocks */
+.callout{border:1px solid var(--divider);border-radius:14px;padding:12px 12px;background:rgba(255,255,255,.7)}
+
+/* Raindrop cards (distinct layout) */
+.rd-section{padding-bottom:18px;}
+.rd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px;}
+.rd-card{border:1px solid var(--divider);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+.rd-thumb{display:block;aspect-ratio:16/9;background:#f3f3ef;}
+.rd-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.rd-thumb-fallback{height:100%;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--muted);}
+.rd-body{padding:10px;display:flex;flex-direction:column;gap:6px;}
+.rd-title{font-size:13px;line-height:1.35;text-decoration:none;color:var(--text);font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.rd-title:hover{text-decoration:underline;text-underline-offset:2px;}
+.rd-meta{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono";white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media (max-width: 768px){
+  .wrap{max-width:720px;}
+  .hero-title h1{font-size:30px;}
+  .rd-grid{grid-template-columns:1fr;gap:10px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-sunny">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="kicker">Daily Intelligence</div>
+        <div class="meta">2026-02-09 · Shenzhen · 2/9 周一 · Updated 07:40</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line"> 12.8°C</div>
+          <div class="muted">Mainly clear</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">0</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    
+
+    <section class="feed">
+      <div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">8 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654445?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜曝iPhone 17e有望本月亮相/小米SU7辅助驾驶门槛下调至300公里/ChatGPT和Claude同时发布大更新</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654369?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">刚刚，ChatGPT 和 Claude 同时大更新，不会给 AI 当老板的打工人要被淘汰</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1548968.htm">教科书《性能之巅》作者入职OpenAI 迷弟总裁亲自欢迎</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654448?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">实测 GPT-5.3-Codex，OpenAI 史上第一个高危模型，连 API 都还不敢给我们</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1649803?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">你的AI会救你吗?19个大模型实测揭秘：GPT牺牲自己，Claude自保，Grok直接开炸</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/microsoft/vscode/issues/292452">Billing can be bypassed using a combo of subagents with an agent definition</a> <span class="sub-inline">/ 通过子代理组合加代理定义可绕过计费</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106113">派早报：Mistral 发布 Voxtral Transcribe 2 系列语音转文字模型等</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/we-tried-to-think-of-someone-who-makes-you-go-this-guys-a-creep-yakuzalike-a-dragon-director-addresses-controversial-casting">&#x27;We Tried to Think of Someone Who Makes You Go, &#x27;This Guy&#x27;s a Creep&#x27;&#x27;: Yakuza/Like a Dragon Director Addresses Controversial Casting</a> <span class="sub-inline">/ 《如龙》导演回应争议选角：我们想找一个让人觉得“这家伙真讨厌”的人</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://eclecticlight.co/2026/02/08/last-week-on-my-mac-why-e-cores-make-apple-silicon-fast/">Why E cores make Apple silicon fast</a> <span class="sub-inline">/ 为什么 E 核让 Apple 芯片更快</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//eclecticlight.co" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106060">满分五分，你给 Apple 的 2025 年打几分？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/874842/gulikit-hyperlink-gen2-usb-adapter-wireless-switch-2-hands-on">GuliKit’s tiny USB dongle lets you connect your PS5 controller to your Switch 2</a> <span class="sub-inline">/ GuliKit 的迷你 USB 适配器可让你把 PS5 手柄连到 Switch 2</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/875501/new-york-is-considering-two-bills-to-rein-in-the-ai-industry">New York is considering two bills to rein in the AI industry</a> <span class="sub-inline">/ 纽约正在考虑两项法案以收紧 AI 行业监管</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/joshuanwalker/Raiders2600">Reverse Engineering Raiders of the Lost Ark for the Atari 2600</a> <span class="sub-inline">/ 为 Atari 2600 逆向工程《夺宝奇兵》</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://fabiensanglard.net/compile_like_1997/index.html">Let&#x27;s compile Quake like it&#x27;s 1997</a> <span class="sub-inline">/ 让我们像 1997 年那样编译 Quake</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//fabiensanglard.net" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://insideevs.com/news/786509/catl-changan-worlds-first-sodium-ion-battery-ev/">The first sodium-ion battery EV is a winter range monster</a> <span class="sub-inline">/ 首款钠离子电池电动车拥有惊人的冬季续航</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//insideevs.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://reorx.com/blog/openclaw-is-changing-my-life/">OpenClaw is changing my life</a> <span class="sub-inline">/ OpenClaw 正在改变我的生活</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//reorx.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://hyperallergic.com/curating-a-show-on-my-ineffable-mother-ursula-k-le-guin/">Curating a Show on My Ineffable Mother, Ursula K. Le Guin</a> <span class="sub-inline">/ 策划一场关于我那难以言喻的母亲厄休拉·勒古恩的展览</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//hyperallergic.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://bun.com/blog/bun-v1.3.9">Bun v1.3.9</a> <span class="sub-inline">/ Bun v1.3.9 发布</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//bun.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">5 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/875454/iphone-17e-launching-soon-magsafe-a19">The iPhone 17e could launch soon with MagSafe and an A19 chip</a> <span class="sub-inline">/ iPhone 17e 或将很快发布，配备 MagSafe 和 A19 芯片</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/transportation/873197/digital-key-car-ccc-plugfest-rivian">Digital car keys are getting more sophisticated</a> <span class="sub-inline">/ 数字车钥匙正变得更先进</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/862070/lcars-homes-assistant-star-trek">How I Built the Star Trek control panel of my dreams</a> <span class="sub-inline">/ 我如何打造出梦想中的星际迷航控制面板</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654407?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">vivo、影石围猎大疆，Pocket 还能独占多久？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654282?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">大片成标配，OPPO 试图挑战更难的小叙事</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-pop-culture" data-topic="pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">7 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/it-looks-like-i-just-got-a-playstation-7-streamer-northernlion-just-discovered-his-high-refresh-rate-monitor-was-still-set-to-60hz">&#x27;It Looks Like I Just Got a PlayStation 7&#x27; Streamer Northernlion Just Discovered His High Refresh Rate Monitor Was Still Set to 60Hz</a> <span class="sub-inline">/ 主播 Northernlion 刚发现自己的高刷显示器一直设在 60Hz，直呼像刚换了 PlayStation 7</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/column/874781/netflix-warner-bros-merger-other-streamers">Netflix’s Warner Bros. merger puts rival streamers in survival mode</a> <span class="sub-inline">/ Netflix 与华纳兄弟合并，让竞争流媒体进入生存模式</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/streaming/875511/youtube-music-lyrics-paywall">YouTube Music starts putting lyrics behind a paywall</a> <span class="sub-inline">/ YouTube Music 开始将歌词设为付费功能</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/games-workshop-issued-ftl-in-a-warhammer-40000-skin-steam-game-with-a-dmca-takedown-because-of-oversized-convex-shoulder-pads-with-a-metallic-rim-dev-says">Games Workshop Issued &#x27;FTL in a Warhammer 40,000 Skin&#x27; Steam Game With a DMCA Takedown Because of ‘Oversized Convex Shoulder Pads With a Metallic Rim,’ Dev Says</a> <span class="sub-inline">/ 开发者称，Games Workshop 因“带金属边的大号凸肩甲”对一款“披着战锤 40K 皮的 FTL”Steam 游戏发起 DMCA 下架</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/isabela-merced-set-to-star-in-a-new-film-adaptation-of-sega-zombie-franchise-the-house-of-the-dead">Isabela Merced Set to Star in a New Film Adaptation of Sega Zombie Franchise The House of the Dead</a> <span class="sub-inline">/ Isabela Merced 将主演世嘉僵尸系列《死亡之屋》新版电影</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/super-bowl-2026-movie-trailers-everything-shown-during-the-big-game-updating-live">Super Bowl 2026 Movie Trailers: Everything Shown During the Big Game (Updating Live)</a> <span class="sub-inline">/ 2026 超级碗电影预告：大赛期间发布内容全汇总（实时更新）</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/new-super-mario-galaxy-movie-trailer-finally-shows-yoshi-eating-someone-and-pooping-out-an-egg">New Super Mario Galaxy Movie Trailer Finally Shows Yoshi Eating Someone and Pooping Out an Egg</a> <span class="sub-inline">/ 《新超级马里奥银河》电影预告终于出现耀西吞人并拉出蛋的画面</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106020">从特斯拉一日自驾，看纯电在日本的实际体验</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/95652">当你想来一次新年大扫除，这里或许有些经验可供参考</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106081">Sonos × 少数派 × 暖风家联合打造：沉浸体验空间正式上线</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105976">醒醒现在是 2015：小米 1S 和红米 Note 背后的机圈历史</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106136">本周看什么 | 最近值得一看的 11 部作品</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106090">新玩意 235｜少数派的编辑们最近买了啥？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://minjimoon.com"><img src="https://cdn.myportfolio.com/09c7e3ae837e85eaf51bce131eb33811/4fd62668-c5ea-4504-81af-69a0d4e7c3a2_rwc_91x0x1678x1312x1678.png?h=27961857270d6148e8d5a65962aa4d00" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://minjimoon.com">Minji Moon</a><div class="rd-meta">minjimoon.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://area17.com/work"><img src="https://media-cdn-prod.area17.com/e66bf921-d741-4350-a2ea-733fcb940e38/A17_social.png?crop=1199%2C628%2C0%2C1" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://area17.com/work">Area17</a><div class="rd-meta">area17.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://www.ndc.co.jp"><img src="https://www.ndc.co.jp/assets/img/ogimage.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.ndc.co.jp">NDC 日本设计中心</a><div class="rd-meta">ndc.co.jp</div></div></article></div></div>
+    </section>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+</body>
+</html>
