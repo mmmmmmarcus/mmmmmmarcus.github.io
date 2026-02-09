@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-10</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+/* Topfeed-inspired light feed style (topic tabs + dense rows)
+   Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+*/
+
+:root{
+  --bg:#fbfbf8;
+  --surface:#ffffff;
+  --text:#141414;
+  --muted:rgba(20,20,20,.55);
+  --divider:rgba(20,20,20,.10);
+  --accent:#ff4d1a;
+  --accent2:#b62a07;
+}
+
+html,body{height:100%;background:var(--bg);color:var(--text);}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+
+/* Make mobile side gutters visually obvious by padding the page itself */
+@media (max-width: 768px){
+  body{padding:0 14px;}
+}
+a{color:inherit}
+
+/* background: clean */
+body::before{content:none;}
+
+.grain{display:none;}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;box-sizing:border-box;}
+
+@media (max-width: 768px){
+  /* gutters handled by body padding */
+  .wrap{padding:0;}
+}
+
+.hero{
+  padding:28px 0 18px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter: blur(6px);
+  border:1px solid var(--divider);
+  border-radius:16px;
+}
+@media (max-width: 768px){
+  .hero{margin-top:12px;}
+}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);}
+
+.hero-title{padding:18px 0 12px;text-align:center;}
+.hero-title h1{
+  margin:0;
+  font-family:"Fraunces";
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  font-size:34px;
+}
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;}
+
+.hero-cards{display:none;}
+.rule{display:none;}
+
+.main{padding:12px 0 64px;}
+
+.feed{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--divider);
+  border-radius:16px;
+  padding:6px 12px;
+}
+
+/* feed sections: clearer separation between topics */
+.feed{border-top:1px solid var(--divider);}
+.section{
+  margin:14px 0;
+  padding:16px 14px 10px;
+  border:1px solid rgba(20,20,20,.14);
+  border-radius:4px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(20,20,20,.03);
+}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;}
+.section-head h2{
+  margin:0;
+  font-family:"Fraunces", "Times New Roman", serif;
+  font-size:18px;
+  line-height:1.1;
+  letter-spacing:.01em;
+  text-transform:none;
+  color:#171717;
+}
+.section-head .count{
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(20,20,20,.45)
+}
+.section-rule{
+  display:block;
+  height:2px;
+  margin:10px 0 8px;
+  background:linear-gradient(90deg, #ff4d1a 0 18%, rgba(20,20,20,.22) 18% 100%);
+}
+
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
+li.item:last-child{border-bottom:none;}
+
+.title .main{font-size:14px;line-height:1.35;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
+.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
+.titlelink{color:inherit;text-decoration:none;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
+
+.footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.mono{font-family:"IBM Plex Mono";}
+
+/* Gmail + Design Spells sections still render above; make them look like feed blocks */
+.callout{border:1px solid var(--divider);border-radius:14px;padding:12px 12px;background:rgba(255,255,255,.7)}
+
+/* Raindrop cards (distinct layout) */
+.rd-section{padding-bottom:18px;}
+.rd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px;}
+.rd-card{border:1px solid var(--divider);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+.rd-thumb{display:block;aspect-ratio:16/9;background:#f3f3ef;}
+.rd-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.rd-thumb-fallback{height:100%;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--muted);}
+.rd-body{padding:10px;display:flex;flex-direction:column;gap:6px;}
+.rd-title{font-size:13px;line-height:1.35;text-decoration:none;color:var(--text);font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.rd-title:hover{text-decoration:underline;text-underline-offset:2px;}
+.rd-meta{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono";white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media (max-width: 768px){
+  .wrap{max-width:720px;}
+  .hero-title h1{font-size:30px;}
+  .rd-grid{grid-template-columns:1fr;gap:10px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-partly">
+    <div class="wrap">
+      <div class="hero-top">
+        
+        <div class="meta">2026-02-10 · Shenzhen · 2/10 周二 · Updated 07:40</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line">⛅ +17°C</div>
+          <div class="muted">️ 63%</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">0</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    
+
+    <section class="feed">
+      <div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">8 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654445?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜曝iPhone 17e有望本月亮相/小米SU7辅助驾驶门槛下调至300公里/ChatGPT和Claude同时发布大更新</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654556?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜iPhone 17e售价曝光：维持4000元档/OpenAI首款硬件「Dime」曝光/全球首届机器人「春晚」，观众席也是机器人</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654369?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">刚刚，ChatGPT 和 Claude 同时大更新，不会给 AI 当老板的打工人要被淘汰</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/876029/openai-testing-ads-in-chatgpt">ChatGPT&amp;#8217;s cheapest options now show you ads</a> <span class="sub-inline">/ ChatGPT 最便宜的套餐现在开始展示广告</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654448?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">实测 GPT-5.3-Codex，OpenAI 史上第一个高危模型，连 API 都还不敢给我们</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1649803?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">你的AI会救你吗?19个大模型实测揭秘：GPT牺牲自己，Claude自保，Grok直接开炸</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.omnara.com/blog/what-is-an-async-agent-really">Everyone’s building “async agents,” but almost no one can define them</a> <span class="sub-inline">/ 人人都在做“异步 Agent”，但几乎没人能说清它是什么</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.omnara.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106113">派早报：Mistral 发布 Voxtral Transcribe 2 系列语音转文字模型等</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/875859/apple-is-killing-the-old-homekit-tomorrow">Apple is killing the old HomeKit tomorrow</a> <span class="sub-inline">/ Apple 将于明天停用旧版 HomeKit</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/875981/fcc-doge-frequency-forward-brendan-carr-discovery">FCC accused of withholding DOGE information ‘in bad faith’</a> <span class="sub-inline">/ FCC 被指“恶意”隐瞒 DOGE 相关信息</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/876080/mrbeast-step-mobile-banking-app">MrBeast just bought a banking app</a> <span class="sub-inline">/ MrBeast 刚收购了一款银行应用</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ferrari.com/en-US/auto/ferrari-luce">Luce: First Electric Ferrari</a> <span class="sub-inline">/ Luce：法拉利首款纯电车型</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ferrari.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://spitalfieldslife.com/2024/06/20/the-markets-of-old-london-i/">The Markets of Old London (2024)</a> <span class="sub-inline">/ 《旧伦敦的集市》（2024）</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//spitalfieldslife.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.youtube.com/watch?v=Bc0bIpDVEa8">An articulated archer automaton [video]</a> <span class="sub-inline">/ 一台可动弓箭手机械人［视频］</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.youtube.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://blog.prosody.im/2026-letsencrypt-changes/">Upcoming changes to Let&#x27;s Encrypt and how they affect XMPP server operators</a> <span class="sub-inline">/ Let&#x27;s Encrypt 即将调整及其对 XMPP 服务器运维者的影响</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//blog.prosody.im" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://alltheviews.world">Show HN: Algorithmically finding the longest line of sight on Earth</a> <span class="sub-inline">/ Show HN：用算法寻找地球上最长可视直线</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//alltheviews.world" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://defusedcyber.com/ivanti-epmm-sleeper-shells-403jsp">Sleeper Shells: Attackers Are Planting Dormant Backdoors in Ivanti EPMM</a> <span class="sub-inline">/ Sleeper Shells：攻击者正向 Ivanti EPMM 植入休眠后门</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//defusedcyber.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c">Thoughts on Generating C</a> <span class="sub-inline">/ 关于生成 C 代码的一些思考</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//wingolog.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654589?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">2026 年第一台新 iPhone：国补后不到 4000，但不推荐买</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/god-of-war-show-finds-its-atreus-in-callum-vinson">God of War Show Finds Its Atreus in Callum Vinson</a> <span class="sub-inline">/ 《战神》剧集确定由 Callum Vinson 饰演阿特柔斯</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/875742/google-pixel9a-switch-2-case-netgear-gigabit-deal-sale">Google’s Pixel 9A is back down to $349, its cheapest price so far</a> <span class="sub-inline">/ Google Pixel 9A 再降至 349 美元，创下目前最低价</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://truthout.org/articles/super-bowl-ad-for-ring-cameras-touted-ai-surveillance-network/">Super Bowl Ad for Ring Cameras Touted AI Surveillance Network</a> <span class="sub-inline">/ Ring 摄像头超级碗广告主打 AI 监控网络</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//truthout.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654407?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">vivo、影石围猎大疆，Pocket 还能独占多久？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/stranger-things-star-matthew-modine-gets-vocal-about-his-feelings-on-the-finale-and-his-support-of-conformity-gate">Stranger Things Star Matthew Modine Gets Vocal About His Feelings on the Finale and His Support of &#x27;Conformity Gate&#x27;</a> <span class="sub-inline">/ 《怪奇物语》主演 Matthew Modine 谈及对大结局的看法，并表态支持“Conformity Gate”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-pop-culture" data-topic="pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">7 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/nintendo-fans-believe-the-super-mario-galaxy-movie-features-time-travel-or-some-kind-of-age-reversing-spell">Nintendo Fans Believe The Super Mario Galaxy Movie Features Time Travel or Some Kind of Age-Reversing Spell</a> <span class="sub-inline">/ 任天堂粉丝认为《超级马力欧银河》电影含有时间旅行或某种逆龄魔法设定</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/sony-announces-playstation-state-of-play-broadcast-for-this-week">Sony Announces PlayStation State of Play Broadcast For This Week</a> <span class="sub-inline">/ 索尼宣布本周将举行 PlayStation State of Play 发布会</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/875995/toyota-fluorite-game-engine">Toyota made a game engine</a> <span class="sub-inline">/ 丰田做了一个游戏引擎</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/876038/riot-games-2xko-layoffs-job-cuts-league-of-legends">Riot is already cutting staff on its new fighting game</a> <span class="sub-inline">/ Riot 已开始裁撤其新格斗游戏项目团队</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/todd-mcfarlanes-spawn-universe-expands-with-new-she-spawn-series">Todd McFarlane&#x27;s Spawn Universe Expands With New She-Spawn Series</a> <span class="sub-inline">/ Todd McFarlane 的 Spawn 宇宙将推出全新 She-Spawn 系列</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/harry-potter-hbo-series-will-reveal-malfoys-home-life-as-tv-show-isnt-told-over-harrys-shoulder-like-the-books-and-movies">Harry Potter HBO Series Will Reveal Malfoy&#x27;s Home Life as TV Show Isn&#x27;t Told &#x27;Over Harry&#x27;s Shoulder&#x27; Like The Books and Movies</a> <span class="sub-inline">/ HBO《哈利·波特》剧集将展现马尔福的家庭生活，叙事不再像书和电影那样只跟随哈利视角</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/as-helldivers-2-launches-the-battle-for-cyberstan-arrowhead-says-its-already-plotting-to-expand-the-scope-of-the-game">As Helldivers 2 Launches the Battle for Cyberstan, Arrowhead Says It&#x27;s Already Plotting to Expand the Scope of the Game</a> <span class="sub-inline">/ 《绝地潜兵 2》打响 Cyberstan 战役之际，Arrowhead 表示已在规划扩大游戏规模</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106221">派早报：千问「奶茶补贴」导致线上宕机、线下爆单</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105481">我的 AI 工具日常使用与工作流是怎样的？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106213">骏马迎春，纳福添彩：我们准备了 10+ 件年货好物</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106020">从特斯拉一日自驾，看纯电在日本的实际体验</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/95652">当你想来一次新年大扫除，这里或许有些经验可供参考</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106081">Sonos × 少数派 × 暖风家联合打造：沉浸体验空间正式上线</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://www.shejipi.com/503483.html"><div class="rd-thumb-fallback">🔖</div></a><div class="rd-body"><a class="rd-title" href="https://www.shejipi.com/503483.html">黑色哲学是置身于争端与世俗之外 | 设计癖</a><div class="rd-meta">shejipi.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://toyfight.co"><img src="https://toyfight.co/opengraph-image.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://toyfight.co">ToyFight</a><div class="rd-meta">toyfight.co</div></div></article><article class="rd-card"><a class="rd-thumb" href="http://thinkingwithtype.com"><img src="https://rdl.ink/render/http%3A%2F%2Fthinkingwithtype.com" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="http://thinkingwithtype.com">Thinking With Type</a><div class="rd-meta">thinkingwithtype.com</div></div></article></div></div>
+    </section>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+</body>
+</html>
