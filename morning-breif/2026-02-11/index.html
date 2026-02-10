@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-11</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+/* Topfeed-inspired light feed style (topic tabs + dense rows)
+   Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+*/
+
+:root{
+  --bg:#fbfbf8;
+  --surface:#ffffff;
+  --text:#141414;
+  --muted:rgba(20,20,20,.55);
+  --divider:rgba(20,20,20,.10);
+  --accent:#ff4d1a;
+  --accent2:#b62a07;
+}
+
+html,body{height:100%;background:var(--bg);color:var(--text);}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+
+/* Make mobile side gutters visually obvious by padding the page itself */
+@media (max-width: 768px){
+  body{padding:0 14px;}
+}
+a{color:inherit}
+
+/* background: clean */
+body::before{content:none;}
+
+.grain{display:none;}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;box-sizing:border-box;}
+
+@media (max-width: 768px){
+  /* gutters handled by body padding */
+  .wrap{padding:0;}
+}
+
+.hero{
+  padding:28px 0 18px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter: blur(6px);
+  border:1px solid var(--divider);
+  border-radius:16px;
+}
+@media (max-width: 768px){
+  .hero{margin-top:12px;}
+}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);}
+
+.hero-title{padding:18px 0 12px;text-align:center;}
+.hero-title h1{
+  margin:0;
+  font-family:"Fraunces";
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  font-size:34px;
+}
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;}
+
+.hero-cards{display:none;}
+.rule{display:none;}
+
+.main{padding:12px 0 64px;}
+
+.feed{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--divider);
+  border-radius:16px;
+  padding:6px 12px;
+}
+
+/* feed sections: clearer separation between topics */
+.feed{border-top:1px solid var(--divider);}
+.section{
+  margin:14px 0;
+  padding:16px 14px 10px;
+  border:1px solid rgba(20,20,20,.14);
+  border-radius:4px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(20,20,20,.03);
+}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;}
+.section-head h2{
+  margin:0;
+  font-family:"Fraunces", "Times New Roman", serif;
+  font-size:18px;
+  line-height:1.1;
+  letter-spacing:.01em;
+  text-transform:none;
+  color:#171717;
+}
+.section-head .count{
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(20,20,20,.45)
+}
+.section-rule{
+  display:block;
+  height:2px;
+  margin:10px 0 8px;
+  background:linear-gradient(90deg, #ff4d1a 0 18%, rgba(20,20,20,.22) 18% 100%);
+}
+
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
+li.item:last-child{border-bottom:none;}
+
+.title .main{font-size:14px;line-height:1.35;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
+.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
+.titlelink{color:inherit;text-decoration:none;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
+
+.footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.mono{font-family:"IBM Plex Mono";}
+
+/* Gmail + Design Spells sections still render above; make them look like feed blocks */
+.callout{border:1px solid var(--divider);border-radius:14px;padding:12px 12px;background:rgba(255,255,255,.7)}
+
+/* Raindrop cards (distinct layout) */
+.rd-section{padding-bottom:18px;}
+.rd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px;}
+.rd-card{border:1px solid var(--divider);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+.rd-thumb{display:block;aspect-ratio:16/9;background:#f3f3ef;}
+.rd-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.rd-thumb-fallback{height:100%;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--muted);}
+.rd-body{padding:10px;display:flex;flex-direction:column;gap:6px;}
+.rd-title{font-size:13px;line-height:1.35;text-decoration:none;color:var(--text);font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.rd-title:hover{text-decoration:underline;text-underline-offset:2px;}
+.rd-meta{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono";white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media (max-width: 768px){
+  .wrap{max-width:720px;}
+  .hero-title h1{font-size:30px;}
+  .rd-grid{grid-template-columns:1fr;gap:10px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-cloudy">
+    <div class="wrap">
+      <div class="hero-top">
+        
+        <div class="meta">2026-02-11 · Shenzhen · 2/11 周三 · Updated 07:40</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line"> 16.8°C</div>
+          <div class="muted">Partly cloudy</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">7</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    <div class="section">
+  <h2>Gmail<span class="count">7 unread (24h)</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">App Store Connect &lt;no_reply@email.apple.com&gt; — Review of your FocusFour - Eisenhower Matrix (iOS) submission is complete.</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Dribbble &lt;no-reply@m.dribbble.com&gt; — New Project Briefs Now Available</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Figma &lt;support+notifications@figma.com&gt; — Subscription renewal reminder Feb 17, 2026</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">&quot;LogoArchive&#x27;s Logo Histories&quot; &lt;logoarchive@substack.com&gt; — Classic logo: Nortiz, 1984</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">TestFlight &lt;no_reply@email.apple.com&gt; — Cuto Wallpaper 3.2.0 (159) for iOS is now available to test.</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Figma &lt;comments-2W1VkV9tbSI8qKHJx91wkD@email.figma.com&gt; — 2 new comments in 飞傲CD机封面投票</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Todoist &lt;no-reply@todoist.com&gt; — 我们发现您的Todoist账户有新的登录记录</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+
+    <section class="feed">
+      <div class="section" id="source-health"><div class="section-head"><h2>Source Health</h2><span class="count">monitor</span></div><div class="section-rule"></div><div class="callout"><div class="icon">🩺</div><div class="content"><strong>Source health alert:</strong> 少数派<br/><strong>去重:</strong> 相比 2026-02-10 移除了 6 条重复内容</div></div></div>
+<div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">2 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/876775/openai-deep-research-chatgpt-full-screen-report-viewer">ChatGPT’s deep research tool adds a built-in document viewer so you can read its reports</a> <span class="sub-inline">/ ChatGPT 的 Deep Research 工具新增内置文档查看器，便于阅读报告</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/getclawe/clawe">Show HN: Clawe – open-source Trello for agent teams</a> <span class="sub-inline">/ Show HN：Clawe——面向智能体团队的开源 Trello</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://europeanbusinessmagazine.com/business/europes-24-trillion-breakup-with-visa-and-mastercard-has-begun/">Europe&#x27;s $24T Breakup with Visa and Mastercard Has Begun</a> <span class="sub-inline">/ 欧洲与 Visa 和 Mastercard 的 24 万亿美元“分手”已经开始</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//europeanbusinessmagazine.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/876575/discord-age-verification-vast-majority-users-inference">Discord says &amp;#8216;vast majority&amp;#8217; of users won&amp;#8217;t see its new age verification setup</a> <span class="sub-inline">/ Discord 称绝大多数用户不会看到新的年龄验证流程</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://raven.tavuslabs.org">Show HN: Multimodal perception system for real-time conversation</a> <span class="sub-inline">/ Show HN：用于实时对话的多模态感知系统</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//raven.tavuslabs.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://livedocs.com">Launch HN: Livedocs (YC W22) – An AI-native notebook for data analysis</a> <span class="sub-inline">/ Launch HN：Livedocs（YC W22）——面向数据分析的 AI 原生笔记本</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//livedocs.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/pretzelai/stripe-no-webhooks">Show HN: Stripe-no-webhooks – Sync your Stripe data to your Postgres DB</a> <span class="sub-inline">/ Show HN：Stripe-no-webhooks——将 Stripe 数据同步到你的 Postgres 数据库</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://intervolz.com/sollewitt/">Show HN: Sol LeWitt-style instruction-based drawings in the browser</a> <span class="sub-inline">/ Show HN：在浏览器里生成 Sol LeWitt 风格的指令式绘画</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//intervolz.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://andonlabs.com/blog/evolution-of-bengt">The Evolution of Bengt Betjänt</a> <span class="sub-inline">/ 《Bengt Betjänt 的演化》</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//andonlabs.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/taf2/mdvi">Markdown CLI viewer with VI keybindings</a> <span class="sub-inline">/ 支持 VI 键位的 Markdown CLI 查看器</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://theintercept.com/2026/02/10/google-ice-subpoena-student-journalist/">Google handed ICE student journalist&#x27;s bank and credit card numbers</a> <span class="sub-inline">/ 谷歌向 ICE 提供了学生记者的银行和信用卡号码</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//theintercept.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ablg.io/blog/competition-is-not-validation">Competition is not market validation</a> <span class="sub-inline">/ 竞争不等于市场验证</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ablg.io" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/876692/fitbit-ai-health-coach-public-preview-ios">Fitbit’s AI health coach is now available on your iPhone</a> <span class="sub-inline">/ Fitbit 的 AI 健康教练现已登陆 iPhone</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654589?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">2026 年第一台新 iPhone：国补后不到 4000，但不推荐买</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/876717/samsung-galaxy-unpacked-february-2026-s26">Samsung’s next Unpacked is confirmed for later this month</a> <span class="sub-inline">/ 三星确认本月晚些时候举行下一场 Unpacked</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654707?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜最便宜MacBook或配备非刘海屏/豆包2.0有望节前上线/尚界汽车辟谣AI生成冬测图</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/magic-the-gathering-just-had-its-most-successful-year-everagain">Magic: The Gathering Just Had Its Most Successful Year Ever...Again</a> <span class="sub-inline">/ 《万智牌》刚刚又创下史上最成功的一年</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-confirms-overwatch-just-had-its-best-weekend-player-count-in-a-year-across-all-platforms-as-season-1-officially-goes-live">Blizzard Confirms Overwatch Just Had Its Best Weekend Player Count in a Year Across All Platforms, as Season 1 Officially Goes Live</a> <span class="sub-inline">/ 暴雪确认《守望先锋》在全平台迎来一年内最佳周末玩家数，S1 正式上线</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-pop-culture" data-topic="pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">3 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/playstation-plus-february-2026-extra-and-premium-games-include-sony-blockbuster-spider-man-2">PlayStation Plus February 2026 Extra and Premium Games Include Sony Blockbuster Spider-Man 2</a> <span class="sub-inline">/ PlayStation Plus 2026 年 2 月 Extra 与 Premium 阵容包含索尼大作《蜘蛛侠 2》</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/netflixs-latest-one-piece-season-2-trailer-includes-dinosaurs-new-villains-and-the-inside-of-laboon-the-whale">Netflix&#x27;s Latest One Piece Season 2 Trailer Includes Dinosaurs, New Villains and the Inside of Laboon the Whale</a> <span class="sub-inline">/ Netflix 最新《海贼王》第二季预告出现恐龙、新反派和拉布鲸体内场景</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/i-play-kojimas-latest-game-then-i-return-to-fallout-4-ghost-in-the-shell-director-mamoru-oshii-says-hes-racked-up-10000-hours-while-avoiding-the-main-quest">&#x27;I Play Kojima&#x27;s Latest Game Then I Return to Fallout 4&#x27;: Ghost in the Shell Director Mamoru Oshii Says He&#x27;s Racked Up 10,000 Hours While Avoiding the Main Quest</a> <span class="sub-inline">/ 《攻壳机动队》导演押井守称自己一边玩小岛秀夫新作一边回坑《辐射 4》，避开主线已累计 1 万小时</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/stardew-valley-fans-really-hope-theyll-be-able-to-marry-sandy-the-wizard-and-the-hat-mouse-in-17-update">Stardew Valley Fans Really Hope They&#x27;ll Be Able to Marry Sandy, the Wizard, and the Hat Mouse in 1.7 Update</a> <span class="sub-inline">/ 《星露谷》玩家期待 1.7 更新可与 Sandy、法师和帽子鼠结婚</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/arc-raiders-gets-pve-focused-event-and-new-rewards-as-embark-squashes-duplication-bug-in-new-update">Arc Raiders Gets PvE-Focused Event and New Rewards as Embark Squashes Duplication Bug in New Update</a> <span class="sub-inline">/ 《Arc Raiders》推出偏 PvE 活动与新奖励，Embark 在新更新中修复复制 Bug</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/magic-the-gathering-wont-be-getting-a-harry-potter-set-anytime-soon">Magic: The Gathering Won&#x27;t Be Getting a Harry Potter Set Anytime Soon</a> <span class="sub-inline">/ 《万智牌》短期内不会推出哈利·波特系列</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/mewgenics-sells-over-150k-copies-in-first-6-hours-this-is-beating-expectations-by-quite-a-lot">Mewgenics Sells Over 150k Copies in First 6 Hours; &quot;This Is Beating Expectations by Quite a Lot&quot;</a> <span class="sub-inline">/ 《Mewgenics》首 6 小时销量超 15 万份；开发方称“远超预期”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/spider-noir-confirms-sandman-actor-and-narrows-release-window-to-spring-2026">Spider-Noir Confirms Sandman Actor and Narrows Release Window to Spring 2026</a> <span class="sub-inline">/ 《Spider-Noir》确认 Sandman 演员加盟，档期缩小至 2026 年春季</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654724?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">今年春晚，字节送 10 万份 AI 硬件！机器人、奔驰奥迪、3D 打印机全都有</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://www.rockstargames.com/VI"><img src="https://www.rockstargames.com/VI/_next/image?url=%2FVI%2F_next%2Fstatic%2Fmedia%2Fvi.b9b99ab9.png&amp;w=1024&amp;q=75" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.rockstargames.com/VI">Grand Theft Auto VI - Rockstar Games</a><div class="rd-meta">rockstargames.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://h1gallery.com/"><img src="https://framerusercontent.com/assets/7N0TsWR1jns2MEnMJuAt3SFxrM.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://h1gallery.com/">H1 Gallery</a><div class="rd-meta">h1gallery.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://evilcharts.com/docs/bar-charts"><img src="https://evilcharts.com/banner.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://evilcharts.com/docs/bar-charts">Evil Charts - Beautiful &amp; Animated Charts</a><div class="rd-meta">evilcharts.com</div></div></article></div></div>
+    </section>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+</body>
+</html>
