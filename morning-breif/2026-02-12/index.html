@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-12</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+/* Topfeed-inspired light feed style (topic tabs + dense rows)
+   Typography: Fraunces (display) + Instrument Sans (body) + IBM Plex Mono
+*/
+
+:root{
+  --bg:#fbfbf8;
+  --surface:#ffffff;
+  --text:#141414;
+  --muted:rgba(20,20,20,.55);
+  --divider:rgba(20,20,20,.10);
+  --accent:#ff4d1a;
+  --accent2:#b62a07;
+}
+
+html,body{height:100%;background:var(--bg);color:var(--text);}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+
+/* Make mobile side gutters visually obvious by padding the page itself */
+@media (max-width: 768px){
+  body{padding:0 14px;}
+}
+a{color:inherit}
+
+/* background: clean */
+body::before{content:none;}
+
+.grain{display:none;}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;box-sizing:border-box;}
+
+@media (max-width: 768px){
+  /* gutters handled by body padding */
+  .wrap{padding:0;}
+}
+
+.hero{
+  padding:28px 0 18px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter: blur(6px);
+  border:1px solid var(--divider);
+  border-radius:16px;
+}
+@media (max-width: 768px){
+  .hero{margin-top:12px;}
+}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.kicker{font-family:"IBM Plex Mono";letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);}
+
+.hero-title{padding:18px 0 12px;text-align:center;}
+.hero-title h1{
+  margin:0;
+  font-family:"Fraunces";
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  font-size:34px;
+}
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;}
+
+.hero-cards{display:none;}
+.rule{display:none;}
+
+.main{padding:12px 0 64px;}
+
+.feed{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--divider);
+  border-radius:16px;
+  padding:6px 12px;
+}
+
+/* feed sections: clearer separation between topics */
+.feed{border-top:1px solid var(--divider);}
+.section{
+  margin:14px 0;
+  padding:16px 14px 10px;
+  border:1px solid rgba(20,20,20,.14);
+  border-radius:4px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(20,20,20,.03);
+}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;}
+.section-head h2{
+  margin:0;
+  font-family:"Fraunces", "Times New Roman", serif;
+  font-size:18px;
+  line-height:1.1;
+  letter-spacing:.01em;
+  text-transform:none;
+  color:#171717;
+}
+.section-head .count{
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(20,20,20,.45)
+}
+.section-rule{
+  display:block;
+  height:2px;
+  margin:10px 0 8px;
+  background:linear-gradient(90deg, #ff4d1a 0 18%, rgba(20,20,20,.22) 18% 100%);
+}
+
+ul.items{list-style:none;padding:0;margin:0;}
+li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
+li.item:last-child{border-bottom:none;}
+
+.title .main{font-size:14px;line-height:1.35;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
+.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
+.titlelink{color:inherit;text-decoration:none;}
+.titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
+
+.footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--divider);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.mono{font-family:"IBM Plex Mono";}
+
+/* Gmail + Design Spells sections still render above; make them look like feed blocks */
+.callout{border:1px solid var(--divider);border-radius:14px;padding:12px 12px;background:rgba(255,255,255,.7)}
+
+/* Raindrop cards (distinct layout) */
+.rd-section{padding-bottom:18px;}
+.rd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px;}
+.rd-card{border:1px solid var(--divider);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+.rd-thumb{display:block;aspect-ratio:16/9;background:#f3f3ef;}
+.rd-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.rd-thumb-fallback{height:100%;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--muted);}
+.rd-body{padding:10px;display:flex;flex-direction:column;gap:6px;}
+.rd-title{font-size:13px;line-height:1.35;text-decoration:none;color:var(--text);font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.rd-title:hover{text-decoration:underline;text-underline-offset:2px;}
+.rd-meta{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono";white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media (max-width: 768px){
+  .wrap{max-width:720px;}
+  .hero-title h1{font-size:30px;}
+  .rd-grid{grid-template-columns:1fr;gap:10px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-sunny">
+    <div class="wrap">
+      <div class="hero-top">
+        
+        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 07:40</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line"> 17.1°C</div>
+          <div class="muted">Mainly clear</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">7</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    <div class="section">
+  <h2>Gmail<span class="count">7 unread (24h)</span></h2>
+  <ul class="items">
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Poolsuite &lt;noreply@mail.poolsuite.net&gt; — How to become real ☼ An Italian farmhouse ☼ A Palladium rabbit hole</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Tavus Team &lt;hello@tavus.io&gt; — Tavus - you&#x27;re off the waitlist!</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">OpenAI &lt;noreply@email.openai.com&gt; — Batch API is now available for GPT Image models</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Google Cloud &lt;CloudPlatform-noreply@google.com&gt; — [Product Update] Automatic enablement of new OpenTelemetry ingestion API</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Cosmos &lt;discover@cosmos.so&gt; — Sequence No. 16 | A bottle of red, a bottle of white</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Todoist &lt;no-reply@todoist.com&gt; — 重置您的Todoist密码</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="bullet">•</div>
+  <div class="title">
+    <div class="main">Interactive Brokers &lt;noresponse@email.interactivebrokers.com&gt; — Will the YOY change in the US CPI exceed 2.9 in February 2026?</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+
+    <section class="feed">
+      <div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">5 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://agentalcove.ai">Show HN: Agent Alcove – Claude, GPT, and Gemini debate across forums</a> <span class="sub-inline">/ Show HN：Agent Alcove——让 Claude、GPT 和 Gemini 在论坛里辩论</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//agentalcove.ai" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1549410.htm">OpenAI女高管遭解雇：否认性别歧视指控 曾质疑AI成人内容风险</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/877526/anthropic-ai-electricity-costs-data-center-pledge">Anthropic says it&amp;#8217;ll try to keep its data centers from raising electricity costs</a> <span class="sub-inline">/ Anthropic 表示将尽量避免其数据中心推高电价</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1549398.htm">黑石据悉将对Anthropic追加投资2亿美元 估值达3500亿美元</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://twitter.com/DrWhax/status/2021608609595945442">Paragon accidentally uploaded a photo of its spyware control panel</a> <span class="sub-inline">/ Paragon 意外上传了其间谍软件控制面板照片</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//twitter.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://techcrunch.com/2026/02/11/apples-siri-revamp-reportedly-delayed-again/">Apple&#x27;s Siri revamp reportedly delayed again</a> <span class="sub-inline">/ 据称苹果 Siri 改版再次延期</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//techcrunch.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877494/apple-siri-ai-overhaul-ios-personalized">Apple keeps hitting bumps with its overhauled Siri</a> <span class="sub-inline">/ 苹果重做 Siri 仍频频受挫</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cell.com/one-earth/fulltext/S2590-3322%2825%2900391-4">The risk of a hothouse Earth trajectory</a> <span class="sub-inline">/ “温室地球”演化路径的风险</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cell.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://arstechnica.com/tech-policy/2026/02/victory-for-elon-musk-us-labor-board-abandons-authority-over-spacex/">US labels SpaceX a common carrier by air, will regulate firm under railway law</a> <span class="sub-inline">/ 美国将 SpaceX 认定为空中公共承运人，并按铁路法监管</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arstechnica.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复记事本漏洞：可能诱导用户点击恶意 Markdown 链接</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.joanwestenberg.com/communities-are-not-fungible/">Communities are not fungible</a> <span class="sub-inline">/ 社区并不可替代</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.joanwestenberg.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.kraxel.org/blog/2026/01/thank-you-ai/">End of an era for me: no more self-hosted git</a> <span class="sub-inline">/ 属于我的一个时代结束了：不再自托管 Git</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.kraxel.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="http://www.andersenimages.com/tutorials/exposure-simulator/">Exposure Simulator</a> <span class="sub-inline">/ 曝光模拟器</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.andersenimages.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.macrumors.com/2026/02/11/ios-26-3-security-vulnerabilities/">iOS 26.3 and macOS 26.3 Fix Dozens of Vulnerabilities, Including Zero-Day</a> <span class="sub-inline">/ iOS 26.3 与 macOS 26.3 修复数十个漏洞，包括零日漏洞</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.macrumors.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877235/nancy-guthrie-google-nest-cam-video-storage">Why ‘deleted’ doesn’t mean gone: How police recovered Nancy Guthrie’s Nest Doorbell footage</a> <span class="sub-inline">/ 为什么“删除”不等于消失：警方如何恢复南希·格思里的 Nest 门铃录像</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">3 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877258/samsung-unpacked-preorder-galaxy-s26-plus-ultra-ai">Samsung’s offering up to $900 of trade-in credit toward its new phones</a> <span class="sub-inline">/ 三星为新手机提供最高 900 美元以旧换新补贴</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.carbonbrief.org/qa-new-uk-onshore-wind-and-solar-is-50-cheaper-than-new-gas/">Q&amp;A: New UK onshore wind and solar is &#x27;50% cheaper&#x27; than new gas</a> <span class="sub-inline">/ 问答：英国新建陆上风电和光伏比新建燃气电站“便宜 50%”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.carbonbrief.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877587/ios-26-3-released-transfer-to-android">iOS 26.3 makes it easier to switch to Android</a> <span class="sub-inline">/ iOS 26.3 让转投 Android 更容易</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-pop-culture" data-topic="pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/f-me-this-thing-that-we-created-its-going-to-live-peter-molyneux-cried-watching-xboxs-new-fable-gameplay-reveal">‘F*** Me, This Thing That We Created, It’s Going to Live’ — Peter Molyneux Cried Watching Xbox&#x27;s New Fable Gameplay Reveal</a> <span class="sub-inline">/ “天啊，我们创造的这玩意真的活了”——彼得·莫利纽克斯看完 Xbox 新《神鬼寓言》实机后落泪</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877396/samsung-tv-software-volume-on-screen-display-switch-hdmi-input-tizen">Why I wish I hadn’t bought my Samsung OLED TV</a> <span class="sub-inline">/ 为什么我后悔买了三星 OLED 电视</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/why-is-ai-helping-me-write-a-song-or-tell-a-story-pirates-of-the-caribbean-director-slams-ai-use-for-what-we-need-to-be-human">&#x27;Why Is AI Helping Me Write a Song or Tell a Story?&#x27; Pirates of the Caribbean Director Slams AI Use for What We &#x27;Need to Be Human&#x27;</a> <span class="sub-inline">/ “为什么 AI 要帮我写歌或讲故事？”《加勒比海盗》导演批评 AI 介入这些“需要人性”的事</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/helldivers-movie-lands-november-2027-release-date-with-jason-momoa-set-to-star">Helldivers Movie Lands November 2027 Release Date With Jason Momoa Set to Star</a> <span class="sub-inline">/ 《地狱潜者》电影定档 2027 年 11 月，杰森·莫玛主演</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/crunchyroll-confirms-streaming-release-window-for-chainsaw-man-the-movie-reze-arc">Crunchyroll Confirms Streaming Release Window for Chainsaw Man - The Movie: Reze Arc</a> <span class="sub-inline">/ Crunchyroll 确认《电锯人 剧场版：蕾塞篇》流媒体上线窗口</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/brad-pitts-f1-movie-will-get-a-sequel-jerry-bruckheimer-confirms">Brad Pitt&#x27;s F1 Movie Will Get a Sequel, Jerry Bruckheimer Confirms</a> <span class="sub-inline">/ 杰瑞·布鲁克海默确认布拉德·皮特 F1 电影将拍续集</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/time-magazine-is-celebrating-pokmons-30th-anniversary-with-three-exclusive-covers">TIME Magazine Is Celebrating Pokémon&#x27;s 30th Anniversary With Three Exclusive Covers</a> <span class="sub-inline">/ 《时代》杂志用三款独家封面庆祝《宝可梦》30 周年</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/masters-of-albion-peter-molyneuxs-culmination-of-his-work-to-date-will-launch-in-early-access-as-actually-the-first-chapter-in-a-planned-trilogy">Masters of Albion, Peter Molyneux’s ‘Culmination of His Work to Date’, Will Launch in Early Access as Actually the First Chapter in a Planned Trilogy</a> <span class="sub-inline">/ 彼得·莫利纽克斯称其“阶段集大成”之作《阿尔比恩大师》将以抢先体验形式上线，实为三部曲第一章</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/james-van-der-beek-of-dawsons-creek-fame-has-died">James Van Der Beek of Dawson’s Creek Fame Has Died</a> <span class="sub-inline">/ 《恋爱时代》演员詹姆斯·范德比克去世</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-upcoming-mummy-sequel-starring-brendan-fraser-and-rachel-weisz-gets-an-official-release-date">The Upcoming Mummy Sequel Starring Brendan Fraser and Rachel Weisz Gets an Official Release Date</a> <span class="sub-inline">/ 布兰登·费舍与蕾切尔·薇兹主演的《木乃伊》续集公布正式档期</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-hedge-knight-climbs-to-the-top-of-amazons-charts-after-hbos-knight-of-the-seven-kingdoms-sees-success">The Hedge Knight, A Knight of the Seven Kingdoms&#x27; Comic Adaptation, Now Features at the Top of Amazon&#x27;s Best Seller Charts</a> <span class="sub-inline">/ 《树篱骑士》（《七国骑士》漫画改编）登上亚马逊畅销榜榜首</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654856?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">实测即梦 Seedance 2.0：老外急着想注册，这就是中国 AI 视频的「黑神话」时刻</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://eyeondesign.aiga.org/the-80s-are-back-baby/"><img src="https://eyeondesign.aiga.org/wp-content/uploads/2022/01/hero-ads.gif" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://eyeondesign.aiga.org/the-80s-are-back-baby/">The ’80s Are Back, Baby</a><div class="rd-meta">eyeondesign.aiga.org</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://www.tpof.studio/projects/slate"><img src="https://cdn.sanity.io/images/dhhxe3ox/production/13ab44c0d6953c1484a2e64afbf8f3a0d7ad05ba-3840x2160.jpg?w=2000&amp;q=90&amp;fit=max&amp;auto=format" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.tpof.studio/projects/slate">Slate | The Power of Friendship</a><div class="rd-meta">tpof.studio</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://mp.weixin.qq.com/s/8lkFN3DZiGy7YLdoCPFIZQ"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/VWpZENjIo5uDCcDrYy29TAQl4Mqp2wNDLgneyBXwFaRHoXcddcfrKjZ442wnjAic3ttgPlCjgrSq2PvpJAtT4QA/0?wx_fmt=jpeg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://mp.weixin.qq.com/s/8lkFN3DZiGy7YLdoCPFIZQ">胖东来宇宙</a><div class="rd-meta">mp.weixin.qq.com</div></div></article></div></div>
+    </section>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+</body>
+</html>
