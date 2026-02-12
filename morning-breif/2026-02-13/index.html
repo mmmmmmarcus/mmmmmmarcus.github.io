@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-13</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+:root{
+  --bg:#111214;
+  --paper:#f7f6f2;
+  --ink:#111111;
+  --muted:#656565;
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+}
+
+html,body{height:100%;margin:0;background:var(--bg);}
+body{
+  font-family:"Instrument Sans",ui-sans-serif,system-ui;
+  color:var(--ink);
+  overflow:hidden;
+  overscroll-behavior-y:none;
+}
+a{color:inherit}
+
+.grain{display:none;}
+.hero,.footer,#source-health,.section:has(.callout){display:none;}
+
+.wrap{max-width:100%;margin:0;padding:0;}
+.main{padding:0;}
+
+.section{margin:0;padding:0;}
+.section + .section{border:0;}
+.section-head,.section-rule{display:none;}
+ul.items{margin:0;padding:0;list-style:none;}
+
+li.item{
+  height:100dvh;
+  min-height:100dvh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:20px;
+  box-sizing:border-box;
+  position:relative;
+  background:#111214;
+  perspective:1200px;
+}
+li.item:nth-child(3n){
+  background:
+    radial-gradient(110% 90% at 20% 10%, rgba(255,149,98,.22) 0%, rgba(17,18,20,.06) 42%, rgba(17,18,20,.52) 100%),
+    linear-gradient(180deg,#1f1a18 0%, #111214 100%);
+}
+li.item:nth-child(4n){
+  background:
+    radial-gradient(110% 90% at 80% 12%, rgba(111,215,174,.2) 0%, rgba(17,18,20,.06) 42%, rgba(17,18,20,.52) 100%),
+    linear-gradient(180deg,#18201d 0%, #111214 100%);
+}
+
+.item-media{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.item-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.02) brightness(.92);}
+.item-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.45) 52%,rgba(0,0,0,.82) 100%);} 
+
+.title{
+  width:min(92vw,820px);
+  background:var(--paper);
+  border-radius:18px;
+  padding:26px 24px 22px;
+  box-shadow:var(--shadow);
+  transform-origin:center center;
+  transition:transform .38s ease, box-shadow .38s ease, opacity .32s ease;
+  will-change:transform,opacity;
+  position:relative;
+  z-index:2;
+}
+.title .main{font-size:34px;line-height:1.18;font-weight:700;letter-spacing:-.015em;max-width:20ch;}
+.sub-inline{display:block;margin-top:10px;font-size:16px;color:var(--muted);}
+.title .sub{margin-top:14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid #ddd;background:#fff;}
+
+li.item.flip-leave .title{transform:translateY(-26px) rotateX(12deg) scale(.97);opacity:.18;}
+li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985);opacity:.35;}
+
+.page-indicator{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:8px;z-index:10;
+}
+.page-indicator .dot{width:6px;height:18px;border-radius:8px;background:rgba(255,255,255,.28);transition:all .24s ease;}
+.page-indicator .dot.active{height:30px;background:#fff;}
+
+.gmail-page .title{max-height:74vh;overflow:auto;}
+.gmail-list{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.gmail-row{font-size:15px;line-height:1.35;padding:8px 10px;border-radius:10px;background:#eceae3;}
+.gmail-from{font-weight:700;}
+.gmail-subject{color:#333;}
+.gmail-sep{opacity:.5;margin:0 6px;}
+
+@media (max-width:768px){
+  li.item{padding:10px;}
+  .title{width:min(94vw,760px);padding:20px 16px 16px;border-radius:14px;}
+  .title .main{font-size:28px;max-width:100%;}
+  .sub-inline{font-size:14px;}
+  .gmail-row{font-size:14px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-cloudy">
+    <div class="wrap">
+      <div class="hero-top">
+        
+        <div class="meta">2026-02-13 · Shenzhen · 2/13 周五 · Updated 00:05</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line"> 18.1°C</div>
+          <div class="muted">Partly cloudy</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">4</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    <div class="section">
+  <ul class="items">
+    <li class="item gmail-page">
+      <div class="title">
+        <div class="main">Gmail / 4 unread (24h)</div>
+        <div class="gmail-list">
+<div class="gmail-row">
+  <span class="gmail-from">&quot;LogoArchive&#x27;s Logo Histories&quot; &lt;logoarchive@substack.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">Classic Logo, Expo &#x27;75</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">Mugeeb from Bento &lt;mugeeb@bento.me&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">Final day to export your Bento</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">Todoist &lt;no-reply@todoist.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">您的Todoist密码已变更</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">Poolsuite &lt;noreply@mail.poolsuite.net&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">How to become real ☼ An Italian farmhouse ☼ A Palladium rabbit hole</span>
+</div>
+
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+    <div class="section" id="source-health"><div class="section-head"><h2>Source Health</h2><span class="count">monitor</span></div><div class="section-rule"></div><div class="callout"><div class="icon">🩺</div><div class="content"><strong>去重:</strong> 相比 2026-02-12 移除了 20 条重复内容</div></div></div>
+<div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">1 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655016%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655016?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜DeepSeek悄悄更新，春节模型大战开启/三星S26月底见，或首发2nm处理器/车用固态电池国标要来了</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fericmigi.github.io%2Fpebble-qemu-wasm%2F" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://ericmigi.github.io/pebble-qemu-wasm/">Run Pebble OS in Browser via WASM</a> <span class="sub-inline">/ 通过 WASM 在浏览器中运行 Pebble OS</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//ericmigi.github.io" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Floriemerson.net%2F2024%2F08%2F31%2Fa-brief-history-of-barbed-wire-fence-telephone-networks%2F" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://loriemerson.net/2024/08/31/a-brief-history-of-barbed-wire-fence-telephone-networks/">A brief history of barbed wire fence telephone networks</a> <span class="sub-inline">/ 带刺铁丝围栏电话网络简史</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//loriemerson.net" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.bbc.com%2Fnews%2Farticles%2Fcn0e1g7kwglo" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.bbc.com/news/articles/cn0e1g7kwglo">Kim Jong Un chooses teen daughter as heir</a> <span class="sub-inline">/ 金正恩选择其少女女儿作为继承人</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.bbc.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Faethermug.com%2Fposts%2Fculture-is-the-mass-synchronization-of-framings" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://aethermug.com/posts/culture-is-the-mass-synchronization-of-framings">Culture Is the Mass-Synchronization of Framings</a> <span class="sub-inline">/ 文化是框架的大规模同步</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//aethermug.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Farrow.apache.org%2Fblog%2F2026%2F02%2F12%2Farrow-anniversary%2F" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://arrow.apache.org/blog/2026/02/12/arrow-anniversary/">Apache Arrow is 10 years old</a> <span class="sub-inline">/ Apache Arrow 已经 10 岁了</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arrow.apache.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Ftransportation%2F877902%2Fwaymo-sixth-generation-robotaxi-ojai-hyundai-sensors-cost" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/transportation/877902/waymo-sixth-generation-robotaxi-ojai-hyundai-sensors-cost">Waymo’s next-gen robotaxi is ready for passengers — and also ‘high-volume production’</a> <span class="sub-inline">/ Waymo 下一代自动驾驶出租车已可载客——并进入“高产量生产”阶段</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Ftech%2F877503%2Fsony-wf-1000xm6-earbuds-review" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877503/sony-wf-1000xm6-earbuds-review">The Sony WF-1000XM6 earbuds reclaim the noise-canceling crown</a> <span class="sub-inline">/ 索尼 WF-1000XM6 耳机重新夺回降噪王座</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Fentertainment%2F877922%2Fspider-noir-trailer-release-date-amazon-mgm-plus" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/entertainment/877922/spider-noir-trailer-release-date-amazon-mgm-plus">Spider-Noir looks like a hard-boiled thriller in first trailer</a> <span class="sub-inline">/ 《Spider-Noir》首支预告呈现出硬汉黑色惊悚片风格</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Ftech%2F877851%2Fweave-isaac-robot-fold-laundry" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877851/weave-isaac-robot-fold-laundry">This $7,999 robot will fold (some of) your laundry</a> <span class="sub-inline">/ 这台售价 7,999 美元的机器人能帮你叠（部分）衣服</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Fgadgets%2F865396%2Fvalentines-day-2026-gift-ideas-for-him-boyfriend-husband-partner" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/865396/valentines-day-2026-gift-ideas-for-him-boyfriend-husband-partner">The Verge’s 2026 Valentine’s Day gift guide (for him)</a> <span class="sub-inline">/ The Verge 2026 情人节礼物指南（送给他）</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1654816%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654816?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">iQOO 15 Ultra 评测：堆砌参数路数已尽，主动散热将是手机性能的唯一解</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1654993%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1654993?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">赛前必「摸福」？阿里云这个 AI 装置成了运动员的「冬奥许愿池」</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655080%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655080?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">挥别燃油时代，全新丰田汉兰达彻底电动化！续航仅 500 公里</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655048%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655048?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">体验完智谱刚刚发布的 GLM-5，我终于明白它为什么让硅谷猜破了头</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655021%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655021?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">库克退休前，能见到 AI Siri 上线吗？</a></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fhighguard-studio-wildlight-hit-with-layoffs" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/highguard-studio-wildlight-hit-with-layoffs">Most of Highguard Studio Has Been Laid Off Says Former Dev, Wildlight Confirms Cuts</a> <span class="sub-inline">/ 前开发者称 Highguard Studio 大部分员工已被裁，Wildlight 确认裁员</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://regexlearn.com/zh-cn"><img src="https://regexlearn.com//images/og-regexlearn-image.jpg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://regexlearn.com/zh-cn">Regex Learn - 逐步从零基础到高阶。</a><div class="rd-meta">regexlearn.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://zhuanlan.zhihu.com/p/58805451"><div class="rd-thumb-fallback">🔖</div></a><div class="rd-body"><a class="rd-title" href="https://zhuanlan.zhihu.com/p/58805451">酸葡萄，吃醋，柠檬精，酸是怎么和嫉妒扯上关系的？</a><div class="rd-meta">zhuanlan.zhihu.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="http://thinkingwithtype.com"><img src="https://rdl.ink/render/http%3A%2F%2Fthinkingwithtype.com" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="http://thinkingwithtype.com">Thinking With Type</a><div class="rd-meta">thinkingwithtype.com</div></div></article></div></div>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+
+<script>
+(() => {
+  const pages = Array.from(document.querySelectorAll('li.item'));
+  if (!pages.length) return;
+
+  let lock = false;
+  let touchStartY = null;
+  let current = 0;
+
+  const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+  const indicator = document.createElement('div');
+  indicator.className = 'page-indicator';
+  pages.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    indicator.appendChild(dot);
+  });
+  document.body.appendChild(indicator);
+
+  const paint = () => {
+    Array.from(indicator.children).forEach((el, i) => {
+      el.classList.toggle('active', i === current);
+    });
+  };
+
+  const go = (next, dir = 1) => {
+    const target = clamp(next, 0, pages.length - 1);
+    if (target === current || lock) return;
+
+    lock = true;
+    const prev = pages[current];
+    const incoming = pages[target];
+
+    prev.classList.add('flip-leave');
+    incoming.classList.add('flip-enter');
+
+    current = target;
+    paint();
+    pages[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    window.setTimeout(() => {
+      prev.classList.remove('flip-leave');
+      incoming.classList.remove('flip-enter');
+      lock = false;
+    }, 420);
+  };
+
+  const step = (dir) => go(current + (dir > 0 ? 1 : -1), dir);
+
+  window.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) < 8) return;
+    e.preventDefault();
+    step(e.deltaY);
+  }, { passive: false });
+
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); step(1); }
+    if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); step(-1); }
+  });
+
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches?.[0]?.clientY ?? null;
+  }, { passive: true });
+
+  window.addEventListener('touchend', (e) => {
+    const y = e.changedTouches?.[0]?.clientY;
+    if (touchStartY == null || y == null) return;
+    const dy = touchStartY - y;
+    if (Math.abs(dy) < 32) return;
+    step(dy);
+    touchStartY = null;
+  }, { passive: true });
+
+  pages[0].scrollIntoView({ behavior: 'auto', block: 'start' });
+})();
+</script>
+</body>
+</html>
