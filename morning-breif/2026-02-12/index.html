@@ -87,51 +87,33 @@ body::before{content:none;}
 /* Flattened hierarchy: one list system, no nested cards */
 .section{
   margin:0;
-  padding:20px 0 8px;
+  padding:0;
   border:none;
   background:transparent;
   box-shadow:none;
 }
 .section + .section{
-  border-top:1px solid var(--divider);
+  border-top:none;
 }
-.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;}
-.section-head h2{
-  margin:0;
-  font-family:"Fraunces", "Times New Roman", serif;
-  font-size:20px;
-  line-height:1.1;
-  letter-spacing:.005em;
-  text-transform:none;
-  color:#171717;
-}
-.section-head .count{
-  font-family:"IBM Plex Mono";
-  font-size:10px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(20,20,20,.45)
-}
-.section-rule{
-  display:block;
-  height:1px;
-  margin:10px 0 6px;
-  background:rgba(20,20,20,.12);
-}
+/* TikTok-style: hide topic chrome so pages feel continuous */
+.section-head{display:none;}
+.section-rule{display:none;}
 
 ul.items{list-style:none;padding:0;margin:0;}
 li.item{
-  min-height:82vh;
+  min-height:100dvh;
   display:flex;
   align-items:center;
-  padding:24px 8px;
-  border-bottom:1px solid rgba(20,20,20,.07);
+  justify-content:center;
+  padding:0 14px;
+  border-bottom:none;
   scroll-snap-align:start;
   scroll-snap-stop:always;
 }
 li.item:last-child{border-bottom:none;}
 
-.title .main{font-size:28px;line-height:1.24;max-width:18ch;font-weight:650;}
+.title{max-width:780px;width:min(92vw,780px);padding:18px 18px 14px;background:rgba(255,255,255,.86);border:1px solid var(--divider);border-radius:14px;box-shadow:0 8px 28px rgba(20,20,20,.06);} 
+.title .main{font-size:30px;line-height:1.22;max-width:20ch;font-weight:680;}
 .sub-inline{color:rgba(20,20,20,.55);font-size:15px;display:block;margin-top:8px;}
 .title .sub{margin-top:12px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
 .favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
@@ -159,8 +141,9 @@ li.item:last-child{border-bottom:none;}
 @media (max-width: 768px){
   .wrap{max-width:720px;}
   .hero-title h1{font-size:30px;}
-  .title .main{font-size:24px;max-width:100%;}
-  li.item{min-height:78vh;padding:18px 2px;}
+  .title{width:min(94vw,680px);padding:14px 14px 12px;border-radius:12px;}
+  .title .main{font-size:25px;max-width:100%;}
+  li.item{min-height:100dvh;padding:0 4px;}
   .rd-grid{grid-template-columns:1fr;gap:10px;}
 }
 
@@ -173,7 +156,7 @@ li.item:last-child{border-bottom:none;}
     <div class="wrap">
       <div class="hero-top">
         
-        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 23:06</div>
+        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 23:10</div>
       </div>
 
       <div class="hero-title">
@@ -189,7 +172,7 @@ li.item:last-child{border-bottom:none;}
         </div>
         <div class="card">
           <div class="label">Inbox</div>
-          <div class="wx-line">4</div>
+          <div class="wx-line">0</div>
           <div class="muted">Unread in last 24h</div>
         </div>
         <div class="card">
@@ -205,45 +188,12 @@ li.item:last-child{border-bottom:none;}
 
   <main class="wrap main">
     
-    <div class="section">
-  <h2>Gmail<span class="count">4 unread (24h)</span></h2>
-  <ul class="items">
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">&quot;LogoArchive&#x27;s Logo Histories&quot; &lt;logoarchive@substack.com&gt; — Classic Logo, Expo &#x27;75</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Mugeeb from Bento &lt;mugeeb@bento.me&gt; — Final day to export your Bento</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Todoist &lt;no-reply@todoist.com&gt; — 您的Todoist密码已变更</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Poolsuite &lt;noreply@mail.poolsuite.net&gt; — How to become real ☼ An Italian farmhouse ☼ A Palladium rabbit hole</div>
-  </div>
-</li>
-
-  </ul>
-</div>
-
+    
 
     <div class="section topic-ai" data-topic="ai">
   <div class="section-head">
     <h2>AI</h2>
-    <span class="count">4 items</span>
+    <span class="count">3 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
@@ -271,14 +221,6 @@ li.item:last-child{border-bottom:none;}
   </div>
 </li>
 
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://github.com/matplotlib/matplotlib/pull/31132">AI agent opens a PR write a blogpost to shames the maintainer who closes it</a> <span class="sub-inline">/ AI 代理提交 PR 后又写博客羞辱关闭它的维护者</span></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
   </ul>
 </div>
 
@@ -291,7 +233,7 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theregister.com/2026/02/12/apple_ios_263/">Apple patches decade-old iOS zero-day, possibly exploited by commercial spyware</a> <span class="sub-inline">/ 苹果修补一个存在十年的 iOS 零日漏洞，可能已被商业间谍软件利用</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theregister.com/2026/02/12/apple_ios_263/">Apple patches decade-old iOS zero-day, possibly exploited by commercial spyware</a> <span class="sub-inline">/ 苹果修复了存在十年的 iOS 零日漏洞，可能曾被商业间谍软件利用</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theregister.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -307,7 +249,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.icij.org/news/2026/02/nearly-half-of-powerful-50-caliber-ammo-seized-by-mexican-government-came-from-us-army-plant-defense-minister-says/">Nearly half of ammo seized by Mexican government came from US Army plant</a> <span class="sub-inline">/ 墨西哥政府查获的弹药近一半来自美国陆军工厂</span></div>
+    <div class="main"><a class="titlelink" href="https://www.icij.org/news/2026/02/nearly-half-of-powerful-50-caliber-ammo-seized-by-mexican-government-came-from-us-army-plant-defense-minister-says/">Nearly half of ammo seized by Mexican government came from US Army plant</a> <span class="sub-inline">/ 墨西哥政府查获的弹药中近一半来自美国陆军工厂</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.icij.org" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -315,7 +257,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://atha.io/blog/2026-02-12-viva">Email is tough: Major European Payment Processor&#x27;s Emails aren&#x27;t RFC-Compliant</a> <span class="sub-inline">/ 电子邮件真难：欧洲大型支付处理商的邮件不符合 RFC 标准</span></div>
+    <div class="main"><a class="titlelink" href="https://atha.io/blog/2026-02-12-viva">Email is tough: Major European Payment Processor&#x27;s Emails aren&#x27;t RFC-Compliant</a> <span class="sub-inline">/ 电子邮件真难搞：欧洲大型支付处理商的邮件不符合 RFC 标准</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//atha.io" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -331,7 +273,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://arstechnica.com/gadgets/2026/02/byte-magazine-artist-robert-tinney-who-illustrated-the-birth-of-pcs-dies-at-78/">Byte magazine artist Robert Tinney, who illustrated the birth of PCs, dies at 78</a> <span class="sub-inline">/ 描绘个人电脑诞生的《Byte》杂志艺术家 Robert Tinney 去世，享年 78 岁</span></div>
+    <div class="main"><a class="titlelink" href="https://arstechnica.com/gadgets/2026/02/byte-magazine-artist-robert-tinney-who-illustrated-the-birth-of-pcs-dies-at-78/">Byte magazine artist Robert Tinney, who illustrated the birth of PCs, dies at 78</a> <span class="sub-inline">/ 《Byte》杂志艺术家 Robert Tinney 去世，享年 78 岁；他曾描绘个人电脑的诞生</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arstechnica.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -339,7 +281,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/877674/highguard-wildlight-entertainment-layoffs">Highguard’s developer reportedly lays off ‘most’ of its staff just over two weeks after launch</a> <span class="sub-inline">/ 据报道，Highguard 的开发商在上线仅两周多后裁掉了“大部分”员工</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/877674/highguard-wildlight-entertainment-layoffs">Highguard’s developer reportedly lays off ‘most’ of its staff just over two weeks after launch</a> <span class="sub-inline">/ 据报道，Highguard 开发商在上线仅两周多后裁掉了“大多数”员工</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -347,7 +289,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/877106/minneapolis-ice-cbp-occupation-immigration-raid-mutual-aid">ICE is pushing Minneapolis underground</a> <span class="sub-inline">/ ICE 正把明尼阿波利斯逼入地下</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/877106/minneapolis-ice-cbp-occupation-immigration-raid-mutual-aid">ICE is pushing Minneapolis underground</a> <span class="sub-inline">/ ICE 正在把明尼阿波利斯推向地下化</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -355,7 +297,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877625/amazon-send-to-alexa-plus-kindle-scribe-hands-on">Amazon’s Send to Alexa Plus makes the Kindle Scribe feel more like a productivity device</a> <span class="sub-inline">/ 亚马逊的 Send to Alexa Plus 让 Kindle Scribe 更像一台效率工具</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877625/amazon-send-to-alexa-plus-kindle-scribe-hands-on">Amazon’s Send to Alexa Plus makes the Kindle Scribe feel more like a productivity device</a> <span class="sub-inline">/ Amazon 的 Send to Alexa Plus 让 Kindle Scribe 更像一台生产力设备</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -363,7 +305,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复记事本漏洞：可能诱导用户点击恶意 Markdown 链接</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复记事本漏洞：该漏洞可能诱导用户点击恶意 Markdown 链接</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -381,7 +323,7 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877258/samsung-unpacked-preorder-galaxy-s26-plus-ultra-ai">Samsung’s offering up to $900 of trade-in credit toward its new phones</a> <span class="sub-inline">/ 三星为新手机提供最高 900 美元以旧换新补贴</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877258/samsung-unpacked-preorder-galaxy-s26-plus-ultra-ai">Samsung’s offering up to $900 of trade-in credit toward its new phones</a> <span class="sub-inline">/ 三星新机最高可享 900 美元以旧换新补贴</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -389,7 +331,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/a-hero-katie-holmes-leads-tributes-to-dawsons-creek-star-james-van-der-beek">&#x27;A Hero&#x27;: Katie Holmes Leads Tributes to Dawson&#x27;s Creek Star James Van Der Beek</a> <span class="sub-inline">/ “一位英雄”：凯蒂·霍尔姆斯带头悼念《恋爱时代》主演 James Van Der Beek</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/a-hero-katie-holmes-leads-tributes-to-dawsons-creek-star-james-van-der-beek">&#x27;A Hero&#x27;: Katie Holmes Leads Tributes to Dawson&#x27;s Creek Star James Van Der Beek</a> <span class="sub-inline">/ “一位英雄”：凯蒂·霍姆斯领衔悼念《恋爱时代》主演 James Van Der Beek</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -407,7 +349,7 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877688/hp-zbook-ultra-g1a-laptop-amd-strix-halo-review">HP ZBook Ultra G1a review: a business-class workstation that’s got game</a> <span class="sub-inline">/ HP ZBook Ultra G1a 评测：一台也能打游戏的商用工作站</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877688/hp-zbook-ultra-g1a-laptop-amd-strix-halo-review">HP ZBook Ultra G1a review: a business-class workstation that’s got game</a> <span class="sub-inline">/ HP ZBook Ultra G1a 评测：一台也能打游戏的商用级工作站</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -423,7 +365,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-launches-warlock-dlc-for-diablo-2-resurrected-25-years-after-the-original-games-release-and-its-also-now-on-steam">Blizzard Launches Warlock DLC for Diablo 2: Resurrected, 25 Years After the Original Game&#x27;s Release — and It&#x27;s Also Now on Steam</a> <span class="sub-inline">/ 原版发售 25 年后，暴雪为《暗黑破坏神2：重制版》推出术士 DLC，并已上线 Steam</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-launches-warlock-dlc-for-diablo-2-resurrected-25-years-after-the-original-games-release-and-its-also-now-on-steam">Blizzard Launches Warlock DLC for Diablo 2: Resurrected, 25 Years After the Original Game&#x27;s Release — and It&#x27;s Also Now on Steam</a> <span class="sub-inline">/ 暴雪在原作发售 25 年后为《暗黑破坏神2：重制版》推出术士 DLC，并同步登陆 Steam</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -431,7 +373,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-canceled-tmnt-the-last-ronin-movie-would-have-brought-back-judith-hoags-april-oneil">The Canceled TMNT: The Last Ronin Movie Would Have Brought Back Judith Hoag&#x27;s April O&#x27;Neil</a> <span class="sub-inline">/ 被取消的《忍者神龟：最后的浪人》电影原本会让 Judith Hoag 回归饰演 April O&#x27;Neil</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-canceled-tmnt-the-last-ronin-movie-would-have-brought-back-judith-hoags-april-oneil">The Canceled TMNT: The Last Ronin Movie Would Have Brought Back Judith Hoag&#x27;s April O&#x27;Neil</a> <span class="sub-inline">/ 被取消的《忍者神龟：最后的浪人》电影原本将请回 Judith Hoag 饰演 April O&#x27;Neil</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -439,7 +381,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/helldivers-movie-lands-november-2027-release-date-with-jason-momoa-set-to-star">Helldivers Movie Lands November 2027 Release Date With Jason Momoa Set to Star</a> <span class="sub-inline">/ 《绝地潜兵》电影定档 2027 年 11 月，Jason Momoa 将主演</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/helldivers-movie-lands-november-2027-release-date-with-jason-momoa-set-to-star">Helldivers Movie Lands November 2027 Release Date With Jason Momoa Set to Star</a> <span class="sub-inline">/ 《绝地潜兵》电影定档 2027 年 11 月，杰森·莫玛将出演</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -465,7 +407,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/union-says-1200-ubisoft-staff-went-on-strike-this-week-protesting-closures-cost-cutting-and-return-to-office-mandate">Union Says 1,200 Ubisoft Staff Went on Strike This Week, Protesting Closures, Cost-Cutting and Return-to-Office Mandate</a> <span class="sub-inline">/ 工会称育碧本周有 1200 名员工罢工，抗议关停、削减成本和强制返岗</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/union-says-1200-ubisoft-staff-went-on-strike-this-week-protesting-closures-cost-cutting-and-return-to-office-mandate">Union Says 1,200 Ubisoft Staff Went on Strike This Week, Protesting Closures, Cost-Cutting and Return-to-Office Mandate</a> <span class="sub-inline">/ 工会称本周有 1200 名育碧员工罢工，抗议关停、削减成本和强制返岗</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -506,7 +448,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://lrd.im/"><img src="https://lrd.im/%E7%BD%91%E7%AB%99%E5%AE%BD%E5%B1%8F%E5%9B%BE%EF%BC%8816:9%EF%BC%89" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://lrd.im/">首页 - 李瑞东 LRD.IM</a><div class="rd-meta">lrd.im</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://selkie.design/substage/"><img src="https://selkie.design/substage/img/social-preview.jpg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://selkie.design/substage/">Substage: Command line power, natural language ease.</a><div class="rd-meta">selkie.design</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://optikka.com/"><img src="https://optikka.com/assets/img/og-image-CuiXJS5x.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://optikka.com/">Optikka</a><div class="rd-meta">optikka.com</div></div></article></div></div>
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://www.shipsltd.co.jp/pages/sp_50th_anniversary.aspx"><img src="https://www.shipsltd.co.jp/campaign/2025/50th/0905/img/ogp-new.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.shipsltd.co.jp/pages/sp_50th_anniversary.aspx">50th Anniversary｜株式会社シップス</a><div class="rd-meta">shipsltd.co.jp</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://ref.box/"><img src="https://framerusercontent.com/images/UzEU6v7cnc7CIT1LOHuzDS2MrDo.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://ref.box/">Refbox</a><div class="rd-meta">ref.box</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://www.prndlcars.com/p/what-they-copied-ferrari-luce-jony-ive"><img src="https://substackcdn.com/image/fetch/$s_!IawQ!,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fgolson.substack.com%2Fapi%2Fv1%2Fpost_preview%2F187230272%2Ftwitter.jpg%3Fversion%3D4" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.prndlcars.com/p/what-they-copied-ferrari-luce-jony-ive">What They Copied</a><div class="rd-meta">prndlcars.com</div></div></article></div></div>
 
     <footer class="footer">
       <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
