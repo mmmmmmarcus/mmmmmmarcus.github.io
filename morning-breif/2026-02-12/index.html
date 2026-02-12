@@ -89,11 +89,19 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 .page-indicator .dot{width:6px;height:18px;border-radius:8px;background:rgba(255,255,255,.28);transition:all .24s ease;}
 .page-indicator .dot.active{height:30px;background:#fff;}
 
+.gmail-page .title{max-height:74vh;overflow:auto;}
+.gmail-list{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.gmail-row{font-size:15px;line-height:1.35;padding:8px 10px;border-radius:10px;background:#eceae3;}
+.gmail-from{font-weight:700;}
+.gmail-subject{color:#333;}
+.gmail-sep{opacity:.5;margin:0 6px;}
+
 @media (max-width:768px){
   li.item{padding:10px;}
   .title{width:min(94vw,760px);padding:20px 16px 16px;border-radius:14px;}
   .title .main{font-size:28px;max-width:100%;}
   .sub-inline{font-size:14px;}
+  .gmail-row{font-size:14px;}
 }
 
   </style>
@@ -101,11 +109,11 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 <body>
   <div class="grain"></div>
 
-  <header class="hero wx-cloudy">
+  <header class="hero wx-sunny">
     <div class="wrap">
       <div class="hero-top">
         
-        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 23:49</div>
+        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 23:56</div>
       </div>
 
       <div class="hero-title">
@@ -116,8 +124,8 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line"> 18.2°C</div>
-          <div class="muted">Partly cloudy</div>
+          <div class="wx-line">☀ +19°C</div>
+          <div class="muted">️ 73%</div>
         </div>
         <div class="card">
           <div class="label">Inbox</div>
@@ -138,36 +146,38 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
   <main class="wrap main">
     
     <div class="section">
-  <h2>Gmail<span class="count">4 unread (24h)</span></h2>
   <ul class="items">
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">&quot;LogoArchive&#x27;s Logo Histories&quot; &lt;logoarchive@substack.com&gt; — Classic Logo, Expo &#x27;75</div>
-  </div>
-</li>
+    <li class="item gmail-page">
+      <div class="title">
+        <div class="main">Gmail / 4 unread (24h)</div>
+        <div class="gmail-list">
+<div class="gmail-row">
+  <span class="gmail-from">&quot;LogoArchive&#x27;s Logo Histories&quot; &lt;logoarchive@substack.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">Classic Logo, Expo &#x27;75</span>
+</div>
 
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Mugeeb from Bento &lt;mugeeb@bento.me&gt; — Final day to export your Bento</div>
-  </div>
-</li>
+<div class="gmail-row">
+  <span class="gmail-from">Mugeeb from Bento &lt;mugeeb@bento.me&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">Final day to export your Bento</span>
+</div>
 
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Todoist &lt;no-reply@todoist.com&gt; — 您的Todoist密码已变更</div>
-  </div>
-</li>
+<div class="gmail-row">
+  <span class="gmail-from">Todoist &lt;no-reply@todoist.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">您的Todoist密码已变更</span>
+</div>
 
-<li class="item">
-  <div class="bullet">•</div>
-  <div class="title">
-    <div class="main">Poolsuite &lt;noreply@mail.poolsuite.net&gt; — How to become real ☼ An Italian farmhouse ☼ A Palladium rabbit hole</div>
-  </div>
-</li>
+<div class="gmail-row">
+  <span class="gmail-from">Poolsuite &lt;noreply@mail.poolsuite.net&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">How to become real ☼ An Italian farmhouse ☼ A Palladium rabbit hole</span>
+</div>
 
+        </div>
+      </div>
+    </li>
   </ul>
 </div>
 
@@ -205,7 +215,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/877931/bytedance-seedance-2-video-generator-ai-launch">ByteDance’s next-gen AI model can generate clips based on text, images, audio, and video</a> <span class="sub-inline">/ 字节跳动下一代 AI 模型可基于文本、图片、音频和视频生成片段</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/877931/bytedance-seedance-2-video-generator-ai-launch">ByteDance’s next-gen AI model can generate clips based on text, images, audio, and video</a> <span class="sub-inline">/ 字节跳动下一代 AI 模型可基于文本、图像、音频和视频生成片段</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -223,7 +233,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theregister.com/2026/02/12/apple_ios_263/">Apple patches decade-old iOS zero-day, possibly exploited by commercial spyware</a> <span class="sub-inline">/ 苹果修补一个存在十年的 iOS 零日漏洞，疑似已被商业间谍软件利用</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theregister.com/2026/02/12/apple_ios_263/">Apple patches decade-old iOS zero-day, possibly exploited by commercial spyware</a> <span class="sub-inline">/ 苹果修补一个存在十年的 iOS 零日漏洞，可能曾被商业间谍软件利用</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theregister.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -247,7 +257,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.icij.org/news/2026/02/nearly-half-of-powerful-50-caliber-ammo-seized-by-mexican-government-came-from-us-army-plant-defense-minister-says/">Nearly half of ammo seized by Mexican government came from US Army plant</a> <span class="sub-inline">/ 墨西哥政府查获的近半弹药来自美国陆军工厂</span></div>
+    <div class="main"><a class="titlelink" href="https://www.icij.org/news/2026/02/nearly-half-of-powerful-50-caliber-ammo-seized-by-mexican-government-came-from-us-army-plant-defense-minister-says/">Nearly half of ammo seized by Mexican government came from US Army plant</a> <span class="sub-inline">/ 墨西哥政府查获的弹药近一半来自美国陆军工厂</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.icij.org" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -263,7 +273,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/877674/highguard-wildlight-entertainment-layoffs">Highguard’s developer reportedly lays off ‘most’ of its staff just over two weeks after launch</a> <span class="sub-inline">/ 报道称 Highguard 开发商在上线仅两周多后裁掉了‘大多数’员工</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/877674/highguard-wildlight-entertainment-layoffs">Highguard’s developer reportedly lays off ‘most’ of its staff just over two weeks after launch</a> <span class="sub-inline">/ 据称 Highguard 开发商在上线仅两周多后裁掉了“大部分”员工</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -271,7 +281,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/877106/minneapolis-ice-cbp-occupation-immigration-raid-mutual-aid">ICE is pushing Minneapolis underground</a> <span class="sub-inline">/ ICE 正把明尼阿波利斯推向地下化</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/877106/minneapolis-ice-cbp-occupation-immigration-raid-mutual-aid">ICE is pushing Minneapolis underground</a> <span class="sub-inline">/ ICE 正将明尼阿波利斯的行动转入地下</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -287,7 +297,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复 Notepad 漏洞：该漏洞可诱导用户点击恶意 Markdown 链接</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复记事本漏洞：可能诱导用户点击恶意 Markdown 链接</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -295,7 +305,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.commondreams.org/news/fort-bliss-inhumane-ice-conditions">Texas Lawmakers Sound Alarm on &#x27;Torture, Killing, and Inhumane Treatment&#x27;</a> <span class="sub-inline">/ 得州议员就‘酷刑、杀害与不人道对待’发出警报</span></div>
+    <div class="main"><a class="titlelink" href="https://www.commondreams.org/news/fort-bliss-inhumane-ice-conditions">Texas Lawmakers Sound Alarm on &#x27;Torture, Killing, and Inhumane Treatment&#x27;</a> <span class="sub-inline">/ 得州议员就“酷刑、杀害与不人道对待”发出警报</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.commondreams.org" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -313,7 +323,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/a-hero-katie-holmes-leads-tributes-to-dawsons-creek-star-james-van-der-beek">&#x27;A Hero&#x27;: Katie Holmes Leads Tributes to Dawson&#x27;s Creek Star James Van Der Beek</a> <span class="sub-inline">/ ‘一位英雄’：Katie Holmes 领衔悼念《Dawson&#x27;s Creek》主演 James Van Der Beek</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/a-hero-katie-holmes-leads-tributes-to-dawsons-creek-star-james-van-der-beek">&#x27;A Hero&#x27;: Katie Holmes Leads Tributes to Dawson&#x27;s Creek Star James Van Der Beek</a> <span class="sub-inline">/ “一位英雄”：凯蒂·霍尔姆斯领衔悼念《恋爱时代》主演詹姆斯·范德比克</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -331,7 +341,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877688/hp-zbook-ultra-g1a-laptop-amd-strix-halo-review">HP ZBook Ultra G1a review: a business-class workstation that’s got game</a> <span class="sub-inline">/ HP ZBook Ultra G1a 评测：一台也能打游戏的商用级工作站</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877688/hp-zbook-ultra-g1a-laptop-amd-strix-halo-review">HP ZBook Ultra G1a review: a business-class workstation that’s got game</a> <span class="sub-inline">/ HP ZBook Ultra G1a 评测：一台也能打游戏的商务级工作站</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -339,7 +349,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/arc-raiders-publisher-boasts-that-the-game-has-significantly-exceeded-expectations-and-now-sold-14-million-copies">Arc Raiders Publisher Boasts That the Game Has &#x27;Significantly Exceeded Expectations&#x27; and Now Sold 14 Million Copies</a> <span class="sub-inline">/ 《Arc Raiders》发行商称游戏‘显著超出预期’，现已售出 1400 万份</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/arc-raiders-publisher-boasts-that-the-game-has-significantly-exceeded-expectations-and-now-sold-14-million-copies">Arc Raiders Publisher Boasts That the Game Has &#x27;Significantly Exceeded Expectations&#x27; and Now Sold 14 Million Copies</a> <span class="sub-inline">/ 《Arc Raiders》发行商称游戏“显著超出预期”，销量现已达 1400 万份</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -347,7 +357,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-launches-warlock-dlc-for-diablo-2-resurrected-25-years-after-the-original-games-release-and-its-also-now-on-steam">Blizzard Launches Warlock DLC for Diablo 2: Resurrected, 25 Years After the Original Game&#x27;s Release — and It&#x27;s Also Now on Steam</a> <span class="sub-inline">/ 暴雪在原作发售 25 年后为《Diablo 2: Resurrected》推出术士 DLC，且现已登陆 Steam</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-launches-warlock-dlc-for-diablo-2-resurrected-25-years-after-the-original-games-release-and-its-also-now-on-steam">Blizzard Launches Warlock DLC for Diablo 2: Resurrected, 25 Years After the Original Game&#x27;s Release — and It&#x27;s Also Now on Steam</a> <span class="sub-inline">/ 原作发售 25 年后，暴雪为《暗黑破坏神2：重制版》推出术士 DLC，并已登陆 Steam</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -355,7 +365,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-canceled-tmnt-the-last-ronin-movie-would-have-brought-back-judith-hoags-april-oneil">The Canceled TMNT: The Last Ronin Movie Would Have Brought Back Judith Hoag&#x27;s April O&#x27;Neil</a> <span class="sub-inline">/ 被取消的《TMNT: The Last Ronin》电影原计划让 Judith Hoag 回归饰演 April O&#x27;Neil</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-canceled-tmnt-the-last-ronin-movie-would-have-brought-back-judith-hoags-april-oneil">The Canceled TMNT: The Last Ronin Movie Would Have Brought Back Judith Hoag&#x27;s April O&#x27;Neil</a> <span class="sub-inline">/ 被取消的《忍者神龟：最后的浪人》电影原本将让朱迪思·霍格回归饰演艾普丽尔·奥尼尔</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -363,7 +373,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/helldivers-movie-lands-november-2027-release-date-with-jason-momoa-set-to-star">Helldivers Movie Lands November 2027 Release Date With Jason Momoa Set to Star</a> <span class="sub-inline">/ 《Helldivers》电影定档 2027 年 11 月，Jason Momoa 确认主演</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/helldivers-movie-lands-november-2027-release-date-with-jason-momoa-set-to-star">Helldivers Movie Lands November 2027 Release Date With Jason Momoa Set to Star</a> <span class="sub-inline">/ 《绝地潜兵》电影定档 2027 年 11 月，杰森·莫玛将主演</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -430,7 +440,7 @@ li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985)
   </ul>
 </div>
 
-<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="http://marc-newson.com"><img src="https://rdl.ink/render/http%3A%2F%2Fmarc-newson.com" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="http://marc-newson.com">Marc Newson</a><div class="rd-meta">marc-newson.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://order.design"><img src="https://order-site-images-dev.imgix.net/d7996afc-e580-4494-bc4a-f0e6f9c7f2c2/ORDER_OFFICE.jpg?auto=compress%2Cformat&amp;crop=entropy&amp;fit=crop&amp;fm=jpg&amp;h=470&amp;q=70&amp;rect=0%2C880%2C8376%2C4375&amp;w=900" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://order.design">order design</a><div class="rd-meta">order.design</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://www.hiroharumatsumoto.com"><img src="https://static.wixstatic.com/media/6b158c_b0df7e1bec4c4aa08304206ba5ef473b.jpg/v1/fit/w_2500,h_1330,al_c/6b158c_b0df7e1bec4c4aa08304206ba5ef473b.jpg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.hiroharumatsumoto.com">Photography | 日本 | Tokyo | HiroharuMatsumoto</a><div class="rd-meta">hiroharumatsumoto.com</div></div></article></div></div>
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://www.theturnsignalblog.com/the-subtle-art-of-designing-physical-control-for-cars/?utm_source=news.todayin.design&amp;utm_medium=newsletter&amp;utm_campaign=meet-the-makers-defining-tech-s-next-chapter&amp;_bhlid=3d5ad6f8f5cfc912bd15178733732bb37111c65f"><img src="https://theturnsignalblog.com/static/744153fbeaba39ca0d8c106ddc1ffdb2/3b869/featured.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://www.theturnsignalblog.com/the-subtle-art-of-designing-physical-control-for-cars/?utm_source=news.todayin.design&amp;utm_medium=newsletter&amp;utm_campaign=meet-the-makers-defining-tech-s-next-chapter&amp;_bhlid=3d5ad6f8f5cfc912bd15178733732bb37111c65f">The Subtle Art of Designing Physical Controls for Cars</a><div class="rd-meta">theturnsignalblog.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://ryolu.notion.site/1610a94b9c108079a95be4362afd4a26"><img src="https://ryolu.notion.site/images/page-cover/rijksmuseum_jansz_1637.jpg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://ryolu.notion.site/1610a94b9c108079a95be4362afd4a26">How to Make Something Great</a><div class="rd-meta">ryolu.notion.site</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://ixlrlxi.artstation.com/"><img src="https://cdna.artstation.com/p/assets/covers/images/075/164/662/small/rust-shake-rust-shake-prev.jpg?1713905497" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://ixlrlxi.artstation.com/">Rust Shake</a><div class="rd-meta">ixlrlxi.artstation.com</div></div></article></div></div>
 
     <footer class="footer">
       <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
