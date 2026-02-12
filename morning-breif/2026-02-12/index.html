@@ -26,7 +26,7 @@
 }
 
 html,body{height:100%;background:var(--bg);color:var(--text);}
-body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;}
+body{margin:0;font-family:"Instrument Sans", ui-sans-serif, system-ui;scroll-snap-type:y mandatory;overflow-y:auto;}
 
 /* Make mobile side gutters visually obvious by padding the page itself */
 @media (max-width: 768px){
@@ -52,6 +52,7 @@ body::before{content:none;}
   backdrop-filter: blur(6px);
   border:1px solid var(--divider);
   border-radius:16px;
+  scroll-snap-align:start;
 }
 @media (max-width: 768px){
   .hero{margin-top:12px;}
@@ -119,12 +120,20 @@ body::before{content:none;}
 }
 
 ul.items{list-style:none;padding:0;margin:0;}
-li.item{padding:10px 0;border-bottom:1px solid rgba(20,20,20,.07);}
+li.item{
+  min-height:82vh;
+  display:flex;
+  align-items:center;
+  padding:24px 8px;
+  border-bottom:1px solid rgba(20,20,20,.07);
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
 li.item:last-child{border-bottom:none;}
 
-.title .main{font-size:14px;line-height:1.35;}
-.sub-inline{color:rgba(20,20,20,.55);font-size:12px;}
-.title .sub{margin-top:6px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.title .main{font-size:28px;line-height:1.24;max-width:18ch;font-weight:650;}
+.sub-inline{color:rgba(20,20,20,.55);font-size:15px;display:block;margin-top:8px;}
+.title .sub{margin-top:12px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
 .favicon{width:14px;height:14px;border-radius:4px;border:1px solid var(--divider);background:#fff;}
 .titlelink{color:inherit;text-decoration:none;}
 .titlelink:hover{text-decoration:underline;text-decoration-color:rgba(255,77,26,.35);text-underline-offset:3px;}
@@ -150,6 +159,8 @@ li.item:last-child{border-bottom:none;}
 @media (max-width: 768px){
   .wrap{max-width:720px;}
   .hero-title h1{font-size:30px;}
+  .title .main{font-size:24px;max-width:100%;}
+  li.item{min-height:78vh;padding:18px 2px;}
   .rd-grid{grid-template-columns:1fr;gap:10px;}
 }
 
@@ -162,7 +173,7 @@ li.item:last-child{border-bottom:none;}
     <div class="wrap">
       <div class="hero-top">
         
-        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 22:30</div>
+        <div class="meta">2026-02-12 · Shenzhen · 2/12 周四 · Updated 23:06</div>
       </div>
 
       <div class="hero-title">
@@ -173,7 +184,7 @@ li.item:last-child{border-bottom:none;}
       <div class="hero-cards">
         <div class="card">
           <div class="label">Weather</div>
-          <div class="wx-line"> 18.4°C</div>
+          <div class="wx-line"> 18.2°C</div>
           <div class="muted">Partly cloudy</div>
         </div>
         <div class="card">
@@ -262,7 +273,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://github.com/matplotlib/matplotlib/pull/31132">AI agent opens a PR write a blogpost to shames the maintainer who closes it</a> <span class="sub-inline">/ AI 代理提交 PR 并写博客羞辱关闭它的维护者</span></div>
+    <div class="main"><a class="titlelink" href="https://github.com/matplotlib/matplotlib/pull/31132">AI agent opens a PR write a blogpost to shames the maintainer who closes it</a> <span class="sub-inline">/ AI 代理提交 PR 后又写博客羞辱关闭它的维护者</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -280,9 +291,33 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theregister.com/2026/02/12/apple_ios_263/">Apple patches decade-old iOS zero-day, possibly exploited by commercial spyware</a> <span class="sub-inline">/ 苹果修补一个存在十年的 iOS 零日漏洞，可能已被商业间谍软件利用</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theregister.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
     <div class="main"><a class="titlelink" href="https://sspai.com/post/106310">派早报：Apple 将举办五十周年庆、VSCO 上架 Lr 预设等</a></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.icij.org/news/2026/02/nearly-half-of-powerful-50-caliber-ammo-seized-by-mexican-government-came-from-us-army-plant-defense-minister-says/">Nearly half of ammo seized by Mexican government came from US Army plant</a> <span class="sub-inline">/ 墨西哥政府查获的弹药近一半来自美国陆军工厂</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.icij.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://atha.io/blog/2026-02-12-viva">Email is tough: Major European Payment Processor&#x27;s Emails aren&#x27;t RFC-Compliant</a> <span class="sub-inline">/ 电子邮件真难：欧洲大型支付处理商的邮件不符合 RFC 标准</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//atha.io" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
@@ -296,7 +331,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://arstechnica.com/gadgets/2026/02/byte-magazine-artist-robert-tinney-who-illustrated-the-birth-of-pcs-dies-at-78/">Byte magazine artist Robert Tinney, who illustrated the birth of PCs, dies at 78</a> <span class="sub-inline">/ 描绘个人电脑诞生历程的《Byte》杂志画家 Robert Tinney 去世，享年 78 岁</span></div>
+    <div class="main"><a class="titlelink" href="https://arstechnica.com/gadgets/2026/02/byte-magazine-artist-robert-tinney-who-illustrated-the-birth-of-pcs-dies-at-78/">Byte magazine artist Robert Tinney, who illustrated the birth of PCs, dies at 78</a> <span class="sub-inline">/ 描绘个人电脑诞生的《Byte》杂志艺术家 Robert Tinney 去世，享年 78 岁</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//arstechnica.com" alt="" loading="lazy"/> Hacker News</div>
   </div>
@@ -304,7 +339,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/877674/highguard-wildlight-entertainment-layoffs">Highguard’s developer reportedly lays off ‘most’ of its staff just over two weeks after launch</a> <span class="sub-inline">/ 据报道，Highguard 开发商在上线仅两周多后裁掉了“大多数”员工</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/877674/highguard-wildlight-entertainment-layoffs">Highguard’s developer reportedly lays off ‘most’ of its staff just over two weeks after launch</a> <span class="sub-inline">/ 据报道，Highguard 的开发商在上线仅两周多后裁掉了“大部分”员工</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -312,7 +347,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/877106/minneapolis-ice-cbp-occupation-immigration-raid-mutual-aid">ICE is pushing Minneapolis underground</a> <span class="sub-inline">/ ICE 正在把明尼阿波利斯的行动推向地下化</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/policy/877106/minneapolis-ice-cbp-occupation-immigration-raid-mutual-aid">ICE is pushing Minneapolis underground</a> <span class="sub-inline">/ ICE 正把明尼阿波利斯逼入地下</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -320,7 +355,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877625/amazon-send-to-alexa-plus-kindle-scribe-hands-on">Amazon’s Send to Alexa Plus makes the Kindle Scribe feel more like a productivity device</a> <span class="sub-inline">/ 亚马逊的 Send to Alexa Plus 让 Kindle Scribe 更像一台生产力设备</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877625/amazon-send-to-alexa-plus-kindle-scribe-hands-on">Amazon’s Send to Alexa Plus makes the Kindle Scribe feel more like a productivity device</a> <span class="sub-inline">/ 亚马逊的 Send to Alexa Plus 让 Kindle Scribe 更像一台效率工具</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -328,33 +363,9 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复记事本漏洞：该漏洞可能诱导用户点击恶意 Markdown 链接</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877295/microsoft-notepad-markdown-security-vulnerability-remote-code-execution">Microsoft fixes Notepad flaw that could trick users into clicking malicious Markdown links</a> <span class="sub-inline">/ 微软修复记事本漏洞：可能诱导用户点击恶意 Markdown 链接</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://marginalrevolution.com/marginalrevolution/2026/02/i-regret-to-inform-you-that-the-fda-is-still-fdaing.html">I Regret to Inform You That the FDA Is FDAing Again</a> <span class="sub-inline">/ 很遗憾地通知你，FDA 又开始“典型 FDA 操作”了</span></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//marginalrevolution.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.openculture.com/2025/09/the-carl-sagan-baloney-detection-kit.html">Carl Sagan&#x27;s Baloney Detection Kit: Tools for Thinking Critically (2025)</a> <span class="sub-inline">/ 卡尔·萨根的《胡扯识别工具包》：批判性思维工具（2025）</span></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.openculture.com" alt="" loading="lazy"/> Hacker News</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://audioconvert.ai/british-accent-generator">Show HN: A free online British accent generator for instant voice conversion</a> <span class="sub-inline">/ Show HN：一个免费的在线英式口音生成器，可即时变声</span></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//audioconvert.ai" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
@@ -364,23 +375,15 @@ li.item:last-child{border-bottom:none;}
 <div class="section topic-consumer-electronics" data-topic="consumer-electronics">
   <div class="section-head">
     <h2>Consumer Electronics</h2>
-    <span class="count">3 items</span>
+    <span class="count">2 items</span>
   </div>
   <div class="section-rule"></div>
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877258/samsung-unpacked-preorder-galaxy-s26-plus-ultra-ai">Samsung’s offering up to $900 of trade-in credit toward its new phones</a> <span class="sub-inline">/ 三星为新手机提供最高 900 美元的以旧换新补贴</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/877258/samsung-unpacked-preorder-galaxy-s26-plus-ultra-ai">Samsung’s offering up to $900 of trade-in credit toward its new phones</a> <span class="sub-inline">/ 三星为新手机提供最高 900 美元以旧换新补贴</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
-  </div>
-</li>
-
-<li class="item">
-  <div class="title">
-    <div class="main"><a class="titlelink" href="https://lwn.net/Articles/1055590/">The Future for Tyr, a Rust GPU Driver for Arm Mali Hardware</a> <span class="sub-inline">/ Tyr 的未来：面向 Arm Mali 硬件的 Rust GPU 驱动</span></div>
-
-    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//lwn.net" alt="" loading="lazy"/> Hacker News</div>
   </div>
 </li>
 
@@ -404,7 +407,7 @@ li.item:last-child{border-bottom:none;}
   <ul class="items">
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877688/hp-zbook-ultra-g1a-laptop-amd-strix-halo-review">HP ZBook Ultra G1a review: a business-class workstation that’s got game</a> <span class="sub-inline">/ HP ZBook Ultra G1a 评测：一台也能打游戏的商用级工作站</span></div>
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/877688/hp-zbook-ultra-g1a-laptop-amd-strix-halo-review">HP ZBook Ultra G1a review: a business-class workstation that’s got game</a> <span class="sub-inline">/ HP ZBook Ultra G1a 评测：一台也能打游戏的商用工作站</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
   </div>
@@ -420,7 +423,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-launches-warlock-dlc-for-diablo-2-resurrected-25-years-after-the-original-games-release-and-its-also-now-on-steam">Blizzard Launches Warlock DLC for Diablo 2: Resurrected, 25 Years After the Original Game&#x27;s Release — and It&#x27;s Also Now on Steam</a> <span class="sub-inline">/ 原版发售 25 年后，暴雪为《暗黑破坏神2：重制版》推出术士 DLC，且现已登陆 Steam</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/blizzard-launches-warlock-dlc-for-diablo-2-resurrected-25-years-after-the-original-games-release-and-its-also-now-on-steam">Blizzard Launches Warlock DLC for Diablo 2: Resurrected, 25 Years After the Original Game&#x27;s Release — and It&#x27;s Also Now on Steam</a> <span class="sub-inline">/ 原版发售 25 年后，暴雪为《暗黑破坏神2：重制版》推出术士 DLC，并已上线 Steam</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -428,7 +431,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-canceled-tmnt-the-last-ronin-movie-would-have-brought-back-judith-hoags-april-oneil">The Canceled TMNT: The Last Ronin Movie Would Have Brought Back Judith Hoag&#x27;s April O&#x27;Neil</a> <span class="sub-inline">/ 被取消的《忍者神龟：最后的浪人》电影原本会让 Judith Hoag 的 April O’Neil 回归</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/the-canceled-tmnt-the-last-ronin-movie-would-have-brought-back-judith-hoags-april-oneil">The Canceled TMNT: The Last Ronin Movie Would Have Brought Back Judith Hoag&#x27;s April O&#x27;Neil</a> <span class="sub-inline">/ 被取消的《忍者神龟：最后的浪人》电影原本会让 Judith Hoag 回归饰演 April O&#x27;Neil</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -462,7 +465,7 @@ li.item:last-child{border-bottom:none;}
 
 <li class="item">
   <div class="title">
-    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/union-says-1200-ubisoft-staff-went-on-strike-this-week-protesting-closures-cost-cutting-and-return-to-office-mandate">Union Says 1,200 Ubisoft Staff Went on Strike This Week, Protesting Closures, Cost-Cutting and Return-to-Office Mandate</a> <span class="sub-inline">/ 工会称本周有 1200 名育碧员工罢工，抗议关停、削减成本和强制返岗</span></div>
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/union-says-1200-ubisoft-staff-went-on-strike-this-week-protesting-closures-cost-cutting-and-return-to-office-mandate">Union Says 1,200 Ubisoft Staff Went on Strike This Week, Protesting Closures, Cost-Cutting and Return-to-Office Mandate</a> <span class="sub-inline">/ 工会称育碧本周有 1200 名员工罢工，抗议关停、削减成本和强制返岗</span></div>
 
     <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
   </div>
@@ -503,7 +506,7 @@ li.item:last-child{border-bottom:none;}
   </ul>
 </div>
 
-<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="http://www.reesaw.com"><img src="https://rdl.ink/render/http%3A%2F%2Fwww.reesaw.com" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="http://www.reesaw.com">理所设计—探索吃喝玩乐新体验</a><div class="rd-meta">reesaw.com</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://subpixel.space/entries/haute-baroque-capitalism"><img src="https://subpixel.space/uploads/mfga-3.jpg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://subpixel.space/entries/haute-baroque-capitalism">Haute Baroque Capitalism｜高级巴洛克资本主义</a><div class="rd-meta">subpixel.space</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://deuxhuithuit.com/en/project/cantine-cotiere-branding"><img src="https://imagedelivery.net/2FmlsnLikW_s6yV1F4QcJw/92d97b6d-7e44-42a3-958d-621308e88600/fit=crop,gravity=0.5x0.5,quality=80" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://deuxhuithuit.com/en/project/cantine-cotiere-branding">Cantine Côtière | Deux Huit Huit</a><div class="rd-meta">deuxhuithuit.com</div></div></article></div></div>
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://lrd.im/"><img src="https://lrd.im/%E7%BD%91%E7%AB%99%E5%AE%BD%E5%B1%8F%E5%9B%BE%EF%BC%8816:9%EF%BC%89" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://lrd.im/">首页 - 李瑞东 LRD.IM</a><div class="rd-meta">lrd.im</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://selkie.design/substage/"><img src="https://selkie.design/substage/img/social-preview.jpg" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://selkie.design/substage/">Substage: Command line power, natural language ease.</a><div class="rd-meta">selkie.design</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://optikka.com/"><img src="https://optikka.com/assets/img/og-image-CuiXJS5x.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://optikka.com/">Optikka</a><div class="rd-meta">optikka.com</div></div></article></div></div>
 
     <footer class="footer">
       <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
