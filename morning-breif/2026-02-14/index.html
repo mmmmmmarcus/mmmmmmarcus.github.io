@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Morning brief — 2026-02-14</title>
+
+  <!-- Distinctive typography (skill guideline: avoid generic system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+:root{
+  --bg:#111214;
+  --paper:#f7f6f2;
+  --ink:#111111;
+  --muted:#656565;
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+}
+
+html,body{height:100%;margin:0;background:var(--bg);}
+body{
+  font-family:"Instrument Sans",ui-sans-serif,system-ui;
+  color:var(--ink);
+  overflow:hidden;
+  overscroll-behavior-y:none;
+}
+a{color:inherit}
+
+.grain{display:none;}
+.hero,.footer,#source-health,.section:has(.callout){display:none;}
+
+.wrap{max-width:100%;margin:0;padding:0;}
+.main{padding:0;}
+
+.section{margin:0;padding:0;}
+.section + .section{border:0;}
+.section-head,.section-rule{display:none;}
+ul.items{margin:0;padding:0;list-style:none;}
+
+li.item{
+  height:100dvh;
+  min-height:100dvh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:20px;
+  box-sizing:border-box;
+  position:relative;
+  background:#111214;
+  perspective:1200px;
+}
+li.item:nth-child(3n){
+  background:
+    radial-gradient(110% 90% at 20% 10%, rgba(255,149,98,.22) 0%, rgba(17,18,20,.06) 42%, rgba(17,18,20,.52) 100%),
+    linear-gradient(180deg,#1f1a18 0%, #111214 100%);
+}
+li.item:nth-child(4n){
+  background:
+    radial-gradient(110% 90% at 80% 12%, rgba(111,215,174,.2) 0%, rgba(17,18,20,.06) 42%, rgba(17,18,20,.52) 100%),
+    linear-gradient(180deg,#18201d 0%, #111214 100%);
+}
+
+.item-media{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.item-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.02) brightness(.92);}
+.item-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.45) 52%,rgba(0,0,0,.82) 100%);} 
+
+.title{
+  width:min(92vw,820px);
+  background:var(--paper);
+  border-radius:18px;
+  padding:26px 24px 22px;
+  box-shadow:var(--shadow);
+  transform-origin:center center;
+  transition:transform .38s ease, box-shadow .38s ease, opacity .32s ease;
+  will-change:transform,opacity;
+  position:relative;
+  z-index:2;
+}
+.title .main{font-size:34px;line-height:1.18;font-weight:700;letter-spacing:-.015em;max-width:20ch;}
+.sub-inline{display:block;margin-top:10px;font-size:16px;color:var(--muted);}
+.title .sub{margin-top:14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.favicon{width:14px;height:14px;border-radius:4px;border:1px solid #ddd;background:#fff;}
+
+li.item.flip-leave .title{transform:translateY(-26px) rotateX(12deg) scale(.97);opacity:.18;}
+li.item.flip-enter .title{transform:translateY(22px) rotateX(-10deg) scale(.985);opacity:.35;}
+
+.page-indicator{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:8px;z-index:10;
+}
+.page-indicator .dot{width:6px;height:18px;border-radius:8px;background:rgba(255,255,255,.28);transition:all .24s ease;}
+.page-indicator .dot.active{height:30px;background:#fff;}
+
+.gmail-page .title{max-height:74vh;overflow:auto;}
+.gmail-list{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.gmail-row{font-size:15px;line-height:1.35;padding:8px 10px;border-radius:10px;background:#eceae3;}
+.gmail-from{font-weight:700;}
+.gmail-subject{color:#333;}
+.gmail-sep{opacity:.5;margin:0 6px;}
+
+@media (max-width:768px){
+  li.item{padding:10px;}
+  .title{width:min(94vw,760px);padding:20px 16px 16px;border-radius:14px;}
+  .title .main{font-size:28px;max-width:100%;}
+  .sub-inline{font-size:14px;}
+  .gmail-row{font-size:14px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero wx-sunny">
+    <div class="wrap">
+      <div class="hero-top">
+        
+        <div class="meta">2026-02-14 · Shenzhen · 2/14 周六 · Updated 07:40</div>
+      </div>
+
+      <div class="hero-title">
+        <h1>Morning brief</h1>
+        <div class="hero-sub">Read what matters. A tight, topic-first feed.</div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="card">
+          <div class="label">Weather</div>
+          <div class="wx-line">☀ +18°C</div>
+          <div class="muted">️ 83%</div>
+        </div>
+        <div class="card">
+          <div class="label">Inbox</div>
+          <div class="wx-line">5</div>
+          <div class="muted">Unread in last 24h</div>
+        </div>
+        <div class="card">
+          <div class="label">Design Spells</div>
+          <div class="wx-line">None</div>
+          <div class="muted">Visual micro-interactions</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    
+    <div class="section">
+  <ul class="items">
+    <li class="item gmail-page">
+      <div class="title">
+        <div class="main">Gmail / 5 unread (24h)</div>
+        <div class="gmail-list">
+<div class="gmail-row">
+  <span class="gmail-from">Figma &lt;no-reply@email.figma.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">Your week on Figma Community</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">Vercel &lt;notifications@vercel.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">New sign-in detected on your Vercel account</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">Ollama &lt;hello@ollama.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">Ollama gets a new command with new models MiniMax M2.5 &amp; GLM-5</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">UX Movement &lt;uxmovement@substack.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">&quot;My&quot; vs &quot;Your&quot; in User Interface Design</span>
+</div>
+
+<div class="gmail-row">
+  <span class="gmail-from">Hong Kong Disneyland &lt;info@email.hongkongdisneyland.com&gt;</span>
+  <span class="gmail-sep">—</span>
+  <span class="gmail-subject">这个春日，米奇邀请你与七位好萌友尽情畅玩！✉️</span>
+</div>
+
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+    <div class="section" id="source-health"><div class="section-head"><h2>Source Health</h2><span class="count">monitor</span></div><div class="section-rule"></div><div class="callout"><div class="icon">🩺</div><div class="content"><strong>去重:</strong> 相比 2026-02-13 移除了 2 条重复内容</div></div></div>
+<div class="section topic-ai" data-topic="ai">
+  <div class="section-head">
+    <h2>AI</h2>
+    <span class="count">9 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.cnbeta.com.tw%2Farticles%2Ftech%2F1549738.htm" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1549738.htm">千亿资金需求下 OpenAI本周在ChatGPT上线广告</a> <span class="sub-inline">/ 千亿资金需求下 OpenAI本周在ChatGPT上线广告</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.cnbeta.com.tw%2Farticles%2Ftech%2F1549740.htm" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1549740.htm">前明星研究员警告：ChatGPT投放广告恐让OpenAI重蹈Facebook覆辙</a> <span class="sub-inline">/ 前明星研究员警告：ChatGPT投放广告恐让OpenAI重蹈Facebook覆辙</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655183%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655183?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜影石CEO回应年会送房送车/12306新增「低人一等座」提醒/OpenAI发布新模型，用英伟达对手芯片</a> <span class="sub-inline">/ 早报｜影石CEO回应年会送房送车/12306新增「低人一等座」提醒/OpenAI发布新模型，用英伟达对手芯片</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.cnbeta.com.tw%2Farticles%2Ftech%2F1549734.htm" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.cnbeta.com.tw/articles/tech/1549734.htm">Gemini 3 Deep Think 发布：一张草图直接获得3D模型</a> <span class="sub-inline">/ Gemini 3 Deep Think 发布：一张草图直接获得3D模型</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.cnbeta.com.tw" alt="" loading="lazy"/> cnBeta</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fsspai.com%2Fpost%2F105331" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/105331">普通人更要多动手：聊聊我把 Claude Code 变成个人助手后的那些事</a> <span class="sub-inline">/ 普通人更要多动手：聊聊我把 Claude Code 变成个人助手后的那些事</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655016%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655016?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">早报｜DeepSeek悄悄更新，春节模型大战开启/三星S26月底见，或首发2nm处理器/车用固态电池国标要来了</a> <span class="sub-inline">/ 早报｜DeepSeek悄悄更新，春节模型大战开启/三星S26月底见，或首发2nm处理器/车用固态电池国标要来了</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fhollywood-studios-slam-ai-tool-that-created-video-of-tom-hanks-and-brad-pitt-fighting-and-prompted-deadpools-writer-to-declare-its-likely-over-for-us" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/hollywood-studios-slam-ai-tool-that-created-video-of-tom-hanks-and-brad-pitt-fighting-and-prompted-deadpools-writer-to-declare-its-likely-over-for-us">Hollywood Studios Slam AI Tool That Created Video of Tom Cruise and Brad Pitt Fighting, and Prompted Deadpool&#x27;s Writer to Declare &#x27;It&#x27;s Likely Over For Us&#x27;</a> <span class="sub-inline">/ 好莱坞影业痛批一款生成汤姆·克鲁斯与布拉德·皮特打斗视频的 AI 工具，甚至让《死侍》编剧感叹“我们可能完了”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fardentperf.com%2F2026%2F02%2F13%2Fthe-scott-shambaugh-situation-clarifies-how-dumb-we-are-acting%2F" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://ardentperf.com/2026/02/13/the-scott-shambaugh-situation-clarifies-how-dumb-we-are-acting/">The &quot;AI agent hit piece&quot; situation clarifies how dumb we are acting</a> <span class="sub-inline">/ “AI 代理黑稿”事件说明我们现在有多蠢</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//ardentperf.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fsteam-will-soon-encourage-players-to-share-pc-specs-on-their-reviews" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/steam-will-soon-encourage-players-to-share-pc-specs-on-their-reviews">Steam Will Soon Encourage Players to Share PC Specs on Their Reviews</a> <span class="sub-inline">/ Steam 很快将鼓励玩家在评测中分享电脑配置</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-tech" data-topic="tech">
+  <div class="section-head">
+    <h2>Tech</h2>
+    <span class="count">10 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fsspai.com%2Fpost%2F106310" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106310">派早报：Apple 将举办五十周年庆、VSCO 上架 Lr 预设等</a> <span class="sub-inline">/ 派早报：Apple 将举办五十周年庆、VSCO 上架 Lr 预设等</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Ftech%2F878809%2Firobot-picea-robotics-acquisition-irobot-safe" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/878809/irobot-picea-robotics-acquisition-irobot-safe">iRobot&amp;#8217;s Roombas have a new Chinese owner, but it says your data will remain in the US</a> <span class="sub-inline">/ iRobot 的 Roomba 有了新的中国买家，但称你的数据仍将留在美国</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Fai-artificial-intelligence%2F878761%2Fmass-exodus-at-xai-grok-elon-musk-restructuring" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/ai-artificial-intelligence/878761/mass-exodus-at-xai-grok-elon-musk-restructuring">What’s behind the mass exodus at xAI?</a> <span class="sub-inline">/ xAI 大规模出走背后发生了什么？</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Fgadgets%2F878951%2Fbeats-studio-buds-plus-earbuds-presidents-day-sale-deal" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/gadgets/878951/beats-studio-buds-plus-earbuds-presidents-day-sale-deal">The Beats Studio Buds Plus are on sale for less than $100 for Presidents Day</a> <span class="sub-inline">/ 总统日促销：Beats Studio Buds Plus 售价降至 100 美元以下</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Ftech%2F879132%2Fmoot-4chan-jeffrey-epstein-meeting-pol" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/tech/879132/moot-4chan-jeffrey-epstein-meeting-pol">4chan’s creator says ‘Epstein had nothing to do’ with creating infamous far-right board /pol/</a> <span class="sub-inline">/ 4chan 创始人称“爱泼斯坦与臭名昭著的极右翼版块 /pol/ 的创建无关”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.workatastartup.com%2Fcompanies%2Fgovdash" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.workatastartup.com/companies/govdash">GovDash (YC W22) Is Hiring Senior Engineers (Product and Search) in NYC</a> <span class="sub-inline">/ GovDash（YC W22）正在纽约招聘高级工程师（产品与搜索）</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.workatastartup.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fgithub.com%2Fminio%2Fminio%2Fcommit%2F7aac2a2c5b7c882e68c1ce017d8256be2feea27f" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/minio/minio/commit/7aac2a2c5b7c882e68c1ce017d8256be2feea27f">MinIO repository is no longer maintained</a> <span class="sub-inline">/ MinIO 仓库已不再维护</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.worksinprogress.news%2Fp%2Fthe-wonder-of-modern-drywall" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.worksinprogress.news/p/the-wonder-of-modern-drywall">The wonder of modern drywall</a> <span class="sub-inline">/ 现代石膏板的奇妙之处</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.worksinprogress.news" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fblog.feld.me%2Fposts%2F2026%2F02%2Fwolfssl-sucks-too%2F" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://blog.feld.me/posts/2026/02/wolfssl-sucks-too/">WolfSSL sucks too, so now what?</a> <span class="sub-inline">/ WolfSSL 也很烂，那现在怎么办？</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//blog.feld.me" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fqntm.org%2Fmmacevedo" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://qntm.org/mmacevedo">Lena by qntm (2021)</a> <span class="sub-inline">/ qntm 的《Lena》（2021）</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//qntm.org" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-consumer-electronics" data-topic="consumer-electronics">
+  <div class="section-head">
+    <h2>Consumer Electronics</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fyes-you-can-use-the-virtual-boy-accessory-to-play-smash-bros-mario-odyssey-and-zelda-breath-of-the-wild-in-vr" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/yes-you-can-use-the-virtual-boy-accessory-to-play-smash-bros-mario-odyssey-and-zelda-breath-of-the-wild-in-vr">Yes, You Can Use the Virtual Boy Accessory to Play Smash Bros., Mario Odyssey and Zelda: Breath of the Wild in VR</a> <span class="sub-inline">/ 没错，你可以用 Virtual Boy 配件以 VR 方式玩《任天堂明星大乱斗》《马里奥 奥德赛》和《塞尔达：旷野之息》</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fnickbostrom.com%2Foptimal.pdf" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://nickbostrom.com/optimal.pdf">New Nick Bostrom Paper: Optimal Timing for Superintelligence [pdf]</a> <span class="sub-inline">/ Nick Bostrom 新论文：超智能的最优时机 [pdf]</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//nickbostrom.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.dwarkesh.com%2Fp%2Fdario-amodei-2" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.dwarkesh.com/p/dario-amodei-2">Dario Amodei – &quot;We are near the end of the exponential&quot; [video]</a> <span class="sub-inline">/ Dario Amodei：“我们接近指数增长的终点了” [视频]</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.dwarkesh.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fgithub.com%2Fzed-industries%2Fzed%2Fpull%2F46758" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://github.com/zed-industries/zed/pull/46758">Zed editor switching graphics lib from blade to wgpu</a> <span class="sub-inline">/ Zed 编辑器将图形库从 blade 切换到 wgpu</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//github.com" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fkonami-confirms-metal-gear-solid-master-collection-vol-2-wont-have-mgs4s-metal-gear-online-but-peace-walker-multiplayer-will-return" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/konami-confirms-metal-gear-solid-master-collection-vol-2-wont-have-mgs4s-metal-gear-online-but-peace-walker-multiplayer-will-return">Konami Confirms Metal Gear Solid: Master Collection Vol. 2 Won&#x27;t Have MGS4&#x27;s Metal Gear Online, But Peace Walker Multiplayer Will Return</a> <span class="sub-inline">/ Konami 确认《合金装备：大师合集 Vol.2》不含 MGS4 的 Metal Gear Online，但《和平行者》多人模式将回归</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fhungry-star-wars-fans-beware-theres-a-mandalorian-grogu-tie-in-cookbook" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/hungry-star-wars-fans-beware-theres-a-mandalorian-grogu-tie-in-cookbook">Hungry Star Wars Fans, Beware — There&#x27;s a Mandalorian &amp; Grogu Tie-In Cookbook</a> <span class="sub-inline">/ 《星球大战》吃货粉注意：有一本《曼达洛人与古古》联动食谱来了</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-pop-culture" data-topic="pop-culture">
+  <div class="section-head">
+    <h2>Pop Culture</h2>
+    <span class="count">4 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Ftheres-confusion-over-god-of-war-sons-of-sparta-having-co-op-based-on-its-playstation-store-description" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/theres-confusion-over-god-of-war-sons-of-sparta-having-co-op-based-on-its-playstation-store-description">There&#x27;s Confusion Over God of War Sons of Sparta Having Co-Op, Based on Its PlayStation Store Description</a> <span class="sub-inline">/ 由于 PlayStation 商店描述含糊，《战神：斯巴达之子》是否支持合作模式引发混乱</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fgorillaz-to-be-saturday-night-lives-musical-guest-for-the-first-time-ever" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/gorillaz-to-be-saturday-night-lives-musical-guest-for-the-first-time-ever">Gorillaz to Be Saturday Night Live&#x27;s Musical Guest for the First Time Ever</a> <span class="sub-inline">/ Gorillaz 将首次担任《周六夜现场》音乐嘉宾</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.theverge.com%2Fgames%2F878920%2Fsteam-reviews-pc-specs-beta" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.theverge.com/games/878920/steam-reviews-pc-specs-beta">Steam beta lets users add their PC specs to reviews</a> <span class="sub-inline">/ Steam 测试版允许用户在评测中添加电脑配置</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.theverge.com" alt="" loading="lazy"/> The Verge</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fskipthe.tips%2F" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://skipthe.tips/">Skip the Tips: A game to select &quot;No Tip&quot; but dark patterns try to stop you</a> <span class="sub-inline">/ 跳过小费：一个选择“不给小费”但会被暗黑模式阻拦的游戏</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//skipthe.tips" alt="" loading="lazy"/> Hacker News</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section topic-other" data-topic="other">
+  <div class="section-head">
+    <h2>Other</h2>
+    <span class="count">6 items</span>
+  </div>
+  <div class="section-rule"></div>
+  <ul class="items">
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fmewgenics-co-creator-responds-to-cameo-complaints-i-understand-we-live-in-a-time-where-a-meow-from-someone-who-has-different-beliefs-as-you-is-scary-and-frustrating-confusing-and-controversial" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/mewgenics-co-creator-responds-to-cameo-complaints-i-understand-we-live-in-a-time-where-a-meow-from-someone-who-has-different-beliefs-as-you-is-scary-and-frustrating-confusing-and-controversial">Mewgenics Co-Creator Responds to Cameo Complaints: &#x27;I Understand We Live in a Time Where a Meow From Someone Who Has Different Beliefs as You Is Scary and Frustrating, Confusing and Controversial&#x27;</a> <span class="sub-inline">/ 《Mewgenics》联合创作者回应 Cameo 争议：“我理解在这个时代，来自立场不同之人的一声喵都会让人害怕、沮丧、困惑且引发争议”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Ftheres-been-a-lot-to-tend-to-sony-suggests-2029-launch-for-kpop-demon-hunters-2-may-be-too-ambitious" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/theres-been-a-lot-to-tend-to-sony-suggests-2029-launch-for-kpop-demon-hunters-2-may-be-too-ambitious">&#x27;There&#x27;s Been a Lot to Tend to&#x27;: Sony Suggests 2029 Launch for KPop Demon Hunters 2 May Be Too Ambitious</a> <span class="sub-inline">/ “有太多事要处理”：Sony 暗示《KPop Demon Hunters 2》2029 年上线可能过于激进</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ifanr.com%2F1655204%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3D" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ifanr.com/1655204?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">稚晖君最新机器人「凌空飞踢」震撼全网！智元远征 A3：我要一个打十个</a> <span class="sub-inline">/ 稚晖君最新机器人「凌空飞踢」震撼全网！智元远征 A3：我要一个打十个</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ifanr.com" alt="" loading="lazy"/> 爱范儿</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fwww.ign.com%2Farticles%2Fzero-parades-writer-hopes-zaum-never-becomes-a-aaa-studio" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://www.ign.com/articles/zero-parades-writer-hopes-zaum-never-becomes-a-aaa-studio">Zero Parades Writer Hopes ZA/UM ‘Never Becomes a AAA Studio’</a> <span class="sub-inline">/ 《Zero Parades》编剧希望 ZA/UM “永远别变成 AAA 工作室”</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//www.ign.com" alt="" loading="lazy"/> IGN</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fsspai.com%2Fpost%2F106337" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106337">派早报：智谱上线并开源 GLM-5 模型、网信办开展春节清朗行动</a> <span class="sub-inline">/ 派早报：智谱上线并开源 GLM-5 模型、网信办开展春节清朗行动</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+<li class="item">
+  <div class="item-media"><img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https%3A%2F%2Fsspai.com%2Fpost%2F106144" alt="" loading="lazy" referrerpolicy="no-referrer"/></div>
+  <div class="title">
+    <div class="main"><a class="titlelink" href="https://sspai.com/post/106144">Kali LP-UNF：我心中的入门级桌面音箱最优解</a> <span class="sub-inline">/ Kali LP-UNF：我心中的入门级桌面音箱最优解</span></div>
+
+    <div class="sub"><img class="favicon" src="https://www.google.com/s2/favicons?sz=64&amp;domain_url=https%3A//sspai.com" alt="" loading="lazy"/> 少数派</div>
+  </div>
+</li>
+
+  </ul>
+</div>
+
+<div class="section rd-section" id="topic-raindrop-picks" data-topic="raindrop-picks"><div class="section-head"><h2>Raindrop Picks</h2><span class="count">3 picks</span></div><div class="section-rule"></div><div class="rd-grid"><article class="rd-card"><a class="rd-thumb" href="https://hicks.design/journal/spotify-iconset#/"><img src="https://hicks.design/media/pages/journal/spotify-iconset/d9e18e905f-1733663039/screenshot-may-01-11.41.26-1200x675-crop.webp" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://hicks.design/journal/spotify-iconset#/">Spotify Iconset - Hicks.design</a><div class="rd-meta">hicks.design</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://www.designkit.org/resources/1"><div class="rd-thumb-fallback">🔖</div></a><div class="rd-body"><a class="rd-title" href="https://www.designkit.org/resources/1">Design Kit</a><div class="rd-meta">designkit.org</div></div></article><article class="rd-card"><a class="rd-thumb" href="https://hulsedurrell.com"><img src="https://framerusercontent.com/images/yRoffDp2tF8eOh3tkzT348uwPI.png" alt="" loading="lazy"/></a><div class="rd-body"><a class="rd-title" href="https://hulsedurrell.com">Home | Hulse &amp; Durrell</a><div class="rd-meta">hulsedurrell.com</div></div></article></div></div>
+
+    <footer class="footer">
+      <div>Generated locally by Clawdbot · Published via GitHub Pages</div>
+      <div class="mono">Tip: open in Safari/Chrome for best media playback.</div>
+    </footer>
+  </main>
+
+<script>
+(() => {
+  const pages = Array.from(document.querySelectorAll('li.item'));
+  if (!pages.length) return;
+
+  let lock = false;
+  let touchStartY = null;
+  let current = 0;
+
+  const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+  const indicator = document.createElement('div');
+  indicator.className = 'page-indicator';
+  pages.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    indicator.appendChild(dot);
+  });
+  document.body.appendChild(indicator);
+
+  const paint = () => {
+    Array.from(indicator.children).forEach((el, i) => {
+      el.classList.toggle('active', i === current);
+    });
+  };
+
+  const go = (next, dir = 1) => {
+    const target = clamp(next, 0, pages.length - 1);
+    if (target === current || lock) return;
+
+    lock = true;
+    const prev = pages[current];
+    const incoming = pages[target];
+
+    prev.classList.add('flip-leave');
+    incoming.classList.add('flip-enter');
+
+    current = target;
+    paint();
+    pages[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    window.setTimeout(() => {
+      prev.classList.remove('flip-leave');
+      incoming.classList.remove('flip-enter');
+      lock = false;
+    }, 420);
+  };
+
+  const step = (dir) => go(current + (dir > 0 ? 1 : -1), dir);
+
+  window.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) < 8) return;
+    e.preventDefault();
+    step(e.deltaY);
+  }, { passive: false });
+
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); step(1); }
+    if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); step(-1); }
+  });
+
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches?.[0]?.clientY ?? null;
+  }, { passive: true });
+
+  window.addEventListener('touchend', (e) => {
+    const y = e.changedTouches?.[0]?.clientY;
+    if (touchStartY == null || y == null) return;
+    const dy = touchStartY - y;
+    if (Math.abs(dy) < 32) return;
+    step(dy);
+    touchStartY = null;
+  }, { passive: true });
+
+  pages[0].scrollIntoView({ behavior: 'auto', block: 'start' });
+})();
+</script>
+</body>
+</html>
